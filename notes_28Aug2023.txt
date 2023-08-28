@@ -135,3 +135,107 @@ Activity:
 	What is normalization?
 	Create an account in livesql
 		https://livesql.oracle.com
+
+
+What is normalization?
+	you all identified:
+		aims to reduce redundancy
+		is a scientific approach for designing a database
+		steps are defined as normal forms
+
+
+Redundancy means?
+	Repeated data
+	unnecessary repeatation of same data in multiple locations (columns/ tables)
+	example for redundancy:
+		Attendance table
+			dateOfAttendance	EmployeeId	EmployeeName
+	here, employeeName is dependent on EmployeeId
+
+	risk here is 
+	
+	28-Aug-23		1		Rajkumar
+	29-Aug-23		1		Raj kumar
+	30-Aug-23		1		Raj Kumar
+
+select * from Attendance where employeeName='Rajkumar';	//only 1 row is selected
+Rajkumar gives a request to change his name.
+	now, should we update his name in Employees table and also other tables where name is present.
+Also
+Because of repeatation, more space occupied in the disk.
+
+
+1st normal form:	1NF
+	A table is said to be in first normal form, if every cell in that table contains precisely only 1 data.
+
+2nd normal form:	2NF
+	A table is said to be in second normal form, if it is already in 1NF and every field is functionally dependent on the whole key not partial.
+
+3NF
+	all fields are dependent on primary key.
+
+
+
+
+Pending:
+Keys
+	Primary
+	Foreign
+	Unique
+	Check
+	Candidate
+	Alternate
+	Super
+	Composite
+
+
+RDBMS
+	if any product that complies with Dr.E.F.Codd's 12 rules, they are RDBMS
+
+	examples:
+		Oracle database
+		Microsoft SQL Server
+		IBM DB2
+		Oracle MySQL
+	
+Server
+	contains database
+	admin console
+
+Client
+	installed in every client computer
+	no db
+	all data are accessed from server
+
+	
+Oracle 8i
+	we do not need to install client in every computer.
+	Rather, we use browser to connect with server.
+
+Oracle 9i
+
+Oracle 10g
+
+Oracle 11g
+
+Oracle 12 c
+
+How do we learn SQL and PL/SQL?
+	Oracle XE 
+	or
+	SQL Developer
+	or
+	SQL Plus
+
+we can use livesql.oracle.com
+for now
+
+Activity:
+	You already have created an account in livesql.
+	Now, login to livesql
+
+	explore the schemas available.
+	focus on HR schema - EMPLOYEES, DEPARTMENTS tables
+
+	Use SQL Worksheet to write queries
+		SELECT * FROM HR.EMPLOYEES;
