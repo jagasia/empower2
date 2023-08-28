@@ -239,3 +239,103 @@ Activity:
 
 	Use SQL Worksheet to write queries
 		SELECT * FROM HR.EMPLOYEES;
+
+
+
+
+SQL
+	Structured Query Language
+
+What you know about SQL?
+	the language used to interact with database.
+	most of the rdbms undersand SQL
+	each rdbms might have slight difference in their SQL
+	ex:	
+		t-sql		(MS SQL)
+		isql		(Oracle)
+
+
+Subset of SQL
+	DDL
+	DML
+	DQL
+	DCL
+	TCL
+	
+
+DDL	-	Data Definition Language
+DML	-	Data Manipulation Language
+DQL	-	Data Query Language
+DCL	-	Data Control Language
+TCL	- 	Transaction Control Language
+
+
+DDL
+	CREATE
+	ALTER
+	DROP
+	TRUNCATE
+
+DML
+	INSERT
+	UPDATE
+	DELETE
+	MERGE
+DQL
+	SELECT
+
+DCL
+	GRANT
+	REVOKE
+
+TCL
+	COMMIT
+	ROLLBACK
+	SAVEPOINT
+
+
+
+CREATE TABLE jemployees as
+select * from hr.employees;
+
+Activity:
+	create a copy of 
+		HR.EMPLOYEES
+		HR.DEPARTMENTS
+
+DDL
+	CREATE
+
+While creating the table
+
+CREATE TABLE <<TABLENAME>>
+(
+	COL1 DATATYPE(SIZE),
+	COL2 DATATYPE(SIZE),..........
+);
+
+
+
+lets create a table:
+
+PRODUCT
+	id
+	name
+	description
+	price
+	
+CREATE TABLE PRODUCT
+(
+	id INT PRIMARY KEY,
+	name VARCHAR2(20),
+	description VARCHAR2(20),
+	price NUMBER(7,2),
+	expiry_date DATE
+);
+
+
+Activity:
+	identify the data types of oracle sql.
+
+	try to use the datatypes on a column in the create table statement
+
