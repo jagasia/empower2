@@ -1,0 +1,132 @@
+Day 1:
+Database Fundamentals - 
+Oracle SQL & PL/SQL	Basics, Normalization, SQL(DDL, DML, TCL, DRL, DCL) Commands, Joins
+---------------------------------------
+Your idea about database:
+	to store data in the form of tables
+	to manage the data
+	to insert/update/delete/merge the data (manipulation)
+	to retrieve the data
+	to organize the data
+	to derive data from the data		(dob to age)
+	to prevent redundancies
+	to access data from anywhere
+	to provide concurrent access
+
+Advantage of database over unstructured data.
+
+
+data is processed to produce information
+Input - Process -Output		(cycle)
+
+1970s	Relational Database concept was invented by Dr. E.F. Codd
+row-column format is called as Relation
+table is an example for relation
+Relations can have relationship
+
+Dr. Codd defines 12 rules for a Relational Database Management System	(RDBMS)
+
+There were several types of databases:
+	Logical
+	Row based
+	E-R		Entity-Relationship
+	Hierarchical 	parent-child	(like a tree)
+	Object based
+	Relational
+
+
+E-R 
+	whenever you design a project, you start identifying the following:
+	1) write down the business process in English.
+	2) Underline the nouns
+	3) Choose the nouns that participate directly in the business
+
+Ex
+	customer purchase product
+
+nouns:
+	customer
+	product
+
+these nouns become ENTITY
+
+these entities become TABLE(s)
+
+the relationship between the entities can be:
+	ONE TO ONE
+	ONE TO MANY
+	MANY TO ONE
+	MANY TO MANY
+
+ONE TO ONE
+	One Department has One Manager
+	in that case, merge them.	
+		In department table, add a column called departmentHead
+
+ONE TO MANY
+	One Department has Many Employees
+
+
+DEPARTMENTS
+	DID	DNAME	LOCATION	DHEAD	
+
+EMPLOYEES
+	EID	ENAME	DID
+	101	STEVEN	1
+	102	NEENA	1
+	103	JAG	1
+	104	SUBA	2
+
+
+MANY TO ONE
+	Many Employees belong to One Department
+	
+MANY TO MANY
+	the relationship becomes an entity
+	CUSTOMER vs PRODUCT	is many to many
+	but the relationship becomes an entity 	SALES
+
+	CUSTOMER
+	SALES
+	PRODUCT
+
+	So, CUSTOMER to SALES		is One to Many
+	PRODUCT to SALES			is One to Many
+
+
+-------------------
+Relational Theory terminology:
+Data
+Database
+Record	/	Row	/	Tuple
+Column
+NULL
+Relation	/	Table	/	Entity
+Relationship
+UNION
+UNION ALL
+INTERSECT
+JOIN
+DIVIDE
+MINUS
+
+
+Data	is the unit of information
+Database	is a logical unit of collection of tables and other database objects
+	is made up of file(s)
+Table	is a logical unit
+
+Record	is a row in the table
+
+NULL	is missing information. It is not a space. It is not 0. It is not (null).
+UNION	is combination of the relations.
+		10+10	is maximum 20
+UNION ALL	10+10	is always 20
+
+INTERSECT	the common records between 2 relations.
+MINUS		First relation MINUS the common between Second relation
+DIVIDE		To find all the entities which have relationship with all the entities in 		another relation
+
+JOIN		= PRODUCT (Multiplication)
+		When we need to retrieve records from more than 1 table, we use JOINs
+---------------------
