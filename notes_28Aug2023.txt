@@ -130,3 +130,8 @@ DIVIDE		To find all the entities which have relationship with all the entities i
 JOIN		= PRODUCT (Multiplication)
 		When we need to retrieve records from more than 1 table, we use JOINs
 ---------------------
+Activity:
+	Identify the different types of database models
+	What is normalization?
+	Create an account in livesql
+		https://livesql.oracle.com
