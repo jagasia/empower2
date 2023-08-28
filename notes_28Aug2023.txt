@@ -339,3 +339,75 @@ Activity:
 
 	try to use the datatypes on a column in the create table statement
 
+
+CHAR
+NCHAR
+--------------------------------------------------------------
+CREATE TABLE DEMO
+(
+    X NCHAR(5)
+);
+
+INSERT INTO DEMO VALUES('12345');
+
+
+100
+
+
+
+ALTER TABLE DEMO
+MODIFY X NCHAR(5);
+
+
+Aa0
+☺☻♥♦♣
+
+
+
+ALTER TABLE DEMO
+MODIFY X NCHAR(5);
+
+
+Numeric Data Types:
+
+NUMBER: Represents fixed or floating-point numbers.
+BINARY_FLOAT: Represents single-precision floating-point numbers.
+BINARY_DOUBLE: Represents double-precision floating-point numbers.
+Character Data Types:
+
+CHAR: Fixed-length character strings.
+VARCHAR2: Variable-length character strings.
+NCHAR: Fixed-length Unicode character strings.
+NVARCHAR2: Variable-length Unicode character strings.
+CLOB: Large character objects, for storing very large strings.
+Binary Data Types:
+
+BLOB: Large binary objects, for storing binary data like images, audio, etc.
+RAW: Variable-length binary data.
+Date and Time Data Types:
+
+DATE: Represents date and time.
+TIMESTAMP: Represents date and time with fractional seconds.
+INTERVAL: Represents intervals of time.
+
+
+Activity:
+	1) Create a table as follows:
+
+PRODUCT
+	id
+	name
+	description
+	price
+
+	2) Alter the table and add a column "expiry_date"
+
+	3) Alter the table and modify the column price datatype to INT
+
+	4) Alter the table and rename the column "expiry_date" to "expires"
+	5) Alter the table and remove the column "expires"
+	6) DROP the table PRODUCT
+
+
+Pending:
+	constraints
