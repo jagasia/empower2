@@ -400,13 +400,26 @@ PRODUCT
 	description
 	price
 
+	CREATE TABLE PRODUCT
+	(
+		ID INT,
+		NAME VARCHAR2(20),
+		DESCRIPTION VARCHAR2(20),
+		PRICE NUMBER(5,2)
+	);
+
 	2) Alter the table and add a column "expiry_date"
-
+	ALTER TABLE PRODUCT
+	ADD EXPIRY_DATE DATE;
 	3) Alter the table and modify the column price datatype to INT
-
+	ALTER TABLE PRODUCT
+	MODIFY PRICE INT;
 	4) Alter the table and rename the column "expiry_date" to "expires"
+	ALTER TABLE PRODUCT RENAME COLUMN EXPIRY_DATE TO EXPIRES;
 	5) Alter the table and remove the column "expires"
+	ALTER TABLE PRODUCT DROP COLUMN EXPIRES;
 	6) DROP the table PRODUCT
+	DROP TABLE PRODUCT;
 
 
 Pending:
