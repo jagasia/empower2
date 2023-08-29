@@ -423,4 +423,10 @@ PRODUCT
 
 
 Pending:
-	constraints
+	constraints	at column level, table level
+	adding constraints to the columns while 
+	creating table, 
+	alter table, 
+
+	drop constraints
+

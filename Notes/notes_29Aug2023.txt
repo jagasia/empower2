@@ -1,0 +1,140 @@
+Day 2:
+
+
+
+List of participants who have not receives email from amazon workspace:
+Gowrika T.K
+Komal G.D
+Skanda Smaran V
+Rajvir Saini
+Ramyashree R
+Niharika
+Tejas
+Chenna Kesava Reddy
+---------------------------------
+Pending:
+	constraints	at column level, table level
+	adding constraints to the columns while 
+	creating table, 
+	alter table, 
+
+	drop constraints
+
+constraints
+	restrictions
+	conditions that must pass
+	limit
+	boundary
+	rules that must comply
+These constraints are used to enfore data integrity.
+
+are applied to columns of a table
+
+PRIMARY KEY
+FOREIGN KEY
+CANDIDATE KEY
+ALTERNATE KEY
+SUPER KEY
+COMPOSITE KEY
+UNIQUE CONSTRAINT
+NOT NULL CONSTRAINT
+CHECK CONSTRAINT
+
+These constraints are used to enfore data integrity.
+what is data integrity?
+	correctness of the data
+types of integrity:
+	Entity integrity
+	Domain integrity
+	Referential integrity
+	User defined data integrity
+
+What is Entity integrity?	(Primary key)		row level
+	ensures that we would be able to identify any record (row) in a table uniquely using one or more column(s).	These columns are primary key column(s).
+
+What is Domain integrity?	column level
+	Data in a column must follow the domain rule.
+	we can implement domain integrity using 
+		CHECK constraint
+		
+What is Referential integrity?
+	The data in a table will be verified against the data in another table.
+	The foreign key of a table is verified against the primary key of another table.	
+
+1 Steven 	King	1231	(1231 is an invalid department id. So it is not allowed here)
+	
+	
+Foreign key
+	allows NULL
+	allows Duplicate
+	can be created that references a column which is UNIQUE and NOT NULL
+	can be composite, when the primary key it references is composite.
+
+	supports the following response to DELETE and UPDATE of primary key table records
+		CASCADE
+		RESTRICT		(by default)
+		SET NULL		(NULLIFY)	
+
+Primary key is in MASTER table
+Foreign key is in DETAILS table 		(also called as TRANSACTION table)
+
+USER_MASTER		(has no foreign keys)
+SALES_DETAILS		(has foreign keys)
+
+What is User Defined Data integrity?
+	Any rules enforced other than the above integrity, are user defined.
+	we can implement them using Triggers, User defined types
+
+Practical:
+
+1) PRIMARY KEY
+	does not allow NULL
+	does not allow DUPLICATES
+	can be COMPOSITE
+	can be defined even after the table is created already.
+
+CREATE TABLE TICKETS
+(
+  id int,
+	seatno VARCHAR2(100),
+    theatreName VARCHAR2(100)
+);
+	
+INSERT INTO TICKETS VALUES(1, 'A1','PVR Soul Spirit Mall');
+INSERT INTO TICKETS VALUES(1, 'A1','PVR Soul Spirit Mall');
+
+ALTER TABLE TICKETS ADD CONSTRAINT PKTICKETS1 PRIMARY KEY (ID);
+--Error
+ORA-02437: cannot validate (SQL_NUEVXSBXIDXBAASYYMEIWVBCG.PKTICKETS1) - primary key violated 
+
+
+DELETE FROM TICKETS;
+
+2 row(s) deleted.
+
+INSERT INTO TICKETS VALUES(1, 'A1','PVR Soul Spirit Mall');
+1 row(s) inserted.
+
+INSERT INTO TICKETS VALUES(2, 'E11','INOX Nexus Forum Mall');
+1 row(s) inserted.
+
+
+select * from tickets;
+
+Result Set 2
+ID	SEATNO	THEATRENAME
+1	A1	PVR Soul Spirit Mall
+2	E11	INOX Nexus Forum Mall
+Download CSV
+2 rows selected.
+
+
+
+ALTER TABLE TICKETS ADD CONSTRAINT PKTICKETS1 PRIMARY KEY (ID);
+Table altered.
+
+Activity:
+1) Create a table and define primary key for a column at column level
+2) Create a table and define primary key for a column at table level
+3) Create a table without primary key and ALTER the table and add constraint with constraint name
+4) Remove that constraint 	(problem: we dont know the constraint name.  Find the constraint name from dictionary. 	SELECT * FROM USER_CONSTRAINTS;
