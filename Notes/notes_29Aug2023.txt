@@ -270,3 +270,65 @@ Activity:
 	Insert into a table using SELECT statement that retrieves specific rows from another table
 
 	
+
+
+-- create table jdepartments
+-- as
+-- select * from hr.departments;
+
+select * from jdepartments;
+-- delete from jdepartments where department_id>30;
+select * from jdepartments;
+
+1) Insert a row into the table with values in the correct order:-
+INSERT INTO JDEPARTMENTS VALUES(40,'IT',100,1700);
+
+2) Insert a row into the table with values in different order, but mentioned in the statement.:-
+INSERT INTO JDEPARTMENTS (DEPARTMENT_NAME, DEPARTMENT_ID, MANAGER_ID, LOCATION_ID) 
+VALUES ('ECE',50,101,1800);
+
+INSERT INTO JDEPARTMENTS (DEPARTMENT_NAME, DEPARTMENT_ID, LOCATION_ID) 
+VALUES ('EEE',60,1800);
+
+
+3) Insert a row into the table with DEFAULT values
+ALTER TABLE JDEPARTMENTS ADD STRENGTH INT DEFAULT 10;
+INSERT INTO JDEPARTMENTS VALUES(70,'CSE',100,1700,DEFAULT);
+
+INSERT INTO JDEPARTMENTS (DEPARTMENT_ID,DEPARTMENT_NAME,MANAGER_ID,LOCATION_ID)VALUES(80,'Electicity',100,1700);	--DEFAULT value applied for STRENGTH column
+
+4) Insert multiple rows to a table using single INSERT statement:-
+-- select * from jdepartments;
+INSERT ALL
+	INTO JDEPARTMENTS VALUES (90,'Police',101,1700,DEFAULT)
+	INTO JDEPARTMENTS VALUES (100,'Income Tax',102,1700,100)
+SELECT * FROM DUAL;
+
+
+
+
+
+
+
+SELECT 10*10 FROM DUAL;
+SELECT SYSDATE FROM DUAL;
+
+5) Insert into a table using SELECT statement that retrieves all rows from another table:-
+
+
+CREATE TABLE JEMPLOYEES AS
+SELECT * FROM HR.EMPLOYEES;
+
+DELETE FROM JEMPLOYEES;
+
+INSERT INTO JEMPLOYEES
+SELECT * FROM HR.EMPLOYEES;
+
+6) Insert into a table using SELECT statement that retrieves specific rows from another table
+
+DELETE FROM JEMPLOYEES;
+
+INSERT INTO JEMPLOYEES
+SELECT * FROM HR.EMPLOYEES WHERE SALARY>10000;
+15 row(s) inserted.
+
