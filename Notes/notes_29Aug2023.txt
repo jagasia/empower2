@@ -225,3 +225,48 @@ Activity:
 	NOT NULL
 	UNIQUE
 	CHECK
+
+
+CREATE TABLE SHOWS
+(
+    ID int UNIQUE NOT NULL
+    
+);
+
+
+
+DROP TABLE SHOWS;
+
+
+
+CREATE TABLE SHOWS
+(
+    ID int UNIQUE NOT NULL,
+    CAPACITY int,
+    CHECK(CAPACITY>0)
+    
+);
+
+INSERT INTO SHOWS VALUES(1,-1);
+ORA-02290: check constraint (SQL_NUEVXSBXIDXBAASYYMEIWVBCG.SYS_C00129976849) violated ORA-06512: at "SYS.DBMS_SQL", line 1721
+
+
+INSERT INTO SHOWS VALUES(1,1);
+1 row(s) inserted.
+
+-------------------------------------------
+DML	-	Data Manipulation Language
+
+INSERT
+UPDATE
+DELETE
+
+Activity:
+	Insert a row into the table with values in the correct order
+	Insert a row into the table with values in different order, but mentioned in the statement.
+	Insert a row into the table with DEFAULT values
+	Insert multiple rows to a table using single INSERT statement
+	Insert into a table using SELECT statement that retrieves all rows from another table
+	Insert into a table using SELECT statement that retrieves specific rows from another table
+
+	
