@@ -422,3 +422,61 @@ Activity:
 	types of privileges
 	WITH ADMIN OPTION
 	WITH GRANT OPTION
+
+
+
+error: ORA-65096: invalid common user or role name in Oracle database
+
+CREATE USER statement gives error as above.
+
+Till Oracle 11g this problem was not there.
+From Oracle 12c onwards this problem is there.
+check db version:
+	SELECT banner FROM v$version WHERE ROWNUM = 1;
+
+ show con_name
+
+CON_NAME
+------------------------------
+CDB$ROOT
+
+change from CDB to PDB:-
+	alter session set container = ORCLPDB;
+Session altered.
+
+
+	
+show con_name;
+
+CON_NAME
+------------------------------
+ORCLPDB
+
+--------------------------------------------------------------------
+SELECT
+	statement is used to retrieve records from one or more tables, views, etc.
+
+FROM
+WHERE
+ORDER BY
+GROUP BY
+HAVING
+
+OPERATORS
+	=
+	>
+	<
+	>=
+	<=
+	!=
+	<>
+	IN
+	NOT IN
+	BETWEEN
+	NOT BETWEEN
+	NOT
+	AND
+	OR
+	LIKE
+Activity:
+	WRITE SQL statement with WHERE CONDITION using the above operators.
