@@ -332,3 +332,43 @@ INSERT INTO JEMPLOYEES
 SELECT * FROM HR.EMPLOYEES WHERE SALARY>10000;
 15 row(s) inserted.
 
+----------------------------------------------
+
+DML statements run in transactions.
+Transaction can be implicit transaction or explicit transaction.
+
+What are implicit transactions?
+	they start and end themselves.
+
+What are explicit transactions?
+	they are demacated by users.	
+	the begining of transaction and the end of transaction are defined explicitly
+	end of the transaction can be done by commit or rollback.
+	BEGIN TRANSACTION
+Every DML statement itself is a transaction
+
+
+
+TRUNCATE
+	is fast when compared to DELETE statement. Because, it is like DROP and CREATE
+	DELETE works on rows one by one. It takes time. Also, in case, there are DELETE triggers, then for each row, it may fire.	TRUNCATE does not trigger DELETE Triggers.
+	is DDL. It cannot be rolledback.
+	only DML statements can be rolledback.
+	
+UPDATE
+	In the table, where already you have added records, try to update one (or) all (or) specific rows. You will specify the column name and value in the UPDATE statement. WHERE condition is optional. If you do not provide WHERE condition, then all rows are updated.
+
+
+DELETE
+
+
+
+SQL> ALTER TABLE EMP ADD NATIONALITY VARCHAR2(50);
+
+Table altered.
+
+Activity:
+	UPDATE	(All rows, specific row(s))
+	DELETE	(specific row(s), all rows)
+
+Understand the difference between DELETE and TRUNCATE
