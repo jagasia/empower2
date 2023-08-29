@@ -135,6 +135,93 @@ Table altered.
 
 Activity:
 1) Create a table and define primary key for a column at column level
+CREATE TABLE MOVIE
+(
+    ID INT PRIMARY KEY,
+    NAME VARCHAR2(20)
+);
 2) Create a table and define primary key for a column at table level
+CREATE TABLE MOVIE
+(
+    ID INT,
+    NAME VARCHAR2(20),
+    PRIMARY KEY(ID)
+);
 3) Create a table without primary key and ALTER the table and add constraint with constraint name
+
+CREATE TABLE MOVIE
+(
+    ID INT,
+    NAME VARCHAR2(20)
+);
+ALTER TABLE MOVIE ADD PRIMARY KEY(ID);
+ALTER TABLE MOVIE ADD CONSTRAINT PK1 PRIMARY KEY(ID);
+
 4) Remove that constraint 	(problem: we dont know the constraint name.  Find the constraint name from dictionary. 	SELECT * FROM USER_CONSTRAINTS;
+ALTER TABLE MOVIE DROP CONSTRAINT SYS_C00129973268;
+
+------------------------------------
+FOREIGN KEY
+	
+example:
+	Ticket table should contain a column "movie_id" that references "id" of "movie" table
+
+If you already have movie, ticket tables, drop them.
+
+Create both tables and implement primary and foreign keys accordingly.
+
+
+
+TABLE MOVIEResult Set 7
+Column	Null?	Type
+ID	 - 	NUMBER
+NAME	 - 	VARCHAR2(20)
+
+
+
+-- alter table movie add constraint pkm1 primary key(id);
+create table ticket
+(
+    id int primary key,
+    seat_no char(5),
+    movie_id int references movie(id)
+);
+
+
+insert into movie values(1, 'Jailer');
+insert into movie values(2, 'Kantara');
+
+insert into ticket values(1,'A12',11);
+ORA-02291: integrity constraint (SQL_NUEVXSBXIDXBAASYYMEIWVBCG.SYS_C00129975953) violated - parent key not found ORA-06512: at "SYS.DBMS_SQL", line 1721
+
+ERROR is because, 11 is invalid movie id.
+
+insert into ticket values(1,'A12',2);
+1 row(s) inserted.
+
+
+
+
+create table ticket
+(
+    id int primary key,
+    seat_no char(5),
+    movie_id int constraint fkm1 foreign key references movie(id)
+);
+
+
+-- drop table ticket;
+create table ticket
+(
+    id int primary key,
+    seat_no char(5),
+    movie_id int,
+    constraint fkm1 foreign key(movie_id) references movie(id)
+);
+
+
+-------------------
+Activity:
+	NOT NULL
+	UNIQUE
+	CHECK
