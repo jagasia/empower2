@@ -372,3 +372,53 @@ Activity:
 	DELETE	(specific row(s), all rows)
 
 Understand the difference between DELETE and TRUNCATE
+------------------------------------------------------------------------------
+TCL
+	Transaction Control Language
+		COMMIT
+		SAVEPOINT
+		ROLLBACK
+
+DCL
+	Data Control Language
+		GRANT
+		REVOKE
+
+PRIVILEGES
+		OBJECT PRIVILEGES
+			SELECT ON EMPLOYEES
+			INSERT
+			UPDATE
+			DELETE
+		SYSTEM PRIVILEGES		
+			CREATE SESSION
+			CREATE TABLE
+			CREATE USER
+			
+
+
+
+CREATE USER JAG IDENTIFIED BY JAG;
+
+
+SYSTEM PRIVILEGES are not cascade.
+	means?
+		GRANT CREATE TABLE TO GOWRIKA WITH ADMIN OPTION
+		if SYS grants CREATE TABLE with admin option to gowrika, 	
+		then gowrika grants this privilege to shushwant
+		After that SYS revokes this privilege from gowrika,
+		but shushwant continues to use this privilege.
+
+
+OBJECT PRIVILEGES	 are cascade
+		GRANT SELECT ON EMPLOYEES TO GOWRIKA WITH GRANT OPTION;
+		now, gowrika can grant this privilege to shushwant.
+		when sys revokes the privilege from gowrika,
+		shushwant also lose this privilege.
+
+-------------------------
+Activity:
+	understand the privileges in oracle.
+	types of privileges
+	WITH ADMIN OPTION
+	WITH GRANT OPTION
