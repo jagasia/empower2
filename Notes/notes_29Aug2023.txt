@@ -468,15 +468,96 @@ OPERATORS
 	<
 	>=
 	<=
-	!=
-	<>
-	IN
-	NOT IN
-	BETWEEN
-	NOT BETWEEN
+	!=				<>
+	IN				NOT IN
+	BETWEEN				NOT BETWEEN
 	NOT
 	AND
 	OR
 	LIKE
+	ALL
+	ANY		SOME
+
+	>=ALL
+	<=ANY
+
 Activity:
 	WRITE SQL statement with WHERE CONDITION using the above operators.
+
+
+
+LIKE uses the following wild card characters:
+	_			1 and only 1 character
+	%			0 or more character(s)
+
+
+select * from hr.employees WHERE JOB_ID NOT IN ('ST_CLERK','AD_PRES');
+
+SELECT * FROM HR.EMPLOYEES WHERE SALARY BETWEEN 10000 AND 11000;
+	--including 10000 and 11000 and all in between
+
+--------------------
+functions
+	SUM
+	COUNT
+	MIN
+	MAX
+	AVG
+	FLOOR
+	CEIL
+	ABS
+	SQRT
+
+
+
+Oracle SQL provides a wide range of built-in functions that allow you to perform various operations on data within your database. These functions can be categorized into several groups based on their functionality. Here are some common categories of Oracle SQL functions:
+
+Scalar Functions: These functions operate on a single value and return a single value. Some examples include:
+
+UPPER() and LOWER(): Convert text to uppercase or lowercase.
+LENGTH() and LEN(): Determine the length of a string.
+SUBSTR() and SUBSTRING(): Extract a substring from a string.
+CONCAT() or ||: Concatenate two or more strings.
+TO_NUMBER(), TO_DATE(), TO_CHAR(): Convert between different data types.
+Numeric Functions: Functions that work with numeric data:
+
+ROUND(), CEIL(), FLOOR(): Perform rounding or truncation operations.
+ABS(): Return the absolute value of a number.
+MOD(): Return the remainder of a division.
+POWER(), SQRT(): Perform exponential and square root calculations.
+Date and Time Functions: Functions for working with date and time values:
+
+SYSDATE: Return the current system date and time.
+TO_DATE(), TO_TIMESTAMP(): Convert strings to date or timestamp values.
+ADD_MONTHS(): Add a specified number of months to a date.
+MONTHS_BETWEEN(): Calculate the number of months between two dates.
+EXTRACT(): Retrieve specific components (year, month, day, etc.) from a date.
+String Functions: Functions for manipulating string data:
+
+INSTR(): Find the position of a substring in a string.
+LTRIM() and RTRIM(): Remove leading or trailing spaces from a string.
+TRIM(): Remove specified characters from the beginning and/or end of a string.
+REPLACE(): Replace occurrences of a substring in a string.
+Aggregate Functions: Functions that perform calculations across multiple rows:
+
+SUM(), AVG(), MIN(), MAX(): Calculate sum, average, minimum, and maximum values in a column.
+COUNT(): Count the number of rows or non-null values in a column.
+GROUP BY and HAVING: Used in combination with aggregate functions to group and filter data.
+Conversion Functions: Functions for converting data types:
+
+TO_NUMBER(), TO_DATE(), TO_CHAR(): Convert between different data types.
+Advanced Functions: Functions that perform more specialized operations:
+
+NVL() and NVL2(): Handle NULL values by substituting them with other values.
+DECODE(): Perform conditional comparisons and return a result based on conditions.
+CASE expression: Perform conditional logic within a query.
+These are just some examples of the many functions Oracle SQL provides. Each function serves a specific purpose and can greatly enhance your ability to manipulate and retrieve data from your database.
+
+
+scalar = single row functions		works on each row and produce 1 result per row
+EX:	UPPER
+SELECT FIRST_NAME, UPPER(FIRST_NAME) FROM HR.EMPLOYEES;
+
+aggregate = multi row functions 		work on multiple rows and product 1 result per group.
+EX:	SUM
+SELECT SUM(SALARY) FROM HR.EMPLOYEES;
