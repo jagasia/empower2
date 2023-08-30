@@ -133,11 +133,10 @@ Activity:
 Komal G.D
 Ramyashree R
 Tejas
-
-
-Gowrika T.K	
-Skanda Smaran V
+Gowrika T.K
 Rajvir Saini
+------	
+Skanda Smaran V
 Niharika
 Chenna Kesava Reddy
 
@@ -293,3 +292,100 @@ Activity:
 	What can be done in VIEW
 	What cannot be done in VIEW
 
+PROJECTION
+	projecting only relevant columns of a table
+	
+SELECTION
+	selecting only relevant rows of a table
+
+-------------------------
+Understand the purpose and advantage of using VIEWS.
+	provide selective view of the tables
+
+What can be done in VIEW
+	PROJECTION
+	SELECTION
+
+What cannot be done in VIEW	
+	cannot create index on view
+	
+CAN WE PERFORM DML on VIEW?
+	DML on VIEWs are possible if:
+		that manipulation affects columns on single table, provided all mandatory 		columns are selected by the view
+
+	NOT Possible if the manipulation, affects columns of multiple tables.
+
+
+
+--CREATE VIEW vwKomal
+--as
+--SELECT * FROM HR.DEPARTMENTS;
+
+INSERT INTO vwKomal VALUES(280,'Police Department',100,1700);
+
+we were able to insert into original departments table using vwKomal
+
+--------------------------------------
+Sub queries
+-----------------
+Display the employees who belong to same job id of John chen.
+
+SELECT * FROM HR.EMPLOYEES
+WHERE JOB_ID='FI_ACCOUNT';
+
+
+SELECT * FROM HR.EMPLOYEES
+WHERE JOB_ID=(
+SELECT JOB_ID FROM HR.EMPLOYEES WHERE FIRST_NAME='Kimberely' AND LAST_NAME='Grant'
+);
+
+--select * from hr.employees;
+
+
+Whenever we write sub queries:
+	1) sub query shall be in the right side of the expression
+	2) any number of levels
+	3) sub query shall return only 1 column when the condition uses >, <, etc
+		but when we use EXISTS operator, the sub query can return any number of columns		SELECT * FROM ...
+		EX:	Find the departments where atleast 1 employee  exists.
+
+
+SELECT * FROM HR.DEPARTMENTS D
+WHERE NOT EXISTS
+(SELECT E.DEPARTMENT_ID FROM HR.EMPLOYEES E WHERE E.DEPARTMENT_ID=D.DEPARTMENT_ID);
+--CORRELATED SUB QUERY = a sub query that depends on outer query for its evaluation
+
+
+	If subquery returns more than 1 row, then outer query condition should be modified
+	ALL
+	ANY
+
+>
+<
+=
+!=
+>=
+<=
+	These wont work if sub query returns more than 1 row.
+
+In that case, we have modify the operators using
+	>=ALL
+	<=ANY
+
+
+
+
+----------------
+1) Oracle connection information 
+	IP address
+	PORT
+	SID	(ORCL or XE)
+2) SQL Developer or SQL Plus or any client
+3) Java to be installed in each machines
+4) Eclipse or STS
+
+
+
+
+Activity:
+understand subqueries
