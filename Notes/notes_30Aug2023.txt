@@ -128,3 +128,95 @@ Activity:
 4) Display the number of employees in each department
 5) Display the average salary of employees in each department
 6) Display the minimum, maximum salaries of each department employees.
+
+
+Komal G.D
+Ramyashree R
+Tejas
+
+
+Gowrika T.K	
+Skanda Smaran V
+Rajvir Saini
+Niharika
+Chenna Kesava Reddy
+
+
+
+-- Display alls the employee's id, first name, last name, salary where salary is between 10k and 15k
+SELECT employee_id, first_name, last_name, salary
+from hr.employees
+where salary between 10000 and 15000;
+
+
+-- 2) Display those results in the order of salary
+SELECT employee_id, first_name, last_name, salary
+from hr.employees
+where salary between 10000 and 15000
+order by salary;
+
+
+-- 3) Display the number of employees present in the organisation whose department number is 90
+select count(*)
+from hr.employees
+    where department_id=90;
+
+
+-- 4) Display the number of employees in each department
+select department_id, count(employee_id) from hr.employees
+group by department_id;
+
+
+-- 5) Display the average salary of employees in each department
+select avg(salary) from hr.employees
+group by department_id;
+
+
+-- 6) Display the minimum, maximum salaries of each department employees.
+select min(salary),max(salary)
+from hr.employees
+group by department_id;
+
+--------------------
+SET operators
+	UNION
+	UNION ALL
+	INTERSECT
+	MINUS
+	DIVIDE
+
+---------------
+COALESCE
+NVL
+NVL2
+NULLIF
+
+COALESCE
+	is a function that accepts any number of arguments.
+	if the first argument is null, then it will look the next argument,
+	if that next argument is null, then it will look the next argument,
+	the first NOT NULL argument found, is returned by the function.
+
+NVL
+	this function, accepts 2 arguments
+	if the first argument is NULL, then it will return the next argument.
+	if the first argument is NOT NULL, then it will return the first argument.
+
+select commission_pct, salary, NVL(commission_pct,.1)*salary BONUS
+from hr.employees;
+
+NVL2
+	this function accepts 3 arguments
+	if the first argument is NULL, then it will return the 3rd argument.
+	if the first agument is NOT NULL then it will return the 2nd argument.
+select commission_pct, salary, NVL2(commission_pct,.1, 2)*salary BONUS
+from hr.employees;
+
+NULLIF
+	returns NULL if both arguments are same.
+	reuruns the first argument if they are different.
+select nullif(20,120) from dual;
+
+---------------------------
+Activity
+	practise pre-defined functions in SQL
