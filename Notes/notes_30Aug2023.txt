@@ -220,3 +220,76 @@ select nullif(20,120) from dual;
 ---------------------------
 Activity
 	practise pre-defined functions in SQL
+----------------------
+Index
+	For every primary key, UNIQUE constraints, we create, index is automatically created.
+	Index enforce uniqueness.
+	Index speeds up the queries.
+	Index slows down DML
+	Index is always sorted
+	There can be many indices for a table.
+	There can be only one Clustered index for a table
+
+When we create a primary key then a clustered index is automatically created.
+the physical records are always in the order specified by the clustered index.
+Means, when we add a record, it not necessarily be added at the end.
+
+Creating more indexes on a table does not provide value.
+create index on a table on the given condition:
+	if you search records using SELECT statement and that statement uses WHERE condition, based on a column. Then if that column is indexed, then only, the index is useful.
+SELECT * FROM HR.EMPLOYEES;	--here, no condition is used. NO INDEX is useful at all.
+
+if your search results only 2% or less of the whole number of rows, then only, index is useful
+
+index slows DML
+
+CREATE INDEX idx1
+ON EMPLOYEES(JOB_ID);
+
+SELECT * FROM EMPLOYEES WHERE JOB_ID='AD_VP';
+
+create index idx2
+on employees(upper(first_name));
+
+SELECT * FROM EMPLOYEES WHERE UPPER(FIRST_NAME)='RAJA';
+-------------------------
+select * from all_indexes;
+
+----------------------
+VIEWS:
+----------
+
+Management asks you to retrieve all employees who celebrate work anniversary in August.
+SELECT * FROM HR.EMPLOYEES
+where EXTRACT(MONTH FROM HIRE_DATE)=8;
+-- WHERE HIRE_DATE LIKE '%AUG%';
+-- WHERE EXTRACT(MONTH FROM HIRE_DATE)='August';
+
+
+
+CREATE VIEW vwWork
+    AS
+SELECT * FROM HR.EMPLOYEES
+where EXTRACT(MONTH FROM HIRE_DATE)=8;
+
+SELECT * FROM vwWork;
+
+What is the purpose of View?
+	You do not provide PRIVILEGES on tables to users.
+	we can provide access to VIEWs and thereby restrict access to:
+		certain columns
+		certain rows
+		
+
+create or replace view vwEmp1
+as
+SELECT FIRST_NAME AS FNAME, SALARY*.2 AS BONUS
+FROM HR.EMPLOYEES
+WHERE DEPARTMENT_ID>80;
+
+
+Activity:
+	Understand the purpose and advantage of using VIEWS.
+	What can be done in VIEW
+	What cannot be done in VIEW
+
