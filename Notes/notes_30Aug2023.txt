@@ -1,0 +1,130 @@
+Day 3:
+SELECT
+
+-- select round(155.454,-2) from dual;
+-- select ceil(129.456) from dual;
+-- select floor(123.956) from dual;
+
+_______ function returns the largest integer lesser than or equal to the given number.
+ans:	floor
+
+floor(123.956)	=	123
+
+
+________ function returns the smallest integer greater than or equal to the given number.
+ans:	ceil
+
+
+---------------------------------
+Activity
+	identify the functions used in SQL
+--------------------------------
+1) WHERE clause
+	condition should be boolean expression that results in true or false
+	for multiple conditions, you can use 	Logical operators like AND OR
+
+	WHERE salary>9000 AND salary<15000
+2) ORDER BY clause
+	to sort the result in particular order(s)
+
+select * from hr.employees
+order by salary;
+
+select * from hr.employees
+order by salary desc;
+
+select * from hr.employees
+order by job_id, salary;
+
+select * from hr.employees
+order by job_id desc, salary asc;
+
+ORDER BY clause should be the last part of a SELECT query.
+
+------------------------
+GROUP BY
+	what is the need for group by?
+
+whenever we use aggregate functions, we get 1 result per table.
+	SUM
+	COUNT
+	MIN
+	MAX
+	AVG
+SELECT SUM(SALARY) FROM HR.EMPLOYEES;
+
+Result:
+691416
+
+
+
+SELECT JOB_ID, SUM(SALARY) FROM HR.EMPLOYEES
+    GROUP BY JOB_ID;
+
+Result:
+JOB_ID	SUM(SALARY)
+AD_VP	34000
+FI_ACCOUNT	39600
+PU_CLERK	13900
+SH_CLERK	64300
+HR_REP	6500
+PU_MAN	11000
+AC_MGR	12008
+ST_CLERK	55700
+AD_ASST	4400
+IT_PROG	28800
+SA_MAN	61000
+AC_ACCOUNT	8300
+FI_MGR	12008
+ST_MAN	36400
+AD_PRES	24000
+MK_MAN	13000
+SA_REP	250500
+MK_REP	6000
+PR_REP	10000
+
+So we understand that GROUP BY produces 1 result per GROUP.
+
+
+
+SELECT JOB_ID, SUM(SALARY) FROM HR.EMPLOYEES
+    GROUP BY JOB_ID
+	ORDER BY SUM(SALARY)
+
+
+
+SELECT JOB_ID, SUM(SALARY) FROM HR.EMPLOYEES
+    WHERE SUM(SALARY)>20000
+    GROUP BY JOB_ID
+	ORDER BY SUM(SALARY)
+	
+ERROR:
+ORA-00934: group function is not allowed here
+
+
+
+SELECT JOB_ID, SUM(SALARY) FROM HR.EMPLOYEES
+    -- WHERE SUM(SALARY)>20000
+    GROUP BY JOB_ID
+    HAVING SUM(SALARY)>20000
+	ORDER BY SUM(SALARY)
+	
+
+What is the difference between WHERE and HAVING?
+	WHERE is used to restrict the rows
+	HAVING is used to restrict the groups
+
+-------------------
+Activity:
+	Identify the correct use of
+	WHERE
+	ORDER BY
+	GROUP BY
+	HAVING
+
+1) Display alls the employee's id, first name, last name, salary where salary is between 10k and 15k
+2) Display those results in the order of salary
+3) Display the number of employees present in the organisation whose department number is 90
+4) Display the number of employees in each department
+5) Display the average salary of employees in each department
+6) Display the minimum, maximum salaries of each department employees.
