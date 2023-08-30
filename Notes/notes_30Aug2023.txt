@@ -471,3 +471,9 @@ ON E.SALARY BETWEEN J.MIN_SALARY AND J.MAX_SALARY;
 
 Activity:
 1) Write select query to display all the departments where there are atleast 5 employees. Display department id, department name, no of employees
+
+select d.department_id, department_name, count(e.employee_id)
+    from hr.departments d join hr.employees e
+    on e.department_id=d.department_id
+    group by d.department_id, department_name
+    having count(e.employee_id)>=5;
