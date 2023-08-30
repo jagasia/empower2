@@ -389,3 +389,61 @@ In that case, we have modify the operators using
 
 Activity:
 understand subqueries
+------------------------------------------------
+JOINs
+	What is JOIN?
+	Why JOIN is required?
+		when we need to retrieve columns from more than 1 table.
+
+example:
+	Display the employee id, first name and their department names
+SELECT EMPLOYEE_ID, FIRST_NAME, DEPARTMENT_ID
+FROM EMPLOYEES;
+
+
+JOIN syntax in 90s		theta join
+SELECT EMPLOYEE_ID, FIRST_NAME, D.DEPARTMENT_ID, D.DEPARTMENT_NAME
+FROM HR.EMPLOYEES E, HR.DEPARTMENTS D
+where E.DEPARTMENT_ID=D.DEPARTMENT_ID(+);
+
+
+-- SELECT * FROM HR.DEPARTMENTS;
+
+----------------------------------------------------------
+types of joins:
+INNER JOIN
+LEFT OUTER JOIN
+RIGHT OUTER JOIN
+FULL OUTER JOIN
+SELF JOIN
+CROSS JOIN
+NATURAL JOIN
+
+
+INNER JOIN
+	produces result of matching rows only.
+	ex:	Kimberely Grant does not have a department id. So his record itself is not found in the result of JOIN
+
+OUTER JOIN
+	produces matching rows and also non matching rows, in such cases, NULLs are displayed
+	LEFT OUTER JOIN 	=	all rows from left table and matching rows from right
+	RIGHT OUTER JOIN	=	vice versa
+	FULL OUTER JOIN	=	All rows from both tables and their matching values.	No matching means, NULL
+
+CROSS JOIN
+	if we do not give JOIN condition	then we get cross join. cartesian product of both table rows.
+	ex:		Table A has 10 rows. 	Table B has 10 rows.
+			Totally we get 100 rows.
+
+27 rows in departments table
+107 rows in employees table
+totally 2889 rows found as cartesian product.
+
+SELECT EMPLOYEE_ID, FIRST_NAME, D.DEPARTMENT_ID, D.DEPARTMENT_NAME
+FROM HR.EMPLOYEES E CROSS JOIN HR.DEPARTMENTS D;
+
+SELF JOIN
+Example:
+	Display the Employee Id, First Name, Last Name, Manager Id, Manager Name
+	of all employees.
+clue:	self join
