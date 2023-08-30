@@ -447,3 +447,7 @@ Example:
 	Display the Employee Id, First Name, Last Name, Manager Id, Manager Name
 	of all employees.
 clue:	self join
+SELECT E.EMPLOYEE_ID, E.FIRST_NAME, E.LAST_NAME, E.MANAGER_ID, M.FIRST_NAME || ' ' || M.LAST_NAME
+FROM HR.EMPLOYEES E LEFT JOIN HR.EMPLOYEES M
+    ON E.MANAGER_ID=M.EMPLOYEE_ID;
+
