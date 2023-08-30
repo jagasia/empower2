@@ -451,3 +451,23 @@ SELECT E.EMPLOYEE_ID, E.FIRST_NAME, E.LAST_NAME, E.MANAGER_ID, M.FIRST_NAME || '
 FROM HR.EMPLOYEES E LEFT JOIN HR.EMPLOYEES M
     ON E.MANAGER_ID=M.EMPLOYEE_ID;
 
+
+NATURAL JOIN
+-----------------------
+When 2 tables have common column, then we can use natural join without join condition.
+SELECT * FROM HR.EMPLOYEES NATURAL JOIN HR.DEPARTMENTS	--not accurate
+SELECT * FROM HR.EMPLOYEES JOIN HR.DEPARTMENTS USING(DEPARTMENT_ID)
+
+EQUI-JOIN
+	when the join condition is based on the values matching in both tables
+	=
+	!=
+	
+NON-EQUI JOIN
+	SELECT E.EMPLOYEE_ID, FIRST_NAME, E.SALARY, JOB_TITLE
+FROM HR.EMPLOYEES E
+JOIN HR.JOBS J
+ON E.SALARY BETWEEN J.MIN_SALARY AND J.MAX_SALARY;
+
+Activity:
+1) Write select query to display all the departments where there are atleast 5 employees. Display department id, department name, no of employees
