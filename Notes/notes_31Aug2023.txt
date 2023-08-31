@@ -1,1 +1,173 @@
 Day 4:
+PL/SQL Basics, Cursors, Procedures, Functions, Triggers
+------------------------------
+1) Anonymous programs
+	no name
+	not stored in the database	(tables, view, etc are stored in the database)
+
+2) Named programs (FUNCTIONS, PROCEDURES, TRIGGERS)
+
+---------------------------------------------
+All these programs, should have
+	BEGIN
+	END
+
+
+DECLARE				--this block is optional	
+EXCEPTION			--this block is optional
+
+hello world program in PL/SQL:
+----------------------------------------------
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('Hello world');
+END;
+
+
+in sql plus:, the output is normally set OFF. 
+set serveroutput on;
+
+Connected to:
+Oracle Database 19c Enterprise Edition Release 19.0.0.0.0 - Production
+Version 19.3.0.0.0
+
+SQL> BEGIN
+  2  DBMS_OUTPUT.PUT_LINE('Hello world');
+  3  END;
+  4  /
+
+PL/SQL procedure successfully completed.
+
+SQL> set serveroutput on
+SQL> BEGIN
+  2  DBMS_OUTPUT.PUT_LINE('Hello world');
+  3  END;
+  4  /
+Hello world
+
+PL/SQL procedure successfully completed.
+
+CREATE TABLE EMP
+(
+	EMPID INT
+);
+
+int empId;	// this is c language
+empId int;	--	this is oracle
+
+DECLARE
+    X INT;
+	Y CHAR(5);
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('Hello world');
+END;
+
+----------------------
+DECLARE
+    X INT;
+	Y CHAR(5);
+BEGIN
+    X:=20;		--to assign 20 to the variable X
+	Y:='Raja';	
+    DBMS_OUTPUT.PUT_LINE('Hello world');
+END;
+
+-------------------------
+DECLARE
+    X INT;
+	Y VARCHAR2(5);
+BEGIN
+    X:=20;		--to assign 20 to the variable X
+	Y:='Raja';	
+    DBMS_OUTPUT.PUT_LINE('Hello '||Y||'. Your age is '||X);
+END;
+
+--------------------------------
+BEGIN
+	SELECT SALARY INTO x FROM HR.EMPLOYEES WHERE EMPLOYEE_ID=100;
+END;
+
+
+
+a) No output
+b) It will print the salary of employee whose ID is 100
+c) Error		--Because SELECT does not have INTO clause. So error
+d) None of the above
+
+
+------------------------
+DECLARE
+    X INT;
+BEGIN
+    SELECT SALARY INTO X FROM HR.EMPLOYEES WHERE EMPLOYEE_ID=100;
+END;
+
+--No output
+
+------------------------------
+DECLARE
+    X INT;
+BEGIN
+    SELECT SALARY INTO X FROM HR.EMPLOYEES WHERE EMPLOYEE_ID=100;
+	DBMS_OUTPUT.PUT_LINE(X);
+END;
+
+the output is 24000
+
+-------------------
+When we do not want to create a variable of specific type. Because,  it is possible that the employees table salary column data type may change later. Whenever change happens, our program need to be altered.
+
+so better declare the variable of specific table.column % type
+
+DECLARE
+    SAL HR.EMPLOYEES.SALARY%TYPE;
+BEGIN
+    SELECT SALARY INTO SAL FROM HR.EMPLOYEES WHERE EMPLOYEE_ID=100;
+	DBMS_OUTPUT.PUT_LINE(SAL);
+END;
+
+--------------------------------------------
+When you want to retrieve entire row of a table and store it in a variable of row type.
+
+DECLARE
+    X HR.EMPLOYEES%ROWTYPE;
+BEGIN
+    SELECT * INTO X FROM HR.EMPLOYEES WHERE EMPLOYEE_ID=101;
+	DBMS_OUTPUT.PUT_LINE(X.FIRST_NAME||' earns '||X.SALARY);
+END;
+
+
+------------------------------------------
+DECLARE
+    X HR.EMPLOYEES%ROWTYPE;
+BEGIN
+    SELECT * INTO X FROM HR.EMPLOYEES WHERE EMPLOYEE_ID=103;
+	IF X.SALARY>15000 THEN
+    	DBMS_OUTPUT.PUT_LINE(X.FIRST_NAME||' earns more than 15k');
+	ELSE
+        DBMS_OUTPUT.PUT_LINE(X.FIRST_NAME||' earns Less salary. Actually he earns '||X.SALARY);
+    END IF;
+	
+END;
+------------------------------------------------
+DECLARE
+    X HR.EMPLOYEES%ROWTYPE;
+BEGIN
+    SELECT * INTO X FROM HR.EMPLOYEES WHERE EMPLOYEE_ID=102;
+	IF X.SALARY>15000 THEN
+    	DBMS_OUTPUT.PUT_LINE(X.FIRST_NAME||' earns more than 15k');
+	ELSIF X.SALARY>10000 THEN
+        DBMS_OUTPUT.PUT_LINE(X.FIRST_NAME||' earns between 10001 and 15k ');
+	ELSE
+        DBMS_OUTPUT.PUT_LINE(X.FIRST_NAME||' earns Less salary. Actually he earns '||X.SALARY);
+    END IF;
+	
+END;
+
+----------------------------
+Activity:
+	Create a plsql program and declare variables of
+	scalar type		(single value)		INT	char
+	%TYPE
+	%ROWTYPE
+
+	Use IF, ELSIF, ELSE and observe.
