@@ -667,3 +667,19 @@ INSERT INTO EMP VALUES(4,'Abcd','Efgh');
 
 1 row(s) inserted.
 A row is added in the emp table now.
+------------
+Challenge:
+create the product and  sales table and add the following rows.
+PRODUCT
+	PID	PNAME	PRICE	STOCK
+	1	Pencil	5	100
+	2	Pen	10	90
+	3	Sharpner	5	100
+
+SALES
+	SID	PID	QTY
+	101	2	10
+
+
+Whenever a product is SOLD(ie., a row is added in SALES table), 
+then the Stock in PRODUCT table should be updated.
