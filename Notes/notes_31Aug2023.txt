@@ -341,4 +341,57 @@ EXCEPTION
             DBMS_OUTPUT.PUT_LINE('Jag: There is no row found');
 END;
 
+---------------------------------------------------
+Cursors:
+---------------
+implicit cursors are created automatically whenever we do DML	(SQL)
+User defined cursor
+
+
+Cursor attributes
+%ISOPEN	- Returns TRUE if the cursor is open, FALSE if the cursor is closed.
+%FOUND	- Returns INVALID_CURSOR if cursor is declared, but not open; or if cursor has been closed.
+- Returns NULL if cursor is open, but fetch has not been executed.
+
+- Returns TRUE if a successful fetch has been executed.
+
+- Returns FALSE if no row was returned.
+
+%NOTFOUND	- Returns INVALID_CURSOR if cursor is declared, but not open; or if cursor has been closed.
+- Return NULL if cursor is open, but fetch has not been executed.
+
+- Returns FALSE if a successful fetch has been executed.
+
+- Returns TRUE if no row was returned.
+
+%ROWCOUNT	- Returns INVALID_CURSOR if cursor is declared, but not open; or if cursor has been closed.
+- Returns the number of rows fetched.
+
+- The ROWCOUNT attribute doesn't give the real row count until you have iterated through the entire cursor. In other words, you shouldn't rely on this attribute to tell you how many rows are in a cursor after it is opened.
+
+-----------------------
+How we can create our own cursor.
+
+1) DEFINE CURSOR
+2) OPEN CURSOR
+3) FETCH A ROW FROM CURSOR
+4) CLOSE CURSOR
+------------------------------
+DECLARE
+	X HR.EMPLOYEES%ROWTYPE;
+	CURSOR cur1 IS SELECT * FROM HR.EMPLOYEES;	--DEFINE CURSOR
+BEGIN
+    OPEN cur1;				--OPEN CURSOR
+	FETCH cur1 INTO X;		--FETCH A ROW FROM CURSOR INTO A VARIABLE
+	WHILE cur1%FOUND		
+	LOOP
+		DBMS_OUTPUT.PUT_LINE(X.EMPLOYEE_ID ||' '||X.SALARY);
+		FETCH cur1 INTO X;
+		-- EXIT WHEN cur1%NOTFOUND;
+	END LOOP;
+	CLOSE cur1;    			--CLOSE CURSOR
+END;
+-------------------
+Challenge:
+	Use cursor to display all the employee id, salary where the salary is > the average salary.
 
