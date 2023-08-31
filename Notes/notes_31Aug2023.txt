@@ -849,3 +849,27 @@ Enter Value 2:
 6
 Invalid Input 
  
+
+Solution:
+import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        System.out.print("Enter Value 1:");
+        int value1=sc.nextInt();
+        System.out.print("Enter Value 2:");
+        int value2=sc.nextInt();
+        if(value1<0 || value1>6 || value2<0 || value2>6)
+        {
+            System.out.print("Invalid Input");
+            System.exit(0);
+        }
+        int sum=value1+value2;
+        if(value1==value2)
+        {
+            sum*=2;
+        }
+        System.out.printf("The points scored is %d",sum);
+	}
+}
