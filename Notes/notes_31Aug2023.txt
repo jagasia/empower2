@@ -417,3 +417,159 @@ BEGIN
     END LOOP;
 	CLOSE cur1;
 END;
+---------------
+Cursor For Loop
+-------------------
+DECLARE
+	AVGSAL INT;
+	CURSOR cur1 IS SELECT * FROM HR.EMPLOYEES;
+	-- EMPREC HR.EMPLOYEES%ROWTYPE;
+BEGIN
+    SELECT AVG(SALARY) INTO AVGSAL FROM HR.EMPLOYEES;
+	-- DBMS_OUTPUT.PUT_LINE(AVGSAL);
+    -- OPEN cur1;
+	-- FETCH cur1 INTO EMPREC;
+	-- WHILE cur1%FOUND 
+	FOR EMPREC IN cur1
+    LOOP
+        IF EMPREC.SALARY>AVGSAL THEN
+        	DBMS_OUTPUT.PUT_LINE(EMPREC.EMPLOYEE_ID||' '||EMPREC.SALARY);
+        END IF;
+	-- FETCH cur1 INTO EMPREC;
+    END LOOP;
+	-- CLOSE cur1;
+END;
+
+
+-------------------
+DECLARE
+	AVGSAL INT;
+	CURSOR cur1 IS SELECT * FROM HR.EMPLOYEES;
+BEGIN
+    SELECT AVG(SALARY) INTO AVGSAL FROM HR.EMPLOYEES;
+FOR EMPREC IN cur1
+    LOOP
+        IF EMPREC.SALARY>AVGSAL THEN
+        	DBMS_OUTPUT.PUT_LINE(EMPREC.EMPLOYEE_ID||' '||EMPREC.SALARY);
+        END IF;
+    END LOOP;
+END;
+-------------------------
+PROCEDURE vs FUNCTION
+	
+	PROCEDURES in plsql are VOID FUNCTIONS
+	means, it does not return a value.
+
+DBMS_OUTPUT.PUT_LINE('Hello world');	--this PUT_LINE is a procedure.
+SUM		is a function
+		it returns a value
+
+when i call a procedure, it will do something.
+when i call a function, it will do something and return a value.
+
+Procedure can return 0 or more values.
+
+
+scanf("%d",&marks);		// marks is an OUT parameter
+print(marks);		//marks is an IN parameter
+
+proc1(x,y,z);		it is possible to have x as INPUT and y, z as OUTPUT
+
+sqr(x,y);			x is input and y is output	
+
+
+PROCEDURES:
+------------------------
+Procedure is a plsql named program that is stored in the database as a database object.
+
+CREATE PROCEDURE PRC1
+AS
+    --this area is used as declare block
+BEGIN
+ dbms_output.put_line('hello this is procedure prc1');   
+END;
+
+Procedure created.
+
+----------------
+To call this procedure, we can call it from
+	1) anonymous plsql program
+	2) another procedure
+	3) a function
+
+BEGIN
+    PRC1;
+END;
+
+Statement processed.
+hello this is procedure prc1
+
+Procedures with IN paramters.
+---------------------------------------------
+CREATE OR REPLACE PROCEDURE PRC1
+AS
+    X HR.EMPLOYEES.JOB_ID%TYPE;
+BEGIN
+    SELECT JOB_ID INTO X FROM HR.EMPLOYEES WHERE EMPLOYEE_ID=102;
+	DBMS_OUTPUT.PUT_LINE(X);
+END;
+
+---------------------------
+Everytime, i want a different employee id, i need to change the procedure. It is not good idea.
+So the procedure PRC1 shall have a parameter.
+
+CREATE OR REPLACE PROCEDURE PRC1(EID HR.EMPLOYEES.EMPLOYEE_ID%TYPE)
+AS
+    X HR.EMPLOYEES.JOB_ID%TYPE;
+BEGIN
+    SELECT JOB_ID INTO X FROM HR.EMPLOYEES WHERE EMPLOYEE_ID=EID;
+	DBMS_OUTPUT.PUT_LINE(X);
+END;
+
+
+
+begin
+    	prc1(102);
+end;
+
+-------------------
+CREATE OR REPLACE PROCEDURE PRC1(EID HR.EMPLOYEES.EMPLOYEE_ID%TYPE)
+AS
+    X HR.EMPLOYEES.JOB_ID%TYPE;
+BEGIN
+    SELECT JOB_ID INTO X FROM HR.EMPLOYEES WHERE EMPLOYEE_ID=EID;
+	DBMS_OUTPUT.PUT_LINE(X);
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+    	DBMS_OUTPUT.PUT_LINE('Please check the Employee Id.');
+END;
+
+BEGIN
+    PRC1(300);
+END;
+
+
+Statement processed.
+Please check the Employee Id.
+
+------------------
+Procedure with OUT parameter
+
+CREATE OR REPLACE PROCEDURE PRC1(EID IN HR.EMPLOYEES.EMPLOYEE_ID%TYPE, JID OUT HR.EMPLOYEES.JOB_ID%TYPE)
+AS
+BEGIN
+    SELECT JOB_ID INTO JID FROM HR.EMPLOYEES WHERE EMPLOYEE_ID=EID;
+END;
+
+
+declare
+    JID hr.employees.job_id%type;
+begin
+    PRC1(102,JID);
+	dbms_output.put_line(jid);
+end;
+
+-----------------------------
+Task:
+	Create a procedure prc2 that will accept an INT argument and returns its
+	square, cub as output parameters.
