@@ -218,3 +218,127 @@ select employee_id, job_id, case job_id
     end
 from hr.employees;
 
+-------------------------------
+Basic loop
+
+DECLARE
+    X INT:=1;
+BEGIN
+    LOOP
+    	DBMS_OUTPUT.PUT_LINE(X);
+		X:=X+1;
+		EXIT WHEN X>10;
+    END LOOP;
+END;
+
+------------------------
+DECLARE
+    X INT:=100;
+	FNAME VARCHAR2(50);
+BEGIN
+    LOOP
+    	SELECT FIRST_NAME INTO FNAME 
+    	FROM HR.EMPLOYEES WHERE EMPLOYEE_ID=X;
+    	DBMS_OUTPUT.PUT_LINE(X||' '||FNAME);
+		X:=X+1;
+		EXIT WHEN X>206;
+    END LOOP;
+END;
+
+
+
+
+
+
+When SELECT statement returns 0 rows:
+ORA-01403: no data found ORA-06512: at line 6
+
+When SELECT statement returns more than 1 row:
+ORA-01422: exact fetch returns more than requested number of rows ORA-06512: at line 6
+
+
+
+
+DECLARE
+    X INT:=100;
+	FNAME VARCHAR2(50);
+BEGIN
+    LOOP
+    	SELECT FIRST_NAME INTO FNAME 
+    	FROM HR.EMPLOYEES;
+    	DBMS_OUTPUT.PUT_LINE(X||' '||FNAME);
+		X:=X+1;
+		EXIT WHEN X>207;
+    END LOOP;
+EXCEPTION
+    	WHEN TOO_MANY_ROWS THEN
+    		DBMS_OUTPUT.PUT_LINE('Jag: There were more than 1 rows');
+END;
+
+------------------
+hANDLE both exceptions:
+
+DECLARE
+    X INT:=100;
+	FNAME VARCHAR2(50);
+BEGIN
+    LOOP
+    	SELECT FIRST_NAME INTO FNAME 
+    	FROM HR.EMPLOYEES WHERE EMPLOYEE_ID=207;
+    	DBMS_OUTPUT.PUT_LINE(X||' '||FNAME);
+		X:=X+1;
+		EXIT WHEN X>207;
+    END LOOP;
+EXCEPTION
+    	WHEN TOO_MANY_ROWS THEN
+    		DBMS_OUTPUT.PUT_LINE('Jag: There were more than 1 rows');
+	WHEN NO_DATA_FOUND THEN
+	            DBMS_OUTPUT.PUT_LINE('Jag: There is no row found');
+END;
+
+
+----------------------------------
+while loop:
+
+DECLARE
+    X INT:=100;
+	FNAME VARCHAR2(50);
+BEGIN
+    WHILE X<=206
+    LOOP
+    	SELECT FIRST_NAME INTO FNAME 
+    	FROM HR.EMPLOYEES WHERE EMPLOYEE_ID=X;
+    	DBMS_OUTPUT.PUT_LINE(X||' '||FNAME);
+		X:=X+1;
+		-- EXIT WHEN X>206;
+    END LOOP;
+EXCEPTION
+    	WHEN TOO_MANY_ROWS THEN
+    		DBMS_OUTPUT.PUT_LINE('Jag: There were more than 1 rows');
+		WHEN NO_DATA_FOUND THEN
+            DBMS_OUTPUT.PUT_LINE('Jag: There is no row found');
+END;
+
+---------------
+For loop:
+
+DECLARE
+    X INT:=100;
+	FNAME VARCHAR2(50);
+BEGIN
+    FOR X IN 100 .. 206
+    LOOP
+    	SELECT FIRST_NAME INTO FNAME 
+    	FROM HR.EMPLOYEES WHERE EMPLOYEE_ID=X;
+    	DBMS_OUTPUT.PUT_LINE(X||' '||FNAME);
+		-- X:=X+1;
+		-- EXIT WHEN X>206;
+    END LOOP;
+EXCEPTION
+    	WHEN TOO_MANY_ROWS THEN
+    		DBMS_OUTPUT.PUT_LINE('Jag: There were more than 1 rows');
+		WHEN NO_DATA_FOUND THEN
+            DBMS_OUTPUT.PUT_LINE('Jag: There is no row found');
+END;
+
+
