@@ -171,3 +171,50 @@ Activity:
 	%ROWTYPE
 
 	Use IF, ELSIF, ELSE and observe.
+
+Challenge:
+	Find the salary of Employee whose id is 110.
+	Find the salary of Employee whose id is 120.
+	Display whose salary is higher.
+
+DECLARE
+    SAL1 HR.EMPLOYEES.SALARY%TYPE;
+	SAL2 HR.EMPLOYEES.SALARY%TYPE;
+BEGIN
+    SELECT SALARY INTO SAL1 FROM HR.EMPLOYEES WHERE EMPLOYEE_ID=110;
+	SELECT SALARY INTO SAL2 FROM HR.EMPLOYEES WHERE EMPLOYEE_ID=120;
+	IF SAL1>SAL2 THEN
+    	DBMS_OUTPUT.PUT_LINE('Employee 110 earns more');
+	ELSE
+        DBMS_OUTPUT.PUT_LINE('Employee 120 earns more');
+    END IF;	
+END;
+
+---------------------------
+PLSQL CASE STATEMENT:
+-------------------------------------
+DECLARE
+    JID HR.EMPLOYEES.JOB_ID%TYPE;
+BEGIN
+    SELECT JOB_ID INTO JID FROM HR.EMPLOYEES WHERE EMPLOYEE_ID=200;
+	CASE JID
+        WHEN 'AC_ACCOUNT' THEN DBMS_OUTPUT.PUT_LINE('Accountant');
+		WHEN 'AC_MGR' THEN DBMS_OUTPUT.PUT_LINE('Account Manager');
+		WHEN 'AD_ASST' THEN DBMS_OUTPUT.PUT_LINE('Admin Assistant');
+		ELSE
+            DBMS_OUTPUT.PUT_LINE('Employee');
+    END CASE;
+END;
+
+---------------------
+
+IN SQL:
+----------
+select employee_id, job_id, case job_id 
+    when 'AC_ACCOUNT' then 'Accountant' 
+    when 'AC_MGR' then 'A/c Manager'
+    when 'ADD_ASST' then 'Admin Assistant'
+    else 'Employee'
+    end
+from hr.employees;
+
