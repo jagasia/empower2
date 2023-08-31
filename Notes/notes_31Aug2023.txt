@@ -395,3 +395,25 @@ END;
 Challenge:
 	Use cursor to display all the employee id, salary where the salary is > the average salary.
 
+Hint:
+	find the average salary and store it in a variable.
+
+
+DECLARE
+	AVGSAL INT;
+	CURSOR cur1 IS SELECT * FROM HR.EMPLOYEES;
+	EMPREC HR.EMPLOYEES%ROWTYPE;
+BEGIN
+    SELECT AVG(SALARY) INTO AVGSAL FROM HR.EMPLOYEES;
+	-- DBMS_OUTPUT.PUT_LINE(AVGSAL);
+    OPEN cur1;
+	FETCH cur1 INTO EMPREC;
+	WHILE cur1%FOUND 
+    LOOP
+        IF EMPREC.SALARY>AVGSAL THEN
+        	DBMS_OUTPUT.PUT_LINE(EMPREC.EMPLOYEE_ID||' '||EMPREC.SALARY);
+        END IF;
+	FETCH cur1 INTO EMPREC;
+    END LOOP;
+	CLOSE cur1;
+END;
