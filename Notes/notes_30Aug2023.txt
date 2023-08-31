@@ -477,3 +477,33 @@ select d.department_id, department_name, count(e.employee_id)
     on e.department_id=d.department_id
     group by d.department_id, department_name
     having count(e.employee_id)>=5;
+
+Komal & Sumanth approach:
+SELECT A1.DID, D.DEPARTMENT_NAME, A1.CNT FROM 
+    (SELECT E.DEPARTMENT_ID DID, COUNT(*) CNT FROM HR.EMPLOYEES E 
+    GROUP BY E.DEPARTMENT_ID
+    HAVING COUNT(*)>=5) A1
+JOIN
+HR.DEPARTMENTS D
+ON D.DEPARTMENT_ID=A1.DID;
+--------------------------
+PL/SQL Basics
+
+why PLSQL is required?
+	In SQL, we are limited with only single line queries.
+	if we can run a query, get the result, store the result in a variable. Then use if condition, or use loop, etc.	ie., The procedural capabilities of a language.
+
+PL/SQL	=	Procedural Language extension to SQL
+
+Allows us to declare variables.
+
+DECLARE
+BEGIN
+EXCEPTION
+END
+These are the plsql blocks
+here, DECLARE, EXCEPTION are optional
+BEGIN
+END
+	are mandatory.
+
