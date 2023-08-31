@@ -572,4 +572,98 @@ end;
 -----------------------------
 Task:
 	Create a procedure prc2 that will accept an INT argument and returns its
-	square, cub as output parameters.
+	square, cube as output parameters.
+--------------------------
+FUNCTIONS
+	we can create a function and then call that function from 
+	another function
+	another procedure
+	plsql program
+	SELECT statement and also in many statements
+
+
+CREATE OR REPLACE FUNCTION FNSQR(X INT)
+    RETURN NUMBER
+AS
+BEGIN
+    RETURN X*X;
+END;
+
+
+SELECT 20, FNSQR(20)
+FROM DUAL;
+
+
+---------------
+SELECT EMPLOYEE_ID, SALARY, FNSQR(SALARY)
+FROM HR.EMPLOYEES;
+
+Find the list  of functions and procedures using dictionary:
+SELECT * FROM USER_PROCEDURES;
+
+Result Set 6
+OBJECT_NAME	PROCEDURE_NAME	OBJECT_ID	SUBPROGRAM_ID	OVERLOAD	OBJECT_TYPE	AGGREGATE	PIPELINED	IMPLTYPEOWNER	IMPLTYPENAME	PARALLEL	INTERFACE	DETERMINISTIC	AUTHID	RESULT_CACHE	ORIGIN_CON_ID	POLYMORPHIC
+FNSQR	 - 	185369720	1	 - 	FUNCTION	NO	NO	 - 	 - 	NO	NO	NO	DEFINER	NO	3	NULL
+PRC1	 - 	185367159	1	 - 	PROCEDURE	NO	NO	 - 	 - 	NO	NO	NO	DEFINER	NO	3	NULL
+
+
+----------------------------
+Triggers:
+-------------
+	is like a procedure, which runs in response to an event or timing.
+	we do not call a trigger.
+	it is similar to a procedure, but we cannot call it.
+
+Timing:	
+	system event	like 	login	 logout
+	DML events	like	INSERT, UPDATE, DELETE
+	
+Timing can be 	BEFORE, AFTER, INSTEAD OF
+
+STATEMENT 		fires once for the entire statement
+FOR EACH ROW		fires for every row that is affected. We will be able to obtain the 			values that are manipulated
+
+Example:
+	PRODUCT table
+		PID
+		PNAME
+		PRICE
+		STOCK
+	
+	SALES table
+		SID
+		PID
+		QTY
+
+PRODUCT
+	PID	PNAME	PRICE	STOCK
+	1	Pencil	5	100
+	2	Pen	10	90
+	3	Sharpner	5	100
+
+SALES
+	SID	PID	QTY
+	101	2	10
+
+
+Whenever a product is SOLD, then the Stock in PRODUCT table should be updated.
+
+Create a trigger that will update the stock of product table 
+whenever a row is inserted in Sales table.
+
+we will  INSERT into SALES table.
+
+
+CREATE OR REPLACE TRIGGER TRG1
+AFTER INSERT ON EMP
+FOR EACH ROW
+BEGIN
+    dbms_output.put_line('A row is added in the emp table now.');
+END;
+
+the above trigger will fire for every row inserted in EMP table.
+
+INSERT INTO EMP VALUES(4,'Abcd','Efgh');
+
+1 row(s) inserted.
+A row is added in the emp table now.
