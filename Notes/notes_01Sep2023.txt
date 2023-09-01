@@ -333,3 +333,34 @@ Hint:
 Formula:
 Total area of the 4 walls =  2*Length*Height+2*Width*Height 
  
+-----------------------------------------------
+Travel Fare 
+ 
+Ravi is a dynamic businessman, who keeps travelling frequently. For him, time and money, both matters.
+There are three mode of travel which Ravi prefers. He would choose one of the 3, only after a calculation that involves both time and money.
+The calculation is done as given below:
+    Weightage for fare: x
+    Weightage for time: y
+Then the travelling quotient is calculated as "x*fare+y*duration".
+
+The 3 modes of travel are Train, Bus and Flight.
+Given fare and duration for the 3 modes, calculate the traveling quotients. Ravi would choose the mode for which the traveling quotient is minimum.
+Can you please help Ravi in chossing the mode of travel?
+
+Input Format: 
+The first line consists of 2 integers which corresponds to the fare weightage and time weightage, respectively.
+The second line consists of 2 integers which corresponds to the train fare and train duration(in minutes), respectively.
+The third line consists of 2 integers which corresponds to the bus fare and bus duration(in minutes), respectively.
+The fourth line consists of 2 integers which corresponds to the flight fare and flight duration(in minutes), respectively.
+ 
+Output Format:
+Output is one of the 3 strings ...  "Train" or "Bus" or "Flight".
+
+Sample Input:
+20 4
+300 4
+30 5
+3000 3
+
+Sample Output: 
+Bus
