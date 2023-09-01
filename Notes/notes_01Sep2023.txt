@@ -465,3 +465,94 @@ Bus
 Sample Output:
 3 
 
+---------------------
+Solution
+
+/******************************************************************************
+
+                            Online Java Compiler.
+                Code, Compile, Run and Debug java program online.
+Write your code in this editor and press "Run" button to execute it.
+
+*******************************************************************************/
+import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args) //throws InterruptedException
+	{
+        Scanner sc= new Scanner(System.in);
+        int noOfKids=sc.nextInt();
+        int noToAvoid=sc.nextInt();
+        
+        String input="";
+        int counter=1;
+        int studentNumber=1;
+        while(true)
+        {
+            input=sc.next();
+           
+           if(studentNumber>noOfKids)
+            studentNumber=1;
+            
+            
+            if(counter%noToAvoid==0)
+            {
+                // System.out.println("Bus");
+                if(!input.equals("Bus"))
+                {
+                    // System.out.println("Student number:"+studentNumber);
+                    System.out.println(studentNumber);
+                    break;
+                }
+            }
+            // else
+            // {
+            //     System.out.println("Counter:"+counter);
+            // }
+                
+            // Thread.sleep(1000);
+            studentNumber++;
+            counter++;
+        }
+    }
+}
+
+
+-----------------------------
+Array declaration in java, can be any of the following:
+	int arr[][];
+	int [][]arr;
+
+
+Jagged Array:
+	int arr[][]=new int[10][];
+	arr[0]=new int[5];
+	arr[1]=new int[10];
+	arr[2]=new int[4];
+	arr[3]=new int[5];
+
+------------------
+int marks[]=new int[10];
+marks[0]
+..
+..
+..
+.
+.
+marks[9]
+
+Challenge:
+Find the smallest and largest elements of an array.
+Sample input1:
+	first line of input is the number of elements in the array.	(n)
+	followed by n inputs from the user.
+5
+100
+200
+55
+97
+198
+
+Sample output:
+Max: 200
+Min: 55
