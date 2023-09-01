@@ -630,3 +630,50 @@ Sample Input 2:
 Sample Output 2:
 -1
 ---------------------------------------------------------
+Solution:
+
+import java.util.*;
+public class MyClass {
+    
+    private static boolean isPresent(int num, int []arr)
+    {
+        for(int x : arr)
+        {
+            if(x==num)
+                return true;
+        }
+        return false;
+    }
+    public static void main(String args[]) {
+        Scanner sc= new Scanner(System.in);
+        int n=sc.nextInt();
+        int arr[]=new int[n];
+        for(int i=0;i<n;i++)
+        {
+            arr[i]=sc.nextInt();
+        }        
+        
+        int max=Integer.MIN_VALUE;
+        for(int i=0;i<n-1;i++)
+        {
+            // System.out.println(arr[i]);
+            for(int j=i+1;j<n;j++)
+            {
+                // System.out.println(arr[i]+"*"+arr[j]+"="+(arr[i]*arr[j]));
+                // System.out.printf("%d * %d = %d\n",arr[i],arr[j],arr[i]*arr[j]);
+                int product=arr[i]*arr[j];
+                //check if this product is found in the array or not
+                if(isPresent(product,arr))
+                {
+                    if(product>max)
+                        max=product;
+                }
+            }
+        }
+        if(max>Integer.MIN_VALUE)
+        {
+            System.out.println(max);
+        }else
+            System.out.println(-1);
+    }
+}
