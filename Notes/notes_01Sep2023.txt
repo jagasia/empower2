@@ -556,3 +556,63 @@ Sample input1:
 Sample output:
 Max: 200
 Min: 55
+
+Solution
+import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args) //throws InterruptedException
+	{
+        Scanner sc= new Scanner(System.in);
+        int n=sc.nextInt();
+        int arr[]=new int[n];
+        
+        for(int i=0;i<n;i++)
+        {
+            arr[i]=sc.nextInt();
+        }
+        
+        // int min=Integer.MAX_VALUE;
+        // int max=Integer.MIN_VALUE;
+        int min=arr[0];
+        int max=arr[0];
+        
+        for(int i=0;i<n;i++)
+        {
+            if(arr[i]<min)
+                min=arr[i];
+            
+            if(artr[i]>max)
+                max=arr[i];
+        }
+        System.out.println("Min:"+min);
+        System.out.println("Max:"+max);
+    }
+}
+
+-------------------------
+Challenge:
+Maximum Product
+Playing with arrays has become a hobby for Arun. This time Arun wants to find the greatest number in the array such that it is the product of any two numbers in the array.
+Write a program to help Arun to the do the task. If no such number exists, then print -1.
+[Note: The two number that are used to find the product can be the number itself.  For example, if the array elements are [1,2,3] , then 1*3 = 3 will be the solution for this array.]
+
+Input Format :
+First input is an integer value that denotes the size of the array.
+Second input is a series of integers separated by space that denotes the array values.
+
+Output Format :
+Output is an  integer that denotes the maximum product.
+
+Sample Input 1:
+5
+35 30 7 6 5
+Sample Output 1:
+35
+
+Sample Input 2:
+5
+2 4 6 89 78
+Sample Output 2:
+-1
+
