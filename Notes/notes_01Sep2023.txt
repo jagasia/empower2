@@ -589,7 +589,23 @@ public class Main
         System.out.println("Max:"+max);
     }
 }
-
+-----------------Solution using sort-------------------
+import java.util.*;
+public class MyClass {
+    public static void main(String args[]) {
+              Scanner sc= new Scanner(System.in);
+        int n=sc.nextInt();
+        int arr[]=new int[n];
+        
+        for(int i=0;i<n;i++)
+        {
+            arr[i]=sc.nextInt();
+        }
+        Arrays.sort(arr);
+        System.out.println(arr[0]);
+        System.out.println(arr[n-1]);
+    }
+}
 -------------------------
 Challenge:
 Maximum Product
@@ -600,10 +616,8 @@ Write a program to help Arun to the do the task. If no such number exists, then 
 Input Format :
 First input is an integer value that denotes the size of the array.
 Second input is a series of integers separated by space that denotes the array values.
-
 Output Format :
 Output is an  integer that denotes the maximum product.
-
 Sample Input 1:
 5
 35 30 7 6 5
@@ -615,4 +629,4 @@ Sample Input 2:
 2 4 6 89 78
 Sample Output 2:
 -1
-
+---------------------------------------------------------
