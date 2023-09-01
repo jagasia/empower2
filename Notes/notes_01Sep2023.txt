@@ -333,6 +333,43 @@ Hint:
 Formula:
 Total area of the 4 walls =  2*Length*Height+2*Width*Height 
  
+Solution:
+import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args) {
+        Scanner sc= new Scanner(System.in);
+        int length, width, height;
+        int roomLength=sc.nextInt();
+        int roomWidth=sc.nextInt();
+        int roomHeight=sc.nextInt();
+        
+        int noOfDoors=sc.nextInt();
+        int noOfWindows=sc.nextInt();
+        
+        int doorLength=sc.nextInt();
+        int doorWidth=sc.nextInt();
+        
+        int windowLength=sc.nextInt();
+        int windowWidth=sc.nextInt();
+        
+        int costPerSqMeter=sc.nextInt();
+        
+        int totalArea=(2*roomLength*roomHeight)+(2*roomWidth*roomHeight);
+        int doorArea=doorLength*doorWidth;
+        int windowArea=windowLength*windowWidth;
+        totalArea-=(noOfDoors*doorArea);
+        totalArea-=(noOfWindows*windowArea);
+        
+        
+        
+        int result=costPerSqMeter*totalArea;
+        
+        System.out.println(result);
+        
+    }
+}
+
 -----------------------------------------------
 Travel Fare 
  
@@ -364,3 +401,67 @@ Sample Input:
 
 Sample Output: 
 Bus
+----------------
+import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args) {
+        Scanner sc= new Scanner(System.in);
+        int fareWeightage=sc.nextInt();
+        int timeWeightage=sc.nextInt();
+        
+        int trainFare=sc.nextInt();
+        int trainDuration=sc.nextInt();
+        
+        int busFare=sc.nextInt();
+        int busDuration=sc.nextInt();
+        
+        int flightFare=sc.nextInt();
+        int flightDuration=sc.nextInt();
+        
+        int trainQuotient=fareWeightage*trainFare+timeWeightage*trainDuration;
+        int busQuotient=fareWeightage*busFare+timeWeightage*busDuration;
+        int flightQuotient=fareWeightage*flightFare+timeWeightage*flightDuration;
+        
+        if(trainQuotient<busQuotient && trainQuotient<flightQuotient)
+            System.out.println("Train");
+        else if(busQuotient<trainQuotient && busQuotient<flightQuotient)
+            System.out.println("Bus");
+        else
+            System.out.println("Flight");
+        
+    }
+}
+--------------------------------------------------------
+Bus Game 
+ 
+In a village, N kids were playing the bus game.
+The rules for the bus game is as follows:
+Starting from the number 1,  the kids keep telling the consequtive numbers one by one.  A number 'X' will be given. The kid who gets a number which is divisible by X should say "Bus", instead of the original number , and the next kid will continue with the next number. This will go on in a circular manner. If any kid says incorrectly, that kid is out of the game.
+The kids are very clever. So they won't make any mistake while telling the numbers. They make mistake only while telling "Bus".
+
+Write a program to find the kid's number(index starting from 1) who went wrong.
+
+Input Format: 
+The first input is an integer, that corresponds to the number of kids, N.
+The second input is an integer, that corresponds to the number X.
+The following lines are strings, which correspond to the number said by the kids. The input stops only when any kid says incorrectly.
+ 
+Output Format:
+Output is an integer value which represents the kid's number who went wrong.
+
+Sample Input:
+5
+4
+1
+2
+3
+Bus
+5
+6
+7 
+8 
+
+Sample Output:
+3 
+
