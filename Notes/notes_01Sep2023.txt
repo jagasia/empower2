@@ -297,3 +297,39 @@ int rollNo=0;
         System.out.println(rollNo);
         System.out.println(name);
         System.out.println(marks);
+---------------------------------------
+Challenge
+Room Painting Cost 
+ 
+Ram purchases an office building which has a room, that contains n doors and m windows. All doors have the same dimension and all windows have the same dimension.
+Given dimensions of the room, door and window, and cost for painting 1sq meter. Find the total cost for painting the four walls of the building.
+
+Input Format: 
+The first line of the input contains 3 integers that corresponds to the length, width and height of the room, respectively.
+The second line of the input contains an integer that corresponds to the number of Doors.
+The third line of the input contains an integer that corresponds to the number of Windows.
+The fourth line of the input contains 2 integers that corresponds to the length and width of the door, respectively.
+The fifth line of the input contains 2 integers that corresponds to the length and width of the window, respectively.
+The sixth line of the input contains an integer that corresponds to the cost of painting the wall per sq. meter.
+
+All dimensions are given in meters. 
+ 
+
+Output Format:
+Output is an integer that corresponds to the cost of painting the room.
+
+Sample Input: 
+10 20 30
+2
+5
+10 3
+5 3
+10
+
+Sample Output:
+16650
+
+Hint:
+Formula:
+Total area of the 4 walls =  2*Length*Height+2*Width*Height 
+ 
