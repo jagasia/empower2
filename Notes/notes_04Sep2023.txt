@@ -305,3 +305,7 @@ StringBuilder has reverse() method
 -----------------------------------------
 sb.append(str);	//String to StringBuilder
 str=sb.toString();	//StringBuilder to String
+--------------------------
+String challenges:
+-----------------------------------------------------------
+refer to file name: String_Challenge1.txt

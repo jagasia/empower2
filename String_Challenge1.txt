@@ -1,0 +1,117 @@
+Character at Index
+
+Somu has an excellent visualization skill using which he answers any logical and arithmetic calculation by mind calculation. To test his skill, Ramu gave him the following question. Given a String, s, and an integer, i, find the character present at the given index, i, when the string is repeatedly concatenated.
+Write a program to  help Somu.
+
+Input Format:
+First line of the input is the string, s. Assume max length of the string is 50.
+Second line is an Integer that denotes the index value, i.
+
+Output Format:
+Output is a character present at ith index.
+
+Note:
+Print "Invalid" if the index is negative.
+
+Sample Input 1:
+Amphibian
+25
+Sample Output 1:
+a
+
+Sample Input 2:
+Java
+-1
+Sample Output 2:
+Invalid 
+
+
+Explanation for Sample1:
+input String is "Amphibian".
+After repeated concatenation, the string becomes "AmphibianAmphibianAmphibianAmphibian......"
+The character at 25 th index is 'a'. 
+---------------------------------------------------------------------------------------
+Last Character
+
+Rahul was tired after studying for so long , so he thought to play a small game with the words from his book . He opens a random page and selects a random word from it , and also  chooses the last digit of that page number n . Given an array of characters,Write a program to help Rahul find the last character that occurs n(last digit of the page number) times in the array . If no such character exists,then print -1.
+
+Input Format:
+First input is an integer that denotes the size of the array.
+Second line consists of  series of characters  seperated by a space that denotes the array values.
+Third input is an integer that denotes the n value.
+
+Output Format:
+Output is a character that denotes the last character which occurs n times.
+
+Sample Input 1:
+8
+a a b c n s d n
+2
+
+Sample Output 1:
+n
+
+Explanation:
+    In the given array 'a' and 'n' occurs 2 times which is equal to the n value . Even though 'a' occurs twice ,'n' is the one that occurs last.    
+    
+Sample Input 2:
+5
+a b c d e
+3
+
+Sample Output 2:
+-1
+
+
+-----------------------------------------------
+Masked Numbers
+
+Vignesh was a mischievous boy and due to his rude behaviour at class , his teacher gave him an assignment as punishment and told him to complete it within one day . His assignment was to find the masked numbers . A masked number is a string that consists of digits and one X that should be replaced by exactly one digit.Given a string  N as input  ,Write a program to help Vignesh find all the possible solutions to replace the X with a digit so as to get a value that is divisible by Y.If no number is found then print "-1". 
+
+Input format: 
+First input is a string that denotes the string value N (only 3 digits and X will always be in the center). 
+Second input is an integer that denotes the Y value. 
+
+Output format: 
+Output is a series of integers that satisfies the condition seperated by a comma. 
+The integers are displayed sorted in ascending order. 
+If the condition is not satisfied, print "-1" 
+
+Sample Input 1: 
+1X0 
+6 
+Sample Output 1: 
+120,150,180 
+
+Sample Input 2: 
+5X3 
+23 
+Sample Output 2: 
+-1 
+-----------------------------------------
+Tic-Tac Toe Game
+
+Meyyappan and Roshan are playing tic tac toe game. A tic tac toe game is won only if any of X or O is consecutively marked in a straight line, either row-wise or column-wise or diagonally. Given a 2D matrix with only X and O, where X represents Meyyappan's game and O represents Roshan's game, determine who won the game. If no one has won it, then print "Draw".
+
+Input Format:
+Input consists of a 3x3 character matrix (only X and O).
+
+Output Format:
+Output is a string that denotes the winner of the game , Meyyappan/Roshan/Draw.
+
+Sample Input 1:
+X O O
+X O X
+O X X
+
+Sample Output 1:
+Roshan
+
+Sample Input 2:
+X X O
+O O X
+X O X
+
+Sample Output 2:
+Draw 
+-----------------------------------------------
