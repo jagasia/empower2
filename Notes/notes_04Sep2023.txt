@@ -1,0 +1,170 @@
+Day 6:
+online session:
+	12:30	lunch
+	4:00 	break
+	6:00	break
+	8:00	dinner
+Last day, we discussed about arrays.
+
+Employee arr[]=new Employee[10];
+new operator.
+Pending:	array of objects.
+------------------------------------------
+Strings
+	What is a String?
+		basically a text within quotes.	
+		single quote for a char. double quote for a string
+		collection of characters.
+
+char x='a';	
+String y="Raja";
+
+String is made up of characters.
+c language, c++ language,there it was like char array was used as String.
+
+char arr[10];	//in C, C++ language, we store 9 characters and the last position is for null terminator.		\0
+
+String in java, does not need null terminator.	
+Here, it is not an array of characters.
+
+String was stored in a special memory location	
+	PermGen		Permanent Generation memory
+
+jdk 1.8 onwards, Strings are stored in heap.
+
+Only heap memory is garbage collected.
+	Garbage Collector 	
+		is thread that runs parallel to our program.
+		will find the objects that are out of scope and
+		remove them from the memory.
+String is very peculiar.
+
+String is a class.
+How do we create an object of a class?
+String str1=new String();
+
+Date dt1=new Date();
+
+2 steps of creating an object of a class:
+1) declaration ref var of the class		
+2) instantiation	new	(creating an object of the class)
+
+
+int i;		//i is created	(memory is allocated)
+Date dt1;		//dt1 is declared	(stack)
+dt1=new Date();	//memory is allocated in heap
+
+new Date();	//an object of the class Date is created
+
+without using "new" operator, we cannot create an object.
+
+Date dt1=new Date();
+Date dt2=dt1;	//did i create another object?	No. 
+		dt2 also refers to the same memory of dt1
+
+dt1 and dt2 are reference variables that are pointing to same memory
+
+Date dt1=null;		dt1 is in stack
+dt1=new Date();	heap memory is created, and its location is stored in dt1 in stack.
+
+new Date();	//heap memory is created. But its reference is not 		kept in stack.
+
+System.out.println(new Date());
+
+String str1=new String("hello");	//fine
+String str2="hello";		//peculiar
+
+"hello" is an object. It is present in heap
+
+
+
+==
+.equals()
+
+
+
+		String str1="hello";
+		String str2="hello";
+		
+		System.out.println(str1==str2);
+
+output is true
+	because, str1 and str2 references to same memory location.
+
+a==b	what is compared? values? or references?
+
+==
+	check if the values are equal(if operands are value types)
+	check if the references are equal(if operands are ref types)
+
+	
+String is a reference type. So if you want to compare their values,
+	str1.equals(str2)
+
+---------------------
+String str1=new String("hello");
+String str2=new String("hello");
+System.out.println(str1==str2);
+
+output:	false
+
+because, == compares the references of ref types.
+-------------------------
+	    String str1=new String("hello");
+	    String str2=new String("hello");
+// 		System.out.println(str1==str2);
+
+        System.out.println(str1.equals(str2));
+
+output: true
+	because, equals() method always compare the values.
+
+String
+	is immutable.
+
+we can't modify the string
+str1=new String("hello");
+str1="world";
+
+str1=str2;		//is it possible. Yes.
+same way,
+str1="india";	//we have not changed the value. we changed the reference.
+
+int i=20;
+int j=i;		//values are copied.
+
+= operator also, copies, values/ reference based on the type of variable.
+
+so whenever we use = on a String, we are changing the reference.
+
+we are actually creating a new string or changing the reference
+it does not mean, we change the values.
+
+string is not a variable that allow us to change the value alone.
+
+String str="hello";
+
+if you want to replace "h" with "H".
+
+    String str="hello";
+    str=str.substring(1);
+    // System.out.println(str);
+    str="H"+str;
+    System.out.println(str);
+		
+
+What is mutable string?
+	StringBuilder
+	StringBuffer
+
+advantage of these 2 classes:
+	we can create an object in a memory location.
+	memory location will be same.
+	Only the values in it can be changed.
+
+Activity:
+	Understand the benefits of 
+	StringBuilder
+	StringBuffer
+
+	and find the difference between these 2 classes.
