@@ -203,3 +203,105 @@ https://docs.oracle.com/javase/8/docs/api/java/lang/StringBuilder.html
 
 Pending:
 	regex
+
+--------------------------
+How to convert a String into char array
+If you convert, you will be able to access each character at a time
+
+ex:
+	Find if the input String is a palindrome or not.
+what is a palindrome?
+	a string, whose reverse is same as the original string.
+ex:	
+	madam
+	malayalam
+	mam
+	dad
+	mom
+
+How to solve this problem?
+1) we can reverse a string and find if it is same
+2) compare char at index 0 with n-1 index char
+	0+1	n-1-1
+	0+2	n-1-2
+	0+3	n-1-3
+until startindex and end index cross eachother.
+
+malayam
+0=m	n-1-0=m
+1=a	n-1-1=a
+2=l	n-1-2=l
+3=a	n-1-3=a		7-4=3	middle char
+4=y	n-1-3		NO NEED TO PROCEED
+
+traverse from left.	traverse from right.
+when they cross, we can conclude.
+To be able to work on this algorithm, we should be able to access each character at a time.
+
+SonarQube	(code quality)
+	commented java code are poor practice.
+	comments that explain the code are good practice.
+
+
+//to find if the input string is a palindrome or not
+        Scanner sc=new Scanner(System.in);
+        String input=sc.next();
+        //access elements from left and also from right
+        int n=input.length();   //String, length is a method () 
+        //in arrays, length is a variable   arr.length  //no brackets
+        for(int i=0;i<=n/2;i++)
+        {
+            // System.out.println(input.charAt(i)+" vs "+input.charAt(n-1-i));    
+            if(input.charAt(i)!=input.charAt(n-1-i))
+            {
+                System.out.println("Not palindrom");
+                System.exit(0);
+            }
+    	}
+    	System.out.println("palindrom");
+
+
+--------------------------------
+we used charAt(index) in the above program.
+---------------------------------
+Another approach:
+convert the String into char array
+
+        //to find if the input string is a palindrome or not
+        Scanner sc=new Scanner(System.in);
+        String input=sc.next();
+        char []arr=input.toCharArray();    //methods are in camelCase. first letter small. Every next word first letter is in upper case.
+        int n=arr.length;
+        for(int i=0;i<=n/2;i++)
+        {
+            if(arr[i]!=arr[n-1-i])
+            {
+                System.out.println("Not palindrome");
+                return;
+            }
+        }
+        System.out.println("palindrome");
+
+----------------------------
+String does not have reverse method.
+StringBuilder has reverse() method
+
+//to find if the input string is a palindrome or not
+        Scanner sc=new Scanner(System.in);
+        String input=sc.next();
+        StringBuilder sb=new StringBuilder(input);
+	//another way		sb.append(input);
+        sb.reverse();
+        System.out.println(sb); //println method automatically calls the toString() method 
+        //sb.toString()
+        
+        // String temp=sb; //wrong      
+        String temp=sb.toString();
+        if(input.equals(temp))
+            System.out.println("palindrome");
+        else
+            System.out.println("Not palindrome");
+
+-----------------------------------------
+sb.append(str);	//String to StringBuilder
+str=sb.toString();	//StringBuilder to String
