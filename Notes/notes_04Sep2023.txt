@@ -309,3 +309,408 @@ str=sb.toString();	//StringBuilder to String
 String challenges:
 -----------------------------------------------------------
 refer to file name: String_Challenge1.txt
+1) Character at Index
+
+//challenge: Character at Index
+
+        Scanner sc=new Scanner(System.in);
+        String input=sc.next();
+        int n=sc.nextInt();
+        if(n<0)
+            System.out.println("Invalid");
+        else
+            System.out.println(input.charAt(n%input.length()));
+------------------
+Challenge2: Last Character
+refer to file String_Challenge1.txt
+
+
+Find the last occurrance of a character that occurs n times
+
+
+Scanner sc=new Scanner(System.in);
+        int noOfChars=sc.nextInt();
+        char arr[]=new char[noOfChars];
+        for(int i=0;i<noOfChars;i++)
+        {
+            arr[i]=sc.next().charAt(0);
+        }
+        int n=sc.nextInt();
+        int maxCount=-1;
+        char result='\0';
+        for(int i=0;i<noOfChars-1;i++)
+        {
+            // System.out.println(arr[i]);
+            int localCount=1;
+            for(int j=i+1;j<noOfChars;j++)
+            {
+                // System.out.println("-----"+arr[j]);       
+                if(arr[i]==arr[j])
+                {
+                    // System.out.println("Local count increments because "+arr[i]+" = "+arr[j]);
+                    localCount++;
+                }
+            }
+            // System.out.println(arr[i]+" is found "+localCount+" times");
+            if(localCount>=maxCount)
+            {
+                maxCount=localCount;
+                //whenever max count is updated, what was that character?
+                result=arr[i];
+            }
+        }
+        if(maxCount==n)
+            System.out.println(result);
+        else
+            System.out.println(-1);
+-----------------------------------------------------
+Air India
+AI006		
+Spice Jet
+SJ005
+
+--------------
+Challenge 3:
+Masked Numbers
+
+refere file String_Challenge1.txt
+
+
+import java.util.*;
+public class Main
+{
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        String n = input.next();
+        int y = input.nextInt();
+        boolean foundSolution = false;
+        for (int x=0;x<10 ;x++ ){
+            String replacedstr = n.replace("X",Integer.toString(x));
+            int replacednum = Integer.parseInt(replacedstr);
+            if (replacednum % y ==0){
+                foundSolution = true;
+                System.out.println(replacednum+",");
+            } 
+        } 
+        if(foundSolution){
+            System.out.println();
+        } else {
+            System.out.println("-1");
+        }
+    }
+}
+
+---------------modified by jag--------------
+Scanner input = new Scanner(System.in);
+        String n = input.next();
+        int y = input.nextInt();
+        boolean foundSolution = false;
+        boolean isFirst=true;
+        for (int x=0;x<10 ;x++ ){
+            String replacedstr = n.replace("X",Integer.toString(x));
+            int replacednum = Integer.parseInt(replacedstr);
+            if (replacednum % y ==0){
+                foundSolution = true;
+                if(!isFirst)
+                    System.out.print(',');
+                System.out.print(replacednum);
+                isFirst=false;
+            } 
+        } 
+        if(!foundSolution){
+            System.out.println("-1");
+        }
+-----------------------------------------------
+Challenge 4:
+Tic-Tac Toe Game
+--------------------------
+Complete this challenge.
+
+import java.util.*;
+public class Main
+{
+    public static void main(String[] args) {
+        Scanner scn = new Scanner(System.in);
+
+        int col = scn.nextInt();
+        int row = scn.nextInt();
+        String[][] str = new String[col][row];
+
+ 
+
+        for(int i = 0; i < row; i++){
+            for(int j = 0; j < col; j++){
+                str[i][j] = scn.next();
+            }
+        }
+
+        int countX = 0;
+        int countO = 0;
+
+        //ROW CASE
+        for(int i = 0; i < row; i++){
+            countX = 0;
+            countO = 0; //Initialize it to 0 after every Inner loop 
+                        //so that it does not take 2 'X' from row 1 + 1 'X' from row 2 as TRUE           
+            for(int j = 0; j < col; j++){
+                if(str[i][j].equals("X")){
+                    countX++;
+                }
+                else
+                    countX = 0;
+
+                if(str[i][j].equals("O")){
+                    countO++;
+                }
+                else
+                    countO = 0;
+            }
+            if(countX == 3){
+                System.out.println("meyapa");
+                System.exit(0);
+            }
+            if(countO == 3){
+                System.out.println("roshan");
+                System.exit(0);
+            }
+        }
+
+        //COLUMN CASE
+        for(int i = 0; i < row; i++){
+            countX = 0;
+            countO = 0;
+            for(int j = 0; j < col; j++){
+                if(str[j][i].equals("X")){
+                    countX++;
+                }
+                else
+                    countX = 0;
+
+                if(str[j][i].equals("O")){
+                    countO++;
+                }
+                else
+                    countO = 0;
+            }
+            if(countX == 3){
+                System.out.println("meyapa");
+                System.exit(0);
+            }
+            if(countO == 3){
+                System.out.println("roshan");
+                System.exit(0);
+            }
+        }
+
+        //DIAGONAL CASE
+        if(str[0][0].equals("X") && str[1][1].equals("X") && str[2][2].equals("X")){
+            System.out.println("meyapa");
+                System.exit(0);
+        }
+
+        if(str[0][2].equals("X") && str[1][1].equals("X") && str[2][0].equals("X")){
+            System.out.println("meyapa");
+                System.exit(0);
+        }
+
+        if(str[0][0].equals("O") && str[1][1].equals("O") && str[2][2].equals("O")){
+            System.out.println("roshan");
+                System.exit(0);
+        }
+
+        if(str[0][2].equals("O") && str[1][1].equals("O") && str[2][0].equals("O")){
+            System.out.println("roshan");
+                System.exit(0);
+        }
+
+        //If none of the exit() statements are executed
+        System.out.println("Draw");
+
+    }
+}
+---------------------------------------------------------------
+Object Oriented Programming
+------------------------------------------
+We will start using classes and objects.
+Why OOP is required?
+If you notice, the challenges are solving, they are algorithm based. These may be part of a large project.
+If you project, the complexity will increase.
+To deal with the complexity, we need to build the project using OOP approach.
+
+c language programs
+	variables
+	functions
+
+java programs
+	class
+		variables
+		methods
+
+Boxing
+	cover the variables and methods inside a box
+	called as class
+
+class is a wrapper that wraps the variables and methods.
+
+If you just see a football games played in computer.
+Player
+	behavior:	run, kick, block
+Ball
+Boundary
+
+Lets define the objects involved in the business and represent it as closer as possible to the real life.
+
+entities and relationships
+CUSTOMER purchase PRODUCT
+
+Customer became a table in the database
+Customer becomes a class in java program
+
+Entities 
+	identity
+	behavior
+
+identities are variables
+behaviors are methods
+
+Mathematics
+	no1
+	no2
+	------------
+	add()
+	subtract()
+	divide()
+	multiply()
+
+interface
+	3.5mm jack
+	Oneplus mobile does not have 3.5mm jack. Means, i cannot connect such earphones to one plus mobile.
+
+interface Speaker
+{}
+
+class ThreePointFiveJack implements Speaker
+{}
+
+class SoundBar implements Speaker
+{}
+	public void playMusic(Speaker s)
+	{
+	}
+
+method1(new ThreePointFiveJack());
+method1(new SoundBar());
+
+classes provide a type
+you are defining a type
+
+Primitives are data types. All others are just types.
+
+class Address
+{
+	String dno, street, city, pin, state;
+}
+
+you have created a type called Address
+
+class Employee
+{	
+	Integer id;
+	String name;
+	Address address;
+}
+
+Class is also used to create COMPOSITE types.
+
+class is a blueprint for creating objects.
+
+TABLE		 CLASS
+ROWS		Objects
+
+Whenever you create a class.
+1) name of the class should be a noun.
+2) class name starts with Upper case. Every next word also starts with upper case.
+3) class name and the file name ideally be same.
+	In case if you have multiple classes defined in single file, then only 1 class can be public. That class name should be the file name.
+4) a class can have variables of public, private, protected, <<default>>
+But it is good practice to have non public data members.
+by using public you are provided full access to the variables, which is not good.
+5) provide access to those variables, using getters and setters.
+
+
+public class Department
+{
+    private Integer id;
+    private String name;
+    
+    
+    
+}
+
+Main.java:6: error: id has private access in Department
+        d.id=20;
+         ^
+1 error
+
+-------------
+getters and setters:
+
+public class Department
+{
+    private Integer id;
+    private String name;
+    
+    public void setId(Integer id)
+    {
+        this.id=id;
+    }
+    
+    public Integer getId()
+    {
+        return this.id;
+    }
+    
+}
+
+Why not allow the variables to be public?
+why to make them non public and then provide access using public setter and getter?
+
+ans:
+	setters are methods, they can check the values and reject or allow them.
+	getters can transform the data into any required format.
+
+
+Class:
+	naming conventions
+	if a class has a constructor with argument, then it must have constructor without argument also.
+	non public data members
+	getters and setters
+	toString		method can be useful to display
+
+public String toString()
+    {
+        return id+" - "+name;
+    }
+
+
+	public boolean equals(College college)
+	{
+		return false;
+	}
+
+Department d=new Department();	//constructor
+
+In every class, we create, if we do not create any constructor, then that class will have a constructor automatically created by the compiler.
+This constructor is called as default constructor.
+A default constructor is a no-arg constructor.
+but if we create a constructor with argument, then compiler will not create any constructor. so we need to define it.
+
+
+
+Challenges i am going to give you for classes and objects.
+simple.
+You create a class based on the instructions given.
+
+Challenge1:
+Java_Mock_11.docx
+
