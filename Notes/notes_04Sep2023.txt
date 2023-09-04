@@ -168,3 +168,38 @@ Activity:
 	StringBuffer
 
 	and find the difference between these 2 classes.
+StringBuilder
+vs
+StringBuffer
+	both of these classes have same properties and methods.
+	but StringBuffer is synchronized. StringBuilder is not sync
+
+what is synchronized?
+	when multiple thread access this object, only 1 thread is allowed at a time.	one by one the threads can access.
+Apart from this difference, both StringBuilder and StringBuffer are same.
+
+Since StringBuilder does not synchronize the threads, it is fast.
+StringBuilder
+-------------------
+	str="hello";	//not possible in StringBuilder
+
+StringBuilder sb=new StringBuilder("hello");
+String str="hello";
+sb=new StringBuilder(str);		//string is copied to sb
+//or
+
+sb.append(str);
+sb.append("world");
+
+append
+replace
+delete
+
+Practise, 
+	StringBuilder methods to append, replace, delete characters.
+https://docs.oracle.com/javase/8/docs/api/java/lang/StringBuilder.html
+
+
+
+Pending:
+	regex
