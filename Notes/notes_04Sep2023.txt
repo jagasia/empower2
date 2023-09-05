@@ -1,9 +1,5 @@
 Day 6:
 online session:
-	12:30	lunch
-	4:00 	break
-	6:00	break
-	8:00	dinner
 Last day, we discussed about arrays.
 
 Employee arr[]=new Employee[10];

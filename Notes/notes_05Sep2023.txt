@@ -1,0 +1,119 @@
+Day 7:
+Using IDE for java.	Integrated Development Environment
+Most common IDE used for java is Eclipse
+	other ides like netbeans, visual studio code, intelliJ 
+
+Spring Tool Suite	is the IDE, i am using. Because, it will be useful for spring boot projects.
+
+Spring ToolSuite	STS
+STS is also an Eclipse (plus spring plugins)
+
+Eclipse for Java developers (is only for core java)
+Eclipse for Java EE developers
+
+Support required:	install Java version 8 or later
+
+Eclipse is allowed to download and unzip. No issues.
+
+I will show you using eclipse.
+while opening eclipse, it asks me to choose the directory as workspace.
+We choose a folder in our system where all the projects i create in eclipse shall be stored.
+
+the project name shall be all lowercase and multiple words are separated by -
+
+ex:	05-sep-01
+
+--------------------
+OOPS concepts
+	Inheritance
+	Encapsulation
+	Polymorphism
+	Abstraction
+
+these are the 4 pillers of OOPS
+
+Inheritance:
+	code reusability
+	child class can inherit from parent
+	we dont need to create a class from scratch
+	we can derive a new class from existing class
+	the child class behave like parent or it can override it
+	is based on a concept called "Open - Close" principle
+	Open to Extension. Close to Modification.	GoF
+
+class ContractEmployee extends Employee
+
+Types of inheritance:
+	Single inheritance
+	Multiple inheritance
+	Multi-level inheritance
+	Hybrid inheritance
+
+Single inheritance
+	only 1 super class
+	how many sub class?		any number of sub class.
+
+Multiple inheritance
+	multiple super classes
+	how many sub class?		any number of sub class.
+
+Multi-Level inheritance
+	Sub class is super class for another sub class
+	how many sub class?		any number of sub class.
+
+Hybrid 
+	combination of any two types
+
+Java does not support multiple inheritance.
+
+class C extends A,B	//is not possible in java
+
+Adharsh challenges us. He says Java supports multiple inheritance using Interface.
+---------------------------------
+Furniture
+Chair
+BookShelf
+
+Furniture is not concrete. It is abstract. It can be a super class only.
+
+1) Chair
+2) BookShelf
+3) Exit
+
+
+What is a property of a class?
+	any variable of a class that has getter/setter/both is a property.
+	if only getter is there, then it is read-only property
+	if only setter is there, then it is write-only property
+	if both are there, then it is read-write property
+	if both are not there, then it is not a property
+
+
+Pending:
+	Access specifiers
+
+Order or constructors
+	super class constructor
+	sub class constructor
+
+
+Activity:
+	understand what are destructors in java.
+	What is overriding
+		constructor overriding
+		method overriding
+Overriding is the process of re-defining the super class method
+-----------------------------------------
+Shape
+	String name
+	String bgColor
+	String borderColor
+Circle
+	calculateArea	method
+		//3.14*r*r	just print a message like this
+Triangle
+	calculateArea
+		//0.5*b*h
+Rectangle
+	calculateArea
+		//l*b
