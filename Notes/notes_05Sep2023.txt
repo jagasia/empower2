@@ -121,3 +121,87 @@ Rectangle
 
 
 \Java\05-sep-01\src\com\empower\demo
+-------------------
+
+sum(2,3);		//5
+sum(12,12);	//24
+sum("rama","krishna"	);	//ramakrishna
+sum(3,4);		//7
+
+different behavior?	
+poly	=	many
+morph	=	face		morphology
+
+in above example, sum method is an example for polymorphism
+	method overloading
+		multiple methods, with same name, but different arguments (signature).
+	
+Method overloading:		there must be any of the following:
+	i) number of arguments can be different
+	ii) order of the type of arguments are different
+	iii) type of the arguments are different
+	
+	iv) if the return type is the only difference, then not accepted
+	v) return type can be same or different.
+
+ex:
+
+	int sum(int ,int)
+	int sum(float, float)		//overloading
+
+	float sum(int, float)
+	int sum(int, float)		//not allowed
+
+	int sum(int)
+	int sum(float)		//overloading
+
+sum(2,3);		//there must be only 1 method eligible 
+-------------
+methods
+constructors
+	can be overloaded.
+
+2+3
+"raja"+"sivakumar"
+	see that + operator is already overloaded in java.
+	we cannot do operator overloading in java.
+
+-------------------
+Overriding
+	sub class defines a method which is already present in super class.
+	in that case, signature must be same.
+
+Overriding rules:
+	sub class method name = super class method name
+	sub class method signature (arguments) = super class method signature
+	access specifier?	public/private/protected/<<default>>
+	the sub class method cannot reduce the access
+		public>protected>default>private
+	if super class method is public, then sub class method can be public only.
+	if super class method is protected, then sub class method can be protected/ public
+	if super class method is default, then sub class method can be default/protected/public
+	if super class method is private, then sub class does not override it. private methods of super class are not visible to sub class.
+
+---------------------------------------------------------------
+method overloading is an example for static polymorphism
+	because, while creating a class itself it is visible
+
+method overriding is an example for dynamic polymorphism
+	because, while running the program only, it happens
+
+static polymorphism	=	compile time polymorphism or stating binding or early binding
+dynamic polymorphism=runtime polymorphism or late binding
+
+1) Abstract class
+2) Final class
+3) Interface
+4) overloading
+5) overriding
+
+Abstraction
+	providing access to essential features	(access spec)
+Encapsulation
+	restrict access to private fields		(access spec)
+Inheritance
+Polymorphism
+-----------------
