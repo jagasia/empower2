@@ -205,3 +205,96 @@ Encapsulation
 Inheritance
 Polymorphism
 -----------------
+Multiple inheritance in java?
+	using interface?
+
+public class A implements B,C
+{}	//here, where is the benefit of inheritance?
+	//it is not even inheritance.
+interface
+	is highest level of abstraction
+
+What is the difference between interface and abstract class.
+
+interface
+	until jdk 1.7 does not allow us to have any method with body.
+	means, from 1.8 onwards, interfaces allows methods with body, if they are static or default.
+
+
+public interface Person {
+	
+}
+
+what are allowed in an interface?
+	only constants
+	abstract methods (we dont mention)
+	static methods
+	default methods
+
+
+public interface Person {
+	public static final int AGE=20;
+	void speak();
+}
+public class Student implements Person
+{
+	void speak()
+	{
+		System.out.println("Student speaks");
+	}
+	public static void main(String args[])
+	{
+		System.out.println("hello world");
+		Student shahnawaz=new Student();		
+		shahnawaz.speak();
+	}
+}
+
+
+in interface, everything is public by default.
+all data members automatically 
+	public static final
+
+
+
+static:
+	a static method can be called with the classname/interface name	
+
+static variable
+	there exists only 1 copy of this variable for all objects
+	of a class does not belong to any particular object of the class
+static method
+	can be called by using classname or object name
+	we can call the static method without an object
+static block
+	is executed very early. Even before the first line of the main method.
+----------------
+Final
+	final data member
+		is constant
+		while declaring, we must assign a value
+		in java, constants are in FULL CAPITAL letters	 UPPERCASE
+		Ex:		Integer.MAX_VALUE
+	final method
+		cannot be overridden
+	final class
+		cannot be inherited
+
+abstract	
+	abstract class	cannot be instantiated	instance=object
+	abstract method	must be overridden by all sub class	
+
+abstract
+static
+final
+
+-----------------------
+Eclipse extract should be completed.
+After that open the eclipse folder.
+You need to create a shortcut to the "eclipse" application.
+	right click the eclipse.exe and send to desktop (shortcut)
+
+Now, go to desktop and double click the eclipse shortcut
+
+
+

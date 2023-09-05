@@ -1,7 +1,5 @@
 package com.empower.demo;
 
-abstract class Person
-{}
 
 public abstract class Shape {
 	String name;
