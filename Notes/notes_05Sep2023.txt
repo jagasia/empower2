@@ -455,3 +455,107 @@ Legacy classes are synchronized
 
 Comparable
 Comparator
+-----------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+package com.empower.demo;
+
+public class Employee {
+	private Integer id;
+	private String firstName;
+	private String lastName;
+	private Double salary;
+	
+	public Employee() {}
+
+	public Employee(Integer id, String firstName, String lastName, Double salary) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.salary = salary;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public Double getSalary() {
+		return salary;
+	}
+
+	public void setSalary(Double salary) {
+		this.salary = salary;
+	}
+	@Override
+	public String toString() {
+		return "Employee [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", salary=" + salary
+				+ "]";
+	}
+	
+	
+}
+
+package com.empower.demo;
+
+import java.util.Arrays;
+
+public class MainEmployee {
+
+	public static void main(String[] args) {
+		Employee arr[]=new Employee[5];
+		arr[0]=new Employee(12, "Steven", "King", 17000.0);
+		arr[1]=new Employee(7, "Abdul", "Raheem", 24000.0);
+		arr[2]=new Employee(14, "Skanda", "Smaran", 55000.0);
+		arr[3]=new Employee(6, "Komal", "Gubbi", 55000.0);
+		arr[4]=new Employee(8, "Chenna Keshava", "Reddy", 55000.0);
+		
+		//how to sort this array based on employee id?
+		Arrays.sort(arr,(a,b)->b.getFirstName().compareTo(a.getFirstName()));
+		
+		for(Employee e : arr)
+		{
+			System.out.println(e);
+		}
+	}
+
+}
+
+
+------------------------------------------
+List vs Set
+	List allows duplicates.		Set rejects duplicates
+	List maintains the order of elements in which we added.
+	Set maintains its own order based on the type of set.
+	
+How duplicates can be identified?
+	a and b are objects of Employee.
+	a.equals(b)	returns true means, a and be are duplicates.
+
