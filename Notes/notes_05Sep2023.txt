@@ -295,6 +295,121 @@ You need to create a shortcut to the "eclipse" application.
 	right click the eclipse.exe and send to desktop (shortcut)
 
 Now, go to desktop and double click the eclipse shortcut
+------------------------------------------------------------------------------
+Exception
+	while running the program, we get exceptions
+	disrupts the flow of execution of the program
+	syntax errors are not exception
+	we discuss about runtime exceptions	(not compile time errors)
+
+example:
+	ArithmeticException
 
 
 
+Exception is an abnormal event that might occur during the execution of the program.
+For example, if java knows what to do, if the denominator is 0, then it is not exception.
+But it does not know so, it is exception
+
+CKR is creating Bank class and withdraw method.
+class Bank
+{
+	public void withdraw(int amount)
+	{
+		if(amount>20000)
+			throw new NumberFormatException("amount is invalid");
+	}
+}
+
+Sumanth is creating a Main class and main method
+
+public class Main
+{
+	public static void main(String []jags)
+	{
+	}
+}
+
+
+Exception types:
+	Checked exception
+	Unchecked exception
+
+Checked exceptions:
+	are checked by the compiler
+	ex:	
+		IOException
+		ParseException
+	A checked exception cannot be ignored. It must be
+		handled (or)
+		declare as thrown
+
+Unchecked exceptions:
+	are not checked by the compiler. They are visible at run time only.
+
+
+throw
+	is used to throw the exception
+
+throws
+	informs the compiler that this method throws these exceptions and does not handle. The calling method must handle these exceptions
+
+
+
+Object		is the super class for all classes
+	Throwable	
+		Exception
+			RuntimeException
+		Error
+
+
+all exception classes are derived from Exception
+a class whose super class is Exception (directly) is a checked exception
+a class whose super class is RuntimeException is an unchecked exception
+
+
+1) exception
+2) exception types
+3) throw exception
+4) declare checked exceptions using throws
+5) handle exception using try-catch-finally
+6) create user defined checked exception		extends Exception
+7) create user defined unchecked exception		extends RuntimeException
+
+
+try
+	guarded section
+
+catch	
+	there can be many catch blocks
+	there can be 0 or more catch blocks for a try block
+finally
+	there can be 0 or 1 finally block for a try block
+
+try
+catch
+
+
+try
+finally
+
+try
+catch
+finally
+
+try
+catch
+catch
+finally
+
+try(Scanner sc=new Scanner(System.in))
+{
+}		//this is not try block. this is try method.
+
+
+
+Activity:
+	Create a checked exception class
+	Create an unchecked exception class
+	Understand try-catch-finally
+	Understand throw and throws
