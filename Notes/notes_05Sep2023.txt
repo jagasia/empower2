@@ -413,3 +413,45 @@ Activity:
 	Create an unchecked exception class
 	Understand try-catch-finally
 	Understand throw and throws
+--------------------------------------------------------------
+Collections
+---------------
+	What is collection?
+		Collection framework in java, contains collection classes, interfaces.
+
+What are the limitations of Arrays?
+	similar datatype only allowed	!!!!!	Collections also
+	fixed size			collections can grow or shrink
+	slow insert an element	because it needs shifting other elements
+	contiguous memory
+	
+
+	
+qn:
+	can you store different type of data in an array?
+	No.
+		Even if you declare an array of type Object, then you can store any type. But they are converted into Object type and hence it is all same type only.
+
+List
+	Vector			(legacy class)
+	ArrayList
+	LinkedList
+Set
+	HashSet
+	TreeSet
+	LinkedHashSet
+
+Map		is not a collection. It is application of collection
+	Hashtable			(legacy class)
+	HashMap
+	TreeMap
+	LinkedHashMap
+	
+	
+Legacy classes are synchronized
+	Vector
+	Hashtable
+
+
+Comparable
+Comparator
