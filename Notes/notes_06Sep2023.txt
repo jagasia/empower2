@@ -1,0 +1,161 @@
+Day 8:
+Collections
+---------------
+List
+	Vector			(legacy class)
+	ArrayList
+	LinkedList
+Set
+	HashSet
+	TreeSet
+	LinkedHashSet
+
+Map		is not a collection. It is application of collection
+	Hashtable			(legacy class)
+	HashMap
+	TreeMap
+	LinkedHashMap
+	
+	
+Legacy classes are synchronized
+	Vector
+	Hashtable
+
+
+Comparable
+Comparator
+-----------------------------------------------------------------------
+List vs Set
+	List allows duplicates.		Set rejects duplicates
+	List maintains the order of elements in which we added.
+	Set maintains its own order based on the type of set.
+	
+How duplicates can be identified?
+	a and b are objects of Employee.
+	a.equals(b)	returns true means, a and be are duplicates.
+
+----------------------------------------------------
+List
+	ArrayList
+	LinkedList
+
+
+
+Upto jdk 1.4, the collections were not generic.
+All collections were Object type only.
+
+ArrayList marks=new ArrayList();		//all elements were Object type only.
+
+once jdk 1.5 was introducted, then the collection are generics.
+ArrayList<String> countries=new ArrayList<String>();	//jdk 1.5, 1.6
+
+ArrayList<String> countries=new ArrayList<>();	//jdk 1.7 onwards
+
+
+jdk 1.4 or earlier
+		ArrayList marks=new ArrayList();
+		marks.add(new Integer(20));
+		marks.add("India");
+		marks.add(new Float(2.2f));
+		// the above code is in jdk 1.4			non-generics
+
+
+----------------jdk 1.5
+ArrayList<Integer> marks=new ArrayList<Integer>();
+		//the above arraylist allows only Integer type elements
+		marks.add(20);
+		marks.add(new Integer(22));
+		int i=marks.get(0).intValue();
+
+
+----------------
+jdk1.7 onwards
+ArrayList<Integer> marks=new ArrayList<>();
+
+
+------------------------
+List
+	methods
+		add()
+		remove()
+		get()
+		set(index,element)		vs 	add(index,element)
+
+identify as many methods and properties of List
+
+In list, add() method adds the element at the end of the list
+In set, add() method adds the element at the position based on the type of Set
+
+
+
+How to access all elements of a list?
+	i) for each loop
+		for(College c:collegeList)
+		{
+			System.out.println(c);
+		}
+
+	ii) normal for loop
+		for(int i=0;i<collegeList.size();i++)
+		{
+			System.out.println(collegeList.get(i));
+		}
+	//get(index) works only for List category collections. Set collections do not have index
+
+	iii) using iterator
+		iterator has only 3 methods
+			hasNext()		boolean		true/false
+			next()		returns next element
+			remove()		removes current element
+
+		List supports ListIterator	which can move reverse also
+			hasNext()
+			hasPrevious()
+			next()
+			previous()
+			remove()	
+
+	ListIterator does not work for Set.	It works only for List
+
+		Iterator<College> it = collegeList.iterator();
+		while(it.hasNext())
+		{
+			College c = it.next();
+			System.out.println(c);
+		}
+
+
+
+
+
+		ListIterator<College> it = collegeList.listIterator(collegeList.size());
+//		while(it.hasNext())
+//		{
+////			College c = it.next();
+////			System.out.println(c);
+////		}
+//		
+		while(it.hasPrevious())
+		{
+			College c = it.previous();
+			System.out.println(c);
+		}
+
+
+
+--------------
+Removing an element in a collection by using loop:
+for(College c: collegeList)
+{
+	if(c.getName().equals(name))
+	{
+		collegeList.remove(c);    //error:	ConcurrentModificationException
+	}
+}
+//so we should use iterator to remove
+
+
+----------------------------------
+Task:
+Java_Mock_29_NoPrefill.docx
+	Requirement #2
