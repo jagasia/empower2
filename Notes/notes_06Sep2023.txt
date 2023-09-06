@@ -154,8 +154,54 @@ for(College c: collegeList)
 }
 //so we should use iterator to remove
 
-
+\Java\mock-11-req-2\src
 ----------------------------------
 Task:
 Java_Mock_29_NoPrefill.docx
 	Requirement #2
+
+Late comers of break: after 11 am	------------------------------
+vengalatha M
+Gowrika T.K.
+RAMYA SHREE R
+chaitra I
+NIHARIKA.N
+Komal GD
+------------------------------------------
+Set
+--------
+	is a collection of distinct elements
+	HashSet
+		the order or elements are determined by the hashCode method
+		the  duplicates are identified by equals method
+		so if we use HashSet, then we must override equals and hashCode method
+
+		Predefined types	like wrappers, Date, String, etc all of them override the 			equals and hashCode
+
+
+	TreeSet
+		implementation of SortedSet
+		elements in tree set are sorted
+		sorted by what?
+			sorting is based on Comparable or Comparator
+
+		if Employee class itself implements, then it should implement Comparable
+		if we want to create external class, then it should implement Comparator
+
+class Integer implements Comparable
+
+we cannot modify this Integer class.	So we can create external comparator class 
+
+
+Collections.sort
+	works only for list category
+	does not work for Set
+
+Collections.sort(empList);	
+
+-----------------------------------
+Java_Mock_29_NoPrefill.docx
+	requirement 4
+
+
+
