@@ -301,3 +301,10 @@ public class App2 {
 
 }
 
+--------------------
+Java_Mock_29_NoPrefill.docx
+Requirement:1	equals method
+Requirement:2	add, remove, display List<Mobile>
+Requirement:4	find by name, find by display size
+Requirement:5	Comparable, Comparator
+Requirement:6	Year wise mobile count	as Map
