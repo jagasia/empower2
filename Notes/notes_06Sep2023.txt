@@ -198,7 +198,106 @@ Collections.sort
 	does not work for Set
 
 Collections.sort(empList);	
-
 -----------------------------------
 Java_Mock_29_NoPrefill.docx
 	requirement 4
+
+Late comers after lunch: 12:45 pm to 13:30 pm
+dhiraj chauhan		13:36:59 pm
+Krishna Chandra Shekar	13:30:30 pm
+--------------------------
+Map
+	key-value pair
+
+how will you add to a map?
+	put(key,value)			//there is no add method
+	get(key)		returns value
+
+every element in map is an Entry
+Entry<Key,Value>
+
+map.entrySet();			entries as a Set
+map.keySet();			keys as a Set
+
+Set has iterator.	Map do not have iterator.
+
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+
+public class App {
+
+	public static void main(String[] args) {
+		Map<Integer, String> countryMap=new HashMap<>();
+		countryMap.put(12, "Bangladesh");
+		countryMap.put(7, "China");
+		countryMap.put(null, "Pakistan");
+		countryMap.put(9, "Srilanka");
+		countryMap.put(6, "Nepal");
+		countryMap.put(6, "Bhutan");
+		countryMap.put(7, "Japan");
+		
+		
+		for(Entry<Integer, String> e:countryMap.entrySet())
+		{
+			System.out.println(e);
+		}
+		
+	}
+
+}
+
+
+
+
+----------------
+Accept input string from user
+ex:
+	this is a sentence typed by me
+
+output:
+t	3
+h	1
+i	2
+s	3
+	6
+a	1
+e	5
+n	2
+c	1
+y	2
+
+
+solution:
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Scanner;
+
+public class App2 {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		String input=sc.nextLine();
+		
+		char[] arr = input.toCharArray();
+		
+		Map<Character, Integer> map=new LinkedHashMap<>();
+		for(char c:arr)
+		{
+			Integer value = map.get(c);
+			if(value==null)
+			{
+				value=0;
+			}
+			value++;
+			map.put(c, value);
+		}
+		
+		for(Entry<Character, Integer> e:map.entrySet())
+			System.out.println(e);
+	}
+
+}
+
