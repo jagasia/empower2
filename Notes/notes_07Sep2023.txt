@@ -1,0 +1,72 @@
+Day 9:
+Comparable, Comparator
+
+If you want to sort elements, then that element type must be comparable.
+Only comparable types are sortable.
+
+When a class implements Comparable interface and override compareTo method, then that class type is comparable. Hence it is sortable.
+
+i) Collections.sort()		or Arrays.sort()
+ii) TreeSet			only comparable elements can be added to a tree set.
+
+All predefined types already implements Comparable
+
+class Employee implements Comparable<Employee>
+{
+	public int compareTo(Employee arg)
+	{
+		return this.getId().compareTo(arg.getId());
+	}
+}
+
+the above employee is compared by their id
+
+if i want to sort employees based on salary,then, i need to modify the compareTo method
+
+instead of that, we can create several external comparator classes.
+
+public class EmployeeSalaryComparator implements Comparator<Employee>
+{
+	public int compare(Employee arg1, Employee arg2)
+	{
+		return arg1.getSalary().compareTo(arg2.getSalary());
+	}
+}
+
+
+
+-------------------
+class Employee implements Comparable<Employee>
+{
+	public int compareTo(Employee arg)
+	{
+		return this.getId().compareTo(arg.getId());
+	}
+}
+
+public class EmployeeSalaryComparator implements Comparator<Employee>
+{
+	public int compare(Employee arg1, Employee arg2)
+	{
+		return arg1.getSalary().compareTo(arg2.getSalary());
+	}
+}
+
+The difference between Comparable and Comparator.
+
+A comparable interface is used by the Type itself.
+so it is possible for a Type to have only one implementation of the Comparable.
+
+For all other type of comparation, we need external Comparator.
+Comparator, gives you the option to have mutliple possible ways of sorting.
+
+
+create a comparator that sorts employees by their firstName in asc order and then by lastName in desc order and then by their salary in asc order.
+
+if(this.firstName.equals(arg.getFirstName())
+	if(this.lastName.equals(arg.getLastName())
+		return this.salay.compareTo(arg.getSalary());
+	else 
+		return arg.getLastName().compareTo(this.lastName);
+else
+	return this.firstName().compareTo(arg.getFirstName());
