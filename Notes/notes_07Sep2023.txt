@@ -362,7 +362,8 @@ E{1,1}
 E{1,3}		minimum 1 time, maximum 3 times
 E{1,}		minimum 1 time, maximum unbounded
 E{,3}		maximum 3 times
-
+.		means anything
+|		OR operator
 we can mention the multiplicity using 		{min,max}
 or
 we can also use
@@ -419,4 +420,3 @@ Rules for an email id:
 		4.	r.jag.india@yahoo.com			(invalid)
 
 2) Find the email ids present in the input string.
-\
