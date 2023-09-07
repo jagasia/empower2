@@ -246,3 +246,73 @@ ObjectInputStream		for reading objects
 BufferedInputStream		for reading bytes
 
 OutputStreams vice versa
+------------------
+DataInputStream
+
+import java.io.DataOutputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class MainDataOutputStream {
+
+	public static void main(String[] args) throws IOException {
+		DataOutputStream dos=new DataOutputStream(new FileOutputStream("dadapeer.dat"));
+		dos.writeInt(123);
+		dos.writeFloat(12.2f);
+		dos.writeChars("Dadapeer");
+		dos.flush();
+		dos.close();
+
+	}
+
+}
+
+
+
+
+
+
+
+import java.io.DataInputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
+
+public class MainDataInputStream {
+
+	public static void main(String[] args) throws IOException {
+		DataInputStream dis=new DataInputStream(new FileInputStream("dadapeer.dat"));
+		int i=dis.readInt();
+		float f=dis.readFloat();
+		String str=dis.readLine();
+		System.out.println(i);
+		System.out.println(f);
+		System.out.println(str);
+		
+	}
+
+}
+
+
+
+-------------
+ObjectOutputStream
+ObjectInputStream
+
+
+public class Employee implements Serializable
+
+what is Serializable?
+	Serializable is a marker interface.
+	What is a marker interface?
+		An interface that do not have any abstract method is a marker interface.
+
+Employee employee=new Employee();
+Object o=emp;		//auto casting		widening is automatic
+emp=(Employee)o;		//explicit casting		narrowing is not automatic
+
+
+transient
+	transient members does not participate in serializable
+	transient means, non persistent
+
