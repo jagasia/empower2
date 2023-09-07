@@ -438,7 +438,49 @@ public class MainEmail {
 
 
 Challenge:
+https://github.com/jagasia/javamock
 Java_Mock_29_NoPrefill.docx
 	Requirement 3
+		Scanner sc=new Scanner(System.in);
+		String input=sc.nextLine();
+		String pattern="#[A-Z]{2,3}( [0-9]{2})? [A-Z0-9]{2,6}[-][0-9]{2,4}";
+		if(input.matches(pattern))
+			System.out.println("Valid");
+		else
+			System.out.println("Invalid");
+
 Java_Mock_30.docx
 	Requirement 2
+
+Scanner sc=new Scanner(System.in);
+		String input=sc.nextLine();
+		String pattern="[+]91[1-9][0-9]{9}";
+		System.out.println(input.matches(pattern)?"Valid":"Invalid");
+
+-------------------------
+Thread
+--------------
+	What is the difference between Process and Thread?
+	Process is the running instance of a program.
+		a process can contain one or more threads.
+		thread is a part of process.
+
+	CPU allocates resources for each process
+		(resource	=	CPU time and Memory)
+	Thread share the resources of a process.
+
+If a process contains only 1 thread
+	CPU	3 GHz	=	for one second, it goes 3 * 1024*1024*1024 times
+CPU comes to our process.	Our process is waiting for user input. CPU spends that time and move to next process.
+	CPU utilization is 0%
+
+If our process has 2 threads, 	
+	CPU utilization is 50%
+
+	3 threads		66%
+
+	4 threads		75%
+
+		
+Multi threaded process contains more than 1 thread.
+	main thread + child threads
