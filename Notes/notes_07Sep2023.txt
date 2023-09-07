@@ -70,3 +70,10 @@ if(this.firstName.equals(arg.getFirstName())
 		return arg.getLastName().compareTo(this.lastName);
 else
 	return this.firstName().compareTo(arg.getFirstName());
+----------------------------------------------
+
+Java_Mock_30.docx
+	Requirement #3
+	Requirement #4
+
+	
