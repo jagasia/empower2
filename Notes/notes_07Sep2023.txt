@@ -79,3 +79,170 @@ Java_Mock_30.docx
 	
 All java mock files in:
 https://github.com/jagasia/javamock
+--------------------------------------------------------
+IO
+	Input Output
+
+Input can be obtained from 
+	keyboard
+	a file
+	memory		(buffer)
+	socket		(client)
+
+There are many sources of Input
+
+There are many destination of Output
+	monitor		System.out
+	Speaker
+	Printer
+	Socket		(client)
+	File
+
+java.io		package
+
+There are many classes, interfaces present in this package.
+
+The class names end with
+	InputStream
+	OutputStream
+are Binary streams.
+-----------------------------------
+The class names end with
+	Reader
+	Writer
+are character streams
+---------------------------------
+
+Tell me various types of files;
+	pdf
+	xls
+	jpg
+	csv
+	jpg
+	png
+	psd
+	txt
+	stl
+	xml
+	mp4
+	mp3
+	mkv
+	json
+	doc
+
+text file
+binary file		(all other than text are binary)
+
+-----------------------------
+You want to read bytes from a file.
+	FileInputStream
+
+You want to read characters from a file.
+	FileReader
+
+You want to write characters to a file.
+	FileWriter
+
+You wan to write bytes to a file.
+	FileOutputStream
+
+
+ObjectOutputStream
+	write objects to a stream
+BufferedReader
+	read characters from a memory
+
+Node streams
+	points to definite node
+but for additional functionality, we use 
+Filters streams
+	they work on node streams
+
+ObjectInputStream is an example for Filter stream that works on another node stream like
+FileInputStream
+
+Before jdk 1.5, when scanner was not there,
+we used
+	BufferedReader		to read characters
+	BufferedInputStream		to read bytes
+
+
+BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+		String input=br.readLine();
+		System.out.println(input);
+
+
+BufferedInputStream bis=new BufferedInputStream(System.in);
+		int i=bis.read();
+		System.out.println(i);
+
+Character input and output
+Binary input and output
+
+File f=new File("skanda.txt");
+
+what is opening a file?
+	creating an object representation of a file(which is in storage)
+	storage to memory
+
+closing a file?
+	remove the object from memory
+	will automatically call flush
+Flush?
+	reflect the changes in object (memory) to file (storage)
+
+
+Demo:
+	read all bytes from biriyani picture file and
+	create a new file and write all those bytes to the file.
+
+which class i should use for reading all bytes from a file
+	FileInputStream
+
+
+File f=new File("C:\\Users\\rjaga\\Pictures\\briyani1.jfif");
+		FileInputStream fis=new FileInputStream(f);
+		long len = f.length();
+		System.out.println("there are "+len+" bytes in that file");
+		byte data[]=new byte[(int) len];
+		
+		fis.read(data);
+		fis.close();
+		//read process is over
+		
+		FileOutputStream fos=new FileOutputStream(new File("komal.jfif"));
+		fos.write(data);
+		fos.flush();
+		fos.close();
+		System.out.println("Done");
+
+----------------------
+reading 1 byte at a time:
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class MainFile2 {
+
+	public static void main(String[] args) throws IOException, InterruptedException
+	{
+		FileInputStream fis=new FileInputStream("C:\\\\Users\\\\rjaga\\\\Pictures\\\\briyani1.jfif");
+		FileOutputStream fos=new FileOutputStream("chenna.jfif");
+		int data=-1;
+		while((data=fis.read())!=-1)
+		{
+			fos.write(data);
+//			Thread.sleep(10);
+			fos.flush();
+		}
+		System.out.println("done");
+	}
+
+}
+
+----------------
+DataInputStream		for primitive data types
+ObjectInputStream		for reading objects
+BufferedInputStream		for reading bytes
+
+OutputStreams vice versa
