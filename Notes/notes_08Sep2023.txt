@@ -172,3 +172,30 @@ if we use volatile on a variable, then that variable will not be cached by the t
 Thread have a cache memory.
 
 	volatile variables are taken from main memory by the threads instead of cache.
+--------------------------------------------
+While learning Oracle, we used LiveSQL.
+But now, we need to create Java Programs that connect to Oracle using JDBC
+Live SQL cannot be connected from java program.
+We have copied SQL Developer source from shared path.
+Now, we need to login to oracle using SQL Developer.
+for that we need following informations:
+	host name
+	port
+	username
+	password
+	SID/Service name
+-----------------------------------------------
+JDBC
+-------
+	Java DataBase Connectivity
+
+JDBC API			application programming interface
+	it is a layer between java applications and RDBMS
+	provides consistent layer that will translate the instructions from java to database.
+
+Every database that a java program can access, it is possible because, those dbms vendors like microsoft, oracle, ibm, etc have provided us the java implementation of jdbc interfaces.
+
+they provide .jar file to us.		driver jar file
+
+Driver:
+	
