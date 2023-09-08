@@ -384,3 +384,9 @@ public class App {
 
 
 
+to check which process runs in which port number:
+	netstat -aon
+find the PID of the process running in 8082
+go to task manager	(right click columns to see PID)
+find that PID and end task.
+Now, the port 8082 is free
