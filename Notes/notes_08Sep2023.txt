@@ -313,3 +313,74 @@ Activity:
 
 https://www.codejava.net/java-se/jdbc/connect-to-h2-database-examples#:~:text=H2%20is%20pure%20Java%20SQL%20database%2C%20which%20means,depending%20on%20your%20need%3A%20in-memory%2C%20embedded%20or%20client%2Fserver.
 
+
+------------------------
+1) download h2 driver jar file
+	h2-2.2.222.jar
+it was downloaded from 
+	https://search.maven.org/remotecontent?filepath=com/h2database/h2/2.2.222/h2-2.2.222.jar
+2) login to h2 console:
+	java -jar h2-version.jar
+3) jdbc:h2:mem:test
+jdbc:h2:~/test
+
+
+
+jdbc:h2:file:./data/sampledata
+sa
+
+
+
+CREATE TABLE EMP
+(
+ID INT PRIMARY KEY,
+FIRST_NAME VARCHAR2(20),
+LAST_NAME VARCHAR2(20),
+SALARY NUMBER(7)
+);
+
+to execute a SELECT statement 
+	st.executeQuery();
+to execute DML statement
+	st.executeUpdate();
+
+--------------
+1) download h2 jar file	(it is present in my project 08-sep-h2-demo-1)
+2) java -jar h2-2.2.222.jar
+	now you click connect
+3) create the table
+4) write java code now:
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.Scanner;
+
+public class App {
+
+	public static void main(String[] args) throws SQLException {
+		Connection con = DriverManager.getConnection("jdbc:h2:file:./data/sampledata","sa","");
+		PreparedStatement st = con.prepareStatement("INSERT INTO EMP VALUES(?,?,?,?)");
+		Scanner sc=new Scanner(System.in);
+		Integer id=sc.nextInt();
+		String firstName=sc.nextLine();
+		if(firstName.equals(""))
+			firstName=sc.nextLine();
+		String lastName=sc.nextLine();
+		Integer salary=sc.nextInt();
+		st.setInt(1, id);
+		st.setString(2, firstName);
+		st.setString(3, lastName);
+		st.setInt(4, salary);
+		int no=st.executeUpdate();
+		System.out.println(no+" row(s) affected");
+		con.close();
+	}
+
+}
+
+ 
+
+
+
