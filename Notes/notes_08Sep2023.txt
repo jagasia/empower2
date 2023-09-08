@@ -1,0 +1,174 @@
+Day 10:
+-----------
+Multi Threading
+	What is multi threading?
+	Creating a program with more than 1 thread (apart from main thread)
+By running multiple threads in a process, we are implementing the asynchronous programing.
+Usually, the program (single threaded program) has 1 flow of execution.
+one by one		synchronous
+method1();
+method2();
+
+as long as method1() is not over, the method2() will not start.
+But in multi-threading, multiple threads perform parallely.	asynchronous
+
+
+Thread class		if you create an object of Thread class, or its sub class, then you are creating a thread.
+
+There are 2 ways we can create threads in java:
+	1) implements Runnable interface
+	2) extends Thread
+
+
+
+Advantages:
+	effective utilization of resources		by optimizing the use of thread.
+	asynchronous execution
+	scalable
+	easy
+
+Disadvantages:
+	Race condition
+	Lock starvation
+		the low priority thread waits for the high priority thread
+	Dead lock
+		a thread waits for another thread to complete. But that another thread is waiting for this thread.
+
+Thread life cycle
+	when we create a thread object, it is in NEW THREAD state
+	when we call start method, it will move to RUNNABLE state
+	when we call sleep, wait methods then it will move to NOT RUNNABLE state
+	when the work is over, or when we assign null to the thread, or when the process ends
+		then the moves to DEAD
+
+
+Runnable interface
+	is a functional interface
+		functional interface is an interface, which contains only 1 abstract method
+	it is possible to use lambda implementation of a functional interface
+
+
+
+Thread t1=new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				for(int i=0;i<30;i++)
+				{
+					System.out.println(i);
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
+		});
+		
+		t1.start();
+
+
+
+--------------------------------Now, using lambda-----------------------
+		Thread t1=new Thread(()->{
+			for(int i=0;i<20;i++)
+			{
+				System.out.println("ONE");
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+		
+		Thread t2=new Thread(()->{
+			for(int i=0;i<20;i++)
+			{
+				System.out.println("TWO");
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+		
+		t1.start();
+		t2.start();
+--------------------------------------------------------------------
+Thread synchronization
+-----------------------------------
+synchronized block
+synchronized method
+volatile variables
+
+
+class A
+{	
+	public synchronized void displayNumbers() throws InterruptedException
+	{
+		System.out.println("Display numbers method started by "+Thread.currentThread().getName());
+		for(int i=0;i<3;i++)
+		{
+			Thread.sleep(1000);
+			System.out.println(Thread.currentThread().getName()+":"+i);
+		}
+		synchronized (this) {
+			for(int i=0;i<10;i++)
+			{
+				Thread.sleep(1000);
+				System.out.println(Thread.currentThread().getName()+":"+i);
+			}
+		}
+		System.out.println(Thread.currentThread().getName()+" exited the display num method");
+		
+	}
+}
+class MyThread extends Thread
+{
+	A a;
+	public MyThread(A a)
+	{
+		this.a=a;
+	}
+	public void run()
+	{
+		try {
+			a.displayNumbers();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}
+public class SyncBlockDemo {
+
+	public static void main(String[] args) {
+		A a=new A();
+		MyThread t1=new MyThread(a);
+		MyThread t2=new MyThread(a);
+		
+		t1.setName("Chenna");
+		t2.setName("Sushwanth");
+		t2.setPriority(10);
+		t1.start();
+		t2.start();
+		
+	}
+
+}
+
+
+
+--------------------
+	public synchronized void displayNumbers() throws InterruptedException
+------------
+volatile variable
+if we use volatile on a variable, then that variable will not be cached by the thread.
+Thread have a cache memory.
+
+	volatile variables are taken from main memory by the threads instead of cache.
