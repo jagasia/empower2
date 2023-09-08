@@ -196,6 +196,11 @@ JDBC API			application programming interface
 Every database that a java program can access, it is possible because, those dbms vendors like microsoft, oracle, ibm, etc have provided us the java implementation of jdbc interfaces.
 
 they provide .jar file to us.		driver jar file
+ 
 
-Driver:
-	
+------------------------------------------------
+orcl.cljtedwklhul.ap-south-1.rds.amazonaws.com
+ORCL
+jag
+password
+
