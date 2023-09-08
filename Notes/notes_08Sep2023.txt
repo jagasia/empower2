@@ -308,3 +308,8 @@ Activity:
 	hint: CallableStatement
 
 	How to execute DML statements using JDBC
+
+
+
+https://www.codejava.net/java-se/jdbc/connect-to-h2-database-examples#:~:text=H2%20is%20pure%20Java%20SQL%20database%2C%20which%20means,depending%20on%20your%20need%3A%20in-memory%2C%20embedded%20or%20client%2Fserver.
+
