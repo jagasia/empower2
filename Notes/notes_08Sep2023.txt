@@ -199,8 +199,8 @@ they provide .jar file to us.		driver jar file
  
 
 ------------------------------------------------
-orcl.cljtedwklhul.ap-south-1.rds.amazonaws.com
-ORCL
-jag
-password
+hostname:		orcl.cljtedwklhul.ap-south-1.rds.amazonaws.com
+SID: 		ORCL
+username:		jag
+password:		password
 
