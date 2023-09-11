@@ -1,0 +1,9 @@
+2023-09-11 10:42:31.864719+05:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "STUDENT" not found (this database is empty); SQL statement:
+SELECT * FROM STUDENT [42104-222]
+2023-09-11 14:43:12.397559+05:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "STUDENT" already exists; SQL statement:
+CREATE TABLE STUDENT(ID INT PRIMARY KEY,NAME VARCHAR2(20),ADDRESS VARCHAR2(50),PHONE VARCHAR2(13)) [42101-222]
+2023-09-11 14:43:35.084957+05:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "STUDENT" already exists; SQL statement:
+CREATE TABLE STUDENT(ID INT PRIMARY KEY,NAME VARCHAR2(20),ADDRESS VARCHAR2(50),PHONE VARCHAR2(13)) [42101-222]

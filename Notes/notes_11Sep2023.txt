@@ -425,3 +425,175 @@ EmployeeDao		interface
 EmployeDaoImpl		class			CRUD
 Main
 	add, delete, update, select all, select by id
+----------------------------------
+For tomorrow's Java assessment:		90 minutes	after morning break
+1) MCQ
+	15 questions
+2) Coding challenge
+	i) comparing 2 objects using equals method
+	ii) String based challenge	(regex or logic or array or like palindrome, etc)
+	iii) Comparable/ Comparator
+-----------------------------------------------------
+Maven
+----------
+\\its\its\sccm\apps
+can you share your screen
+
+Steps to install maven in our system:
+1) in C:\Software folder, create a folder "Maven"
+2) from \\its\its\sccm\apps 
+	search "Apache Maven" folder
+	and inside that, there are many versions of maven
+	lets copy 3.8.5 folder to our local software\maven folder
+3) inside this folder, there is a zip	(Apache Maven zip file)
+	extract all
+4) delete the zip
+	and go inside the apache maven until you find "bin" and "lib" folders.
+
+5) go inside bin folder
+nd copy the current location
+	D:\Softwares\Maven\apache-maven-3.6.1-bin\apache-maven-3.6.1\bin
+
+
+6) in environment variables 
+	there are 2 types of env var
+	i) your account environment variable
+	ii) system environment variable 	(we DONT have access to this)
+
+we are going to our account env var:
+	path variable is edited
+	and appended with the apache maven bin location
+
+a new cmd terminal 
+	mvn -version
+	mvn -v
+
+we have installed maven now.
+
+What is maven?
+	is a build tool
+Why we need build tool?
+	we can create project of different types using a build tool
+		it is possible to create, build and deploy a project even without an IDE
+		without eclipse also we can do the above all using a build tool
+	deployable unit can be
+		jar
+		war
+		ear
+	all these can be built using a build tool
+
+	instead of adding .jar files to the build path,
+	we can add dependencies to pom.xml
+
+pom	=	Project Object Model
+	pom is a configuration file, where, we can specify
+		jar/war
+		version
+		dependencies
+		plugins
+	
+when we use maven, every project does not need a separate copy of jar files
+in maven local repository, one copy of jars are maintained
+
+	C:\Users\rjaga\.m2\repository
+
+remote repository		(maven server contains all jar files)
+vs
+local repository		(my system)
+
+not every project has jar files, all the maven projects use the jar files from the .m2 repository folder
+so, when we push the projects to git, every project do not have .jar files means, size of the project is lesser.
+in client's system, they have only one .m2 repository folder. If jar is available, then it is not downloaded. If it is not available, then it is downloaded.
+-------------------------------------------------
+Maven
+	there are 2 ways of creating maven projects.
+	i) in cmd prompt. Using commands, we can create a maven project of different arche types.
+
+Archetype:
+	lot of types of project. Each type  of project is one archetype
+	quickstart	=	java project		(core java)
+	webapp	=	dynamic web project		(servlet, jsp)
+
+
+	ii) using any IDE like eclipse or spring tool suite
+
+Any maven project is uniquely identified by
+	group id
+	artifact id
+
+group id:
+	can be same across many projects
+	com.empower.hrms
+		note:	we use . to separate each portion of group id
+			this is similar to package name	(java.util)
+artifact id:
+	is the project name
+	my-demo-project
+		note:	we use - to separate each portion of artifact id
+
+
+Creating your first maven project in eclipse:
+1) File -> New Project
+2) Maven Project
+3) next -> Select an archetype:		quickstart
+4) group id
+	com.empower.hrms
+artifact id
+	employee-module
+package name
+	same as group id
+
+Finish creating the project.
+When you create maven project for the first time, you will see lot of downloads happening and waiting for you to enter "Y"
+once you enter "Y", it show "Build Successful".
+
+By default, an App.java is created
+Just run the project and see "Hello World!" as output.
+----------------------------
+Now, how to create such quickstart maven project, in cmd prompt:
+
+1) choose a location where you want to create a maven project.
+in that folder, address bar, type "cmd" enter
+Now, we have gone to cmd prompt in the folder we want to create maven project.
+2) now, the command to create the project:
+
+mvn archetype:generate -DgroupId=com.jag.example -DartifactId=java-project -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+
+
+
+
+mvn is the command for all maven related tasks.
+
+mvn archetype:generate -DgroupId=ToolsQA -DartifactId=DemoMavenProject -DarchetypeArtifactId=
+maven-archetype-quickstart -DinteractiveMode=false
+
+----------------------------------------------------
+earlier, we added the h2 jar file to our build path
+but in maven, we will do in different approach.
+
+---------------------------
+Same student dao project we have done in morning, how do we do in maven?
+difference will be, we will not add jar file to the project build path. Instead,
+we will add dependency in pom.xml file.
+
+jar	java archive
+war	web archive
+ear	enterprise archive
+
+1) create a maven project of quickstart archetype.
+	student-module
+2) in pom.xml
+	under dependencies:	add the h2 dependency.
+
+<!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>2.2.222</version>
+			<scope>runtime</scope>
+		</dependency>
+
+
+3) complete the coding
+4) run
+
