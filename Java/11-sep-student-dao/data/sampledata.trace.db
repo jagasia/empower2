@@ -1,0 +1,3 @@
+2023-09-11 10:42:31.864719+05:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "STUDENT" not found (this database is empty); SQL statement:
+SELECT * FROM STUDENT [42104-222]

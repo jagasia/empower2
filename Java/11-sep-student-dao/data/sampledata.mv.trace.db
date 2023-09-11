@@ -1,0 +1,36 @@
+2023-09-11 10:43:51.052737+05:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "STUDENT" not found (this database is empty); SQL statement:
+SELECT * FROM STUDENT [42104-222]
+2023-09-11 10:44:13.337553+05:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "STUDENT" not found (this database is empty); SQL statement:
+SELECT * FROM STUDENT [42104-222]
+2023-09-11 10:46:02.270942+05:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "STUDENT" not found (this database is empty); SQL statement:
+INSERT INTO STUDENT VALUES(?,?,?,?) [42104-222]
+2023-09-11 10:47:31.769449+05:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "STUDENT" not found (this database is empty); SQL statement:
+SELECT * FROM STUDENT [42104-222]
+2023-09-11 10:51:03.406428+05:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "STUDENT" not found (this database is empty); SQL statement:
+SELECT * FROM STUDENT [42104-222]
+2023-09-11 10:55:27.230765+05:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Parameter "#4" is not set; SQL statement:
+UPDATE STUDENT SET name=?, address=?, phone=? WHERE id=? [90012-222]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:658)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.expression.Parameter.checkSet(Parameter.java:75)
+	at org.h2.command.Prepared.checkParameters(Prepared.java:207)
+	at org.h2.command.CommandContainer.update(CommandContainer.java:159)
+	at org.h2.command.Command.executeUpdate(Command.java:256)
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdateInternal(JdbcPreparedStatement.java:216)
+	at org.h2.jdbc.JdbcPreparedStatement.executeUpdate(JdbcPreparedStatement.java:174)
+	at StudentDaoImpl.update(StudentDaoImpl.java:69)
+	at Main.main(Main.java:78)
+2023-09-11 10:55:50.256704+05:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "STUDENT" already exists; SQL statement:
+CREATE TABLE STUDENT(ID INT PRIMARY KEY,NAME VARCHAR2(20),ADDRESS VARCHAR2(50),PHONE VARCHAR2(13)) [42101-222]
+2023-09-11 10:57:16.422479+05:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "STUDENT" already exists; SQL statement:
+CREATE TABLE STUDENT(ID INT PRIMARY KEY,NAME VARCHAR2(20),ADDRESS VARCHAR2(50),PHONE VARCHAR2(13)) [42101-222]

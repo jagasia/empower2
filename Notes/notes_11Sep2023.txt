@@ -196,3 +196,232 @@ public class StudentDaoImpl {
 	You need to complete the remaining methods of CRUD.
 	read methods, I will do.
 	UPDATE, DELETE, you will do now.
+
+finally, the StudentDaoImpl:
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+public class StudentDaoImpl {
+	public void create(Student student) throws SQLException {
+		//add a new row to the STUDENT table
+		Connection con = getMyConnection();
+		PreparedStatement st = con.prepareStatement("INSERT INTO STUDENT VALUES(?,?,?,?)");
+		st.setInt(1, student.getId());
+		st.setString(2, student.getName());
+		st.setString(3, student.getAddress());
+		st.setString(4, student.getPhone());
+		int no=st.executeUpdate();
+		System.out.println(no+" row inserted");
+		con.close();
+	}
+	
+	public List<Student> read() throws SQLException {
+		Connection con = getMyConnection();
+		Statement st = con.createStatement();
+		ResultSet rs = st.executeQuery("SELECT * FROM STUDENT");
+		List<Student> studentList=new ArrayList<>();
+		while(rs.next())
+		{
+			Student student=new Student(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4));
+			studentList.add(student);
+		}
+		con.close();
+		return studentList;
+	}
+	public Student read(Integer id) throws SQLException {
+		Connection con = getMyConnection();
+		PreparedStatement st = con.prepareStatement("SELECT * FROM STUDENT WHERE ID=?");
+		st.setInt(1, id);
+		ResultSet rs = st.executeQuery();
+		Student student=null;
+		if(rs.next())
+		{
+			student=new Student(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4));
+		}
+		con.close();
+		return student;
+	}
+	public void update(Student student) throws SQLException {
+		Connection con = getMyConnection();
+		PreparedStatement st = con.prepareStatement("UPDATE STUDENT SET name=?, address=?, phone=? WHERE id=?");
+		st.setString(1, student.getName());
+		st.setString(2, student.getAddress());
+		st.setString(3, student.getPhone());
+		st.setInt(1, student.getId());
+		int no=st.executeUpdate();
+		System.out.println(no+" row updated");
+		con.close();
+	}
+	public void delete(Integer id) throws SQLException {
+		Connection con = getMyConnection();
+		PreparedStatement st = con.prepareStatement("DELETE FROM STUDENT WHERE ID=?");
+		st.setInt(1, id);
+		int no=st.executeUpdate();
+		System.out.println(no+" row deleted");
+		con.close();
+	}
+
+	private Connection getMyConnection() throws SQLException {
+		Connection con = DriverManager.getConnection("jdbc:h2:file:./data/sampledata","sa","");
+		return con;
+	}
+}
+
+--------------------
+9) Extract the interface from the impl
+	right click inside the StudentDaoImpl class
+		-> Refactor
+			->Extract interface
+	name of the interface:	StudentDao
+		select the CRUD methods
+
+10) Test the dao impl using Main class and main method
+
+1) Add a student
+2) Display All students
+3) Find student by id
+4) Update a student
+5) Delete a student
+6) Exit
+
+
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Scanner;
+import org.h2.jdbc.JdbcSQLSyntaxErrorException;
+
+import org.h2.jdbc.JdbcSQLSyntaxErrorException;
+
+public class Main {
+
+	public static void main(String[] args) throws SQLException {
+		
+		Scanner sc=new Scanner(System.in);
+		StudentDao sdao=new StudentDaoImpl();
+		try
+		{
+			sdao.createTable();
+			System.out.println("Table created");
+		}catch(JdbcSQLSyntaxErrorException ex)
+		{
+			System.out.println("Table already exists");
+		}
+		
+		int choice=0;
+		Integer id=0;
+		String name="";
+		String address="";
+		String phone="";
+		Student student=null;
+		do
+		{
+			System.out.println("1) Add a student\r\n" + 
+					"2) Display All students\r\n" + 
+					"3) Find student by id\r\n" + 
+					"4) Update a student\r\n" + 
+					"5) Delete a student\r\n" + 
+					"6) Exit\r\n" + 
+					"");
+			choice=sc.nextInt();
+			switch(choice)
+			{
+			case 1:		//add
+				System.out.println("Id:");
+				id=sc.nextInt();
+				System.out.println("Name:");
+				name=sc.nextLine();
+				if(name.equals(""))
+					name=sc.nextLine();
+				System.out.println("Address:");
+				address=sc.nextLine();
+				System.out.println("Phone:");
+				phone=sc.nextLine();
+				student=new Student(id, name, address, phone);
+				sdao.create(student);
+				break;
+			case 2: 	//display all
+				List<Student> students = sdao.read();
+				System.out.printf("%3s\t%20s\t%20s\t%15s\n","Id","Name","Address","Phone");
+				for(Student s:students)
+				{
+					System.out.printf("%3s\t%20s\t%20s\t%15s\n",s.getId(),s.getName(),s.getAddress(),s.getPhone());
+				}
+				break;
+			case 3:		//find by id
+				System.out.println("Id:");
+				id=sc.nextInt();
+				student=sdao.read(id);
+				if(student!=null)
+				{
+					System.out.printf("%3s\t%20s\t%20s\t%15s\n","Id","Name","Address","Phone");
+					System.out.printf("%3s\t%20s\t%20s\t%15s\n",student.getId(),student.getName(),student.getAddress(),student.getPhone());
+				}else
+				{
+					System.out.println("No student found for the given id");
+				}
+				break;
+			case 4:		//update
+				System.out.println("Id:");
+				id=sc.nextInt();
+				System.out.println("Name:");
+				name=sc.nextLine();
+				if(name.equals(""))
+					name=sc.nextLine();
+				System.out.println("Address:");
+				address=sc.nextLine();
+				System.out.println("Phone:");
+				phone=sc.nextLine();
+				student=new Student(id, name, address, phone);
+				sdao.update(student);
+				break;
+			case 5:		//delete
+				System.out.println("Id:");
+				id=sc.nextInt();
+				sdao.delete(id);
+				break;
+			default:
+				System.exit(0);
+			}
+		}while(true);
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+	public void createTable() throws SQLException
+	{
+		Connection con = getMyConnection();
+		Statement st = con.createStatement();
+		st.execute("CREATE TABLE STUDENT(ID INT PRIMARY KEY,NAME VARCHAR2(20),ADDRESS VARCHAR2(50),PHONE VARCHAR2(13));");
+		con.close();
+	}
+
+
+-----------------------------------
+Activity:
+	Create DAO pattern for Employee
+
+Employee
+	id
+	firstName
+	lastName
+	salary
+
+EmployeeDao		interface
+EmployeDaoImpl		class			CRUD
+Main
+	add, delete, update, select all, select by id
