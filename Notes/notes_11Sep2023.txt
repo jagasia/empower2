@@ -1,0 +1,198 @@
+Day 11:
+JDBC concepts:
+	Driver		db vendors provide the java implementation driver
+			ex:	ojdbc8.jar,		h2-2.2.222.jar,	etc
+			In new versions of java from 8, driver is loaded automatically 			based on the URL	
+
+	URL		is used to connect to a particular database in the same or different 			system in network
+			ex:	jdbc:h2:file:./data/sampledata
+				jdbc:mysql://localhost:3306/dbname
+				jdbc:oracle:thin:@localhost:1521:XE
+
+	username:		db username	like sys in oracle, 	root in mysql, sa in h2
+	password:
+
+	Statement
+			Statement		for simple/ complete sql statements	
+					con.createStatement()
+			PreparedStatement	for sql statements with parameters
+					con.prepareStatement()
+			CallableStatement	for calling stored procedures and functions
+					con.prepareCall()
+					(pl/sql)
+
+	execute methods
+			st.execute()	can be used for sql statement
+					is a void method	
+			st.executeQuery()	can be used for SELECT statement
+					returns ResulSet
+			st.executeUpdate()	can be used for DML statement
+					returns int		no of rows affected
+------------------------------------------------------------------------------------------------------------------------------------
+JDBC DAO layer CRUD 
+--------------------------------
+	is based on a design pattern		DAO pattern
+	Data Access Objects
+
+Suppose, there is an E-R diagram
+	Employee is found as an entity.
+
+Employee
+	id
+	firstName
+	lastName
+	salary
+
+if i inform this much detail, then you will go ahead and complete the 
+	Employee.java	
+	EmployeeDao.java
+	EmployeeDaoImpl.java
+
+DAO
+	contains the code that is necessary to access the database	(EMPLOYEE table)
+
+Employee class in java is mapped to EMPLOYEE table in database.
+class name	=>	table name
+properties		=>	columns
+
+what is property?
+	a class member that has getter/setter/both is a property
+
+Demo:
+	Create a DAO pattern for STUDENT table.
+	STUDENT
+		ID
+		NAME
+		ADDRESS
+		PHONE
+
+You should create
+	Student.java		entity class
+	StudentDao.java		interface		(we can extract this from impl)
+	StudentDaoImpl.java		implementation of that interface
+
+Steps:
+1) create a java project	11-sep-student-dao
+2) add h2 driver jar file to the project folder
+	copy the h2 jar from softwares folder to our project folder	\bin folder
+3) set this jar to our classpath
+	right project -> properties -> java build path -> libraries tab -> add external jar
+4) lets connect to h2 db console
+	double click the jar file
+	copy the JDBC URL	for our coding:	jdbc:h2:file:./data/sampledata
+	click connect button
+5) CREATE TABLE STUDENT
+(
+ID INT PRIMARY KEY,
+NAME VARCHAR2(20),
+ADDRESS VARCHAR2(50),
+PHONE VARCHAR2(13)
+);
+6) Create Student class
+
+public class Student {
+	private Integer id;
+	private String name;
+	private String address;
+	private String phone;
+	
+	public Student() {}
+
+	public Student(Integer id, String name, String address, String phone) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.address = address;
+		this.phone = phone;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	@Override
+	public String toString() {
+		return "Student [id=" + id + ", name=" + name + ", address=" + address + ", phone=" + phone + "]";
+	}
+	
+}
+
+7) StudentDaoImpl
+	this a CRUD implementations
+	Create, Read, Update, Delete
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class StudentDaoImpl {
+	public void create(Student student) throws SQLException {
+		//add a new row to the STUDENT table
+		Connection con = getMyConnection();
+		PreparedStatement st = con.prepareStatement("INSERT INTO STUDENT VALUES(?,?,?,?)");
+		st.setInt(1, student.getId());
+		st.setString(2, student.getName());
+		st.setString(3, student.getAddress());
+		st.setString(4, student.getPhone());
+		int no=st.executeUpdate();
+		System.out.println(no+" row inserted");
+		con.close();
+	}
+	
+	public void read() throws SQLException {
+		Connection con = getMyConnection();
+		con.close();
+	}
+	public void read(Integer id) throws SQLException {
+		Connection con = getMyConnection();
+		con.close();
+	}
+	public void update() throws SQLException {
+		Connection con = getMyConnection();
+		con.close();
+	}
+	public void delete() throws SQLException {
+		Connection con = getMyConnection();
+		con.close();
+	}
+
+	private Connection getMyConnection() throws SQLException {
+		Connection con = DriverManager.getConnection("jdbc:h2:file:./data/sampledata","sa","");
+		return con;
+	}
+}
+
+
+8) Task is for you.
+	You need to complete the remaining methods of CRUD.
+	read methods, I will do.
+	UPDATE, DELETE, you will do now.
