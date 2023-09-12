@@ -1,0 +1,221 @@
+Day 12:
+What is Testing, 
+Need of Testing, 
+Types of Testings, 
+What is J-Unit, 
+Need of J-Unit, 
+Programming with J-Unit
+
+Why we need testing?
+	quality of code
+	space complexity, time complexity
+	to find errors
+	to check whether all test cases are passed
+	to check if it works in all environment
+	whether the requirements are fulfilled or not.
+
+	to find bugs
+	
+SDLC
+	in SDLC, what are the phases you know:
+		Requirement gathering
+		Analysis
+		Design
+		Implementation
+		Testing
+		Deployment
+		Maintenance
+
+	RUP defines SDLC as
+		Inception
+		Ellaboration	
+		Construction
+		Transition
+
+
+Types of testing:
+Activity
+
+We learn, Unit Testing
+what is unit testing?
+	a method is an unit of the program.
+	method contains the logic, which needs to be tested.
+
+	is a functional testing.
+	is black box testing
+
+we will use test cases to test the code.
+
+Unit testing can be done for java programs using JUnit
+
+Demo:
+1) Create a java project		12-sep-junit-1
+2) AUT		Application Under Test
+	class Mathematics
+
+public class Mathematics {
+	private int no1;
+	private int no2;
+	private float result;
+	
+	public Mathematics() {}
+	
+	
+	public int getNo1() {
+		return no1;
+	}
+
+
+	public void setNo1(int no1) {
+		this.no1 = no1;
+	}
+
+
+	public int getNo2() {
+		return no2;
+	}
+
+
+	public void setNo2(int no2) {
+		this.no2 = no2;
+	}
+
+
+	public float getResult() {
+		return result;
+	}
+
+
+	public void setResult(float result) {
+		this.result = result;
+	}
+
+
+	public Mathematics(int no1, int no2, float result) {
+		super();
+		this.no1 = no1;
+		this.no2 = no2;
+		this.result = result;
+	}
+
+
+	public void sum()
+	{
+		result=no1+no2;
+	}
+	
+	public void difference()
+	{
+		result=Math.abs(no1-no2);
+	}
+	
+	public void product()
+	{
+		result=no1*no2;
+	}
+	public void divide()
+	{
+		//if no1=5	and no2=2	what is result based on below?
+		result=no1/no2;
+	}
+}
+
+3) Right click project -> New -> JUnit Test case -> MathematicsTest
+
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+public class MathematicsTest {
+	static Mathematics maths;
+	
+	@BeforeClass		//this method is executed once for the class. Before testing any method
+	public static void init()
+	{
+		maths=new Mathematics();
+	}
+
+	@Before
+	public void setValues()
+	{
+		maths.setNo1(5);
+		maths.setNo2(2);
+	}
+	
+	@Test
+	public void testSum() {
+		float expected=7;
+		maths.sum();
+		float actual=maths.getResult();
+		assertEquals(expected, actual,1e-15);	
+	}
+
+	@Test
+	public void testDifference() {
+		float expected=3;
+		maths.difference();
+		float actual=maths.getResult();
+		assertEquals(expected, actual,1e-15);
+	}
+
+	@Test
+	public void testProduct() {
+		float expected=10;
+		maths.product();
+		float actual=maths.getResult();
+		assertEquals(expected, actual,1e-15);
+	}
+
+	@Test
+	public void testDivide() {
+		float expected=2.5f;
+		maths.divide();
+		float actual=maths.getResult();
+		assertEquals(expected, actual,1e-15);
+	}
+	
+	
+
+}
+
+
+-------------
+Right click project / right click test code and 
+Run As -> Junit Test
+
+You will be able to see the results.
+
+-------------------------------------------------
+How to run junit test using main method?
+
+import java.util.List;
+
+import org.junit.runner.JUnitCore;
+import org.junit.runner.Result;
+import org.junit.runner.notification.Failure;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Result result = JUnitCore.runClasses(MathematicsTest.class);
+		List<Failure> failures = result.getFailures();
+		if(result.getFailureCount()==0)
+		{
+			System.out.println("All test(s) passed");
+		}
+		for(Failure failure:failures)
+		{
+			System.out.println(failure);
+		}
+	}
+
+}
+
+-----------------------------------------
+Activity:
+	Identify the types of testing
+
+	Create one junit test.
+

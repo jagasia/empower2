@@ -597,3 +597,6 @@ ear	enterprise archive
 3) complete the coding
 4) run
 
+-----------------------
+Activity:
+Kindly create a maven project and complete the Employee DAO pattern.
