@@ -219,3 +219,106 @@ Activity:
 
 	Create one junit test.
 
+---------------------------
+We will create lot of test classes.
+Each class have lot of test cases
+
+Test Suite
+	contains test cases
+
+How to create test suite in junit?
+
+
+To ignore a test case, use 	@Ignore
+
+
+-------------
+package com.empower.hrms;
+
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+
+@RunWith(Suite.class)
+@Suite.SuiteClasses({MathematicsTest.class, MathematicsTest2.class})
+public class MySuite {
+	
+}
+
+----------------------------------
+
+Categories Suite
+-------------------
+package com.empower.hrms;
+
+import org.junit.experimental.categories.Categories;
+import org.junit.experimental.categories.Category;
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+
+@RunWith(Categories.class)
+@Suite.SuiteClasses({MathematicsTest.class, MathematicsTest2.class})
+@Categories.IncludeCategory(User.class)
+public class MySuite {
+	
+}
+
+------------------
+package com.empower.hrms;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.Ignore;
+//import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+
+
+public class MathematicsTest {
+	Mathematics aut=new Mathematics();
+	
+
+	@BeforeEach
+	void setUp() throws Exception {
+		aut=new Mathematics();
+	}
+
+	@AfterEach
+	void tearDown() throws Exception {
+	}
+
+	@Test
+	@Category(Admin.class)
+	public void testAdd() {
+		aut.setNo1(2);
+		aut.setNo2(3);
+		aut.sum();
+		
+		assertEquals(5, aut.getResult());
+	}
+
+	@Test
+//	@Ignore
+	@Category(User.class)
+	public void testSubtract() {
+		aut.setNo1(2);
+		aut.setNo2(3);
+		aut.difference();
+		assertEquals(1, aut.getResult());
+	}
+
+	@Test
+	@Category({Admin.class,User.class})
+	public void testProduct() {
+		aut.setNo1(2);
+		aut.setNo2(3);
+		aut.product();
+		assertEquals(6, aut.getResult());
+	}
+	
+
+}
+
+----------------------
+ 
