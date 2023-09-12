@@ -1,4 +1,10 @@
 Day 12:
+
+Test Driven Development		(TDD)
+	write the code to fail
+	modify the code to pass
+	refactor the code
+
 What is Testing, 
 Need of Testing, 
 Types of Testings, 
@@ -321,4 +327,78 @@ public class MathematicsTest {
 }
 
 ----------------------
- 
+ Parameterized Test suite
+Activity:
+	Understand Parameterized Test
+
+What is the need for Parameterized testing?
+	To conduct test on same test method, but with different parameters.
+
+
+
+@RunWith(Parameterized.class)
+
+------------------------------
+package com.empower.hrms;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.Arrays;
+import java.util.Collection;
+
+import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+
+@RunWith(Parameterized.class)
+public class MathematicsTest {
+	Mathematics aut=new Mathematics();
+	int no1, no2;
+	float expectedResult;
+	
+	public MathematicsTest(int no1, int no2, float expectedResult) {
+		this.no1=no1;
+		this.no2=no2;
+		this.expectedResult=expectedResult;
+	}
+
+	@Parameterized.Parameters
+	public static Collection anything()
+	{
+		return Arrays.asList(new Object[][] {
+			 { 2, 3, 5 },
+	         { 6, 3, 9 },
+	         { 19, 1, 20 },
+	         { 22, 1, 23 },
+	         { 23, 1, 24 },
+	         {1,2,3},
+	         { 2, 11, 13 },
+	         { 21, 1, 22 }
+		});
+	}
+	
+	
+	@Test
+	public void testSum()
+	{
+		aut.setNo1(no1);
+		aut.setNo2(no2);
+		aut.sum();
+		float result = aut.getResult();
+		assertEquals(expectedResult, result);
+	}
+	@BeforeEach
+	void setUp() throws Exception {
+		aut=new Mathematics();
+	}
+
+	@AfterEach
+	void tearDown() throws Exception {
+	}
+	
+	
+	
+
+}
