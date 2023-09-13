@@ -1,0 +1,171 @@
+Day 13:
+Web Services - Spring Boot Rest
+--------------------------------------------
+Spring framework
+--------------------------
+Java editions:
+	Java Standard Edition		Java SE
+	Java Enterprise Edition		Java EE
+	Java Mobile Edition			Java ME		
+In Java EE
+	Servlet
+	JSP
+	EJB
+EJB	
+	Enterprise Java Bean
+	What is java bean?
+		any reusable component created in java language, is a java bean.
+	What is enterprise java bean?
+		java bean + services
+
+	services???
+		life cycle management
+		scalability
+		security
+		transaction management
+		persistance
+	
+	These services are required commonly in most of the projects. We can configure them.
+	Configuration system is XML or Annotation
+	If these common required services are taken care by somebody, then i will focus on business services only.
+	The common services are taken care by "Container".
+
+EJB Container
+	is a special JVM
+	was considered as difficult as winter season.
+	Spring framework was introduced to simplify EJB.
+----------------------------------------------
+Spring framework:
+	Name of container is IOC Container
+	IOC = Inversion of Control
+
+Spring modules:
+	Spring Core
+	Spring AOP
+	Spring MVC
+	Spring REST
+	Spring Security
+
+
+Spring Core:
+-----------------
+	you are not going to create object of java bean.		new 
+	you get the bean instances from IOC container.
+	
+How spring will handle scalability using life cycle management?
+
+Lets create a bean and getBean instance from spring IOC container.
+	Mathematics
+		no1
+		no2
+		result
+
+
+Demo:
+1) Create a maven project
+	group id:	com.empower.spring
+	artifact id:	13-sep-spring-1
+2) Check App.java
+	Run the project
+3) pom.xml
+	add the following dependencies:
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>4.3.30.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>4.3.30.RELEASE</version>
+		</dependency>
+
+4) create a Bean
+package com.empower.spring;
+
+public class Mathematics {
+	private Integer no1;
+	private Integer no2;
+	private Integer result;
+	
+	public Mathematics() {}
+
+	public Mathematics(Integer no1, Integer no2, Integer result) {
+		super();
+		this.no1 = no1;
+		this.no2 = no2;
+		this.result = result;
+	}
+
+	public Integer getNo1() {
+		return no1;
+	}
+
+	public void setNo1(Integer no1) {
+		this.no1 = no1;
+	}
+
+	public Integer getNo2() {
+		return no2;
+	}
+
+	public void setNo2(Integer no2) {
+		this.no2 = no2;
+	}
+
+	public Integer getResult() {
+		return result;
+	}
+
+	public void setResult(Integer result) {
+		this.result = result;
+	}
+
+	public void updateSum()
+	{
+		this.result=this.no1+this.no2;
+	}
+}
+
+5) configure the Mathematics class as a Bean in bean.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="maths" class="com.empower.spring.Mathematics">
+		<property name="no1" value="2" />
+		<property name="no2" value="3" />
+	</bean>
+
+</beans>
+
+6) go to App.java
+	get the bean from IOC container
+	call the methods and check
+
+package com.empower.spring;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+    	ApplicationContext ctx=new ClassPathXmlApplicationContext("bean.xml");
+    	Mathematics m= (Mathematics) ctx.getBean("maths");
+//    	System.out.println(m.getNo1());
+//    	System.out.println(m.getNo2());
+    	m.updateSum();
+    	System.out.println(m.getResult());
+        System.out.println( "Hello World!" );
+    }
+}
+
+-----------------------------------
