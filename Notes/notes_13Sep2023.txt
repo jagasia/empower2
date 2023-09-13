@@ -169,3 +169,5 @@ public class App
 }
 
 -----------------------------------
+Activity:
+Create a java bean and configure in spring configuration xml file and get bean in app main.
