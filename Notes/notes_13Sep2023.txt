@@ -324,4 +324,8 @@ public class Book {
 		
 }
 
+---------------------
+Activity:
+use p schema
+use <list> and <set> for injecting dependencies as list or set.
 
