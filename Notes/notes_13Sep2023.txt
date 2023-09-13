@@ -171,3 +171,157 @@ public class App
 -----------------------------------
 Activity:
 Create a java bean and configure in spring configuration xml file and get bean in app main.
+------------------------
+A spring IOC container provides a bean
+The bean is by default, a singleton bean.
+
+Singleton
+------------
+	only one instance
+ex:
+	Runtime
+	
+
+Singleton class:
+
+public class Company
+{
+	private static Company c;
+	private Company()
+	{
+	}
+	public static Company getInstance()
+	{
+		if(c==null)
+			c=new Company();
+		return c;
+	}
+}
+
+default scope of a bean is "Singleton". How to change it?
+we can change it to "Prototype".
+
+<bean id="maths" class="com.empower.spring.Mathematics" scope="prototype">
+		<property name="no1" value="2" />
+		<property name="no2" value="3" />
+</bean>
+
+Dependency Injection
+-------------------------------
+A has B
+	B is a dependency of A
+	How can we inject this dependency to A?
+	There are 2 options:
+		i) Constructor based dependency injection
+		ii) Setter based dependency injection
+
+
+Book book=new Book(isbn,title, author);	// Constructor based injection
+
+Book book2=new Book();
+book2.setAuthor(author);		// Setter based injection
+
+	ApplicationContext
+		i) ClassPathXmlApplicationContext	
+		ii) AnnotationConfigApplicationContext
+		iii) FileSystemXMLApplicationContext
+
+
+ClassPathXmlApplicationContext
+	when we use xml configuration file
+	
+AnnotationConfigApplicationContext
+	when we use annotations instead of xml configuration file
+
+FileSystemXMLApplicationContext
+	check what is this.
+
+p schema
+	parameter schema
+
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:p = "http://www.springframework.org/schema/p"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="maths" class="com.empower.spring.Mathematics" scope="prototype" p:no1="25" p:no2="10">
+<!-- 		<property name="no1" value="2" />
+		<property name="no2" value="3" />
+ -->	
+	</bean>
+
+-----------------------------------
+Now, Book has List<Author>
+
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:p = "http://www.springframework.org/schema/p"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+
+	<bean id="a1" class="com.empower.spring.Author">
+		<property name="id" value="111" />
+		<property name="name" value="Chenna Keshava Reddy" />
+	</bean>
+	
+	<bean id="a2" class="com.empower.spring.Author">
+		<property name="id" value="112" />
+		<property name="name" value="Sushwanth" />
+	</bean>
+
+	<bean id="book" class="com.empower.spring.Book">
+		<property name="isbn" value="ABCD123" />
+		<property name="title" value="History Book" />
+		<property name="authors">
+			<list>
+				<ref bean="a1"/>
+				<ref bean="a2" />
+			</list>
+		</property>
+	</bean>
+</beans>
+
+
+package com.empower.spring;
+
+import java.util.List;
+
+public class Book {
+	private String isbn;
+	private String title;
+	private List<Author> authors;
+	
+	public Book() {}
+
+	public String getIsbn() {
+		return isbn;
+	}
+
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public List<Author> getAuthors() {
+		return authors;
+	}
+
+	public void setAuthors(List<Author> authors) {
+		this.authors = authors;
+	}
+	
+	
+		
+}
+
+
