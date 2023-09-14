@@ -1,0 +1,61 @@
+Day 14:
+
+Auto-wiring, JDBC, ..), Java Servlets
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>5.2.7.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>5.2.7.RELEASE</version>
+		</dependency>
+
+Auto-wiring
+-----------------
+Auto wiring is the ability of the bean to automatically find and inject its dependencies from the available beans.
+
+
+Autowire By Type
+Autowire By Name
+----------------------------
+Whenever xml is used in java, there will be an option to use Annotations instead of xml.
+
+How to mark a class as a Bean???????	using annotation???
+	i) @Component
+	ii) @Bean
+
+Lets make Author class as a Bean:
+	
+---------------------
+Activity:
+Address
+	dno
+	street
+	city
+Customer
+	id
+	name
+	address
+	phone
+
+Define both classes as beans and the customer should autowire the address.
+use default constructors to set default values
+
+pom.xml
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>5.2.7.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>5.2.7.RELEASE</version>
+		</dependency>
+
+
+	

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:p = "http://www.springframework.org/schema/p"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="a2" class="com.empower.spring.Author">
+		<property name="id" value="1" />
+		<property name="name" value="Adarsh" />
+	</bean>
+	
+	<bean id="a1" class="com.empower.spring.Author">
+		<property name="id" value="2" />
+		<property name="name" value="Shanawaz" />
+	</bean>
+	
+	<bean name="book" class="com.empower.spring.Book" autowire="byName">
+		<property name="isbn" value="9780896933170" />
+		<property name="title" value="You can win" />
+	</bean>
+
+</beans>
