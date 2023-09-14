@@ -56,6 +56,200 @@ pom.xml
 			<artifactId>spring-context-support</artifactId>
 			<version>5.2.7.RELEASE</version>
 		</dependency>
+------------------------------------------------------------------------------------------------------------------
+We need to create Configuration class.	Do you remember, we created configuration file (xml)
+
+@Configuration
+public class MyConfiguration
+{}
 
 
+@Bean
+	is also used to define beans
+	But, this annotation cannot be used above a class definition.
+
+	----------------------------
+
+package com.empower.spring;
+
+import org.springframework.stereotype.Component;
+
+@Component("add3")
+public class Address {
+	private String dno;
+	private String street;
+	private String city;
+	private String pincode;
+	public Address(String dno, String street, String city, String pincode) {
+		super();
+		this.dno = dno;
+		this.street = street;
+		this.city = city;
+		this.pincode = pincode;
+	}
 	
+	public Address() {
+		dno="5";
+		street="Embassy tech village";
+		city="Bengaluru";
+	}
+
+	public String getDno() {
+		return dno;
+	}
+
+	public void setDno(String dno) {
+		this.dno = dno;
+	}
+
+	public String getStreet() {
+		return street;
+	}
+
+	public void setStreet(String street) {
+		this.street = street;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getPincode() {
+		return pincode;
+	}
+
+	public void setPincode(String pincode) {
+		this.pincode = pincode;
+	}
+
+	@Override
+	public String toString() {
+		return "Address [dno=" + dno + ", street=" + street + ", city=" + city + ", pincode=" + pincode + "]";
+	}
+	
+}
+
+
+-----------------------
+package com.empower.spring;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
+@Component
+public class Customer {
+	private Integer id;
+	private String name;
+	@Autowired
+	@Qualifier("add1")
+	private Address address;
+	private String phone;
+	public Customer(Integer id, String name, Address address, String phone) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.address = address;
+		this.phone = phone;
+	}
+	
+	public Customer() {
+		id=1;
+		name="Chenna";
+		phone="9898989898";
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	@Override
+	public String toString() {
+		return "Customer [id=" + id + ", name=" + name + ", address=" + address + ", phone=" + phone + "]";
+	}
+	
+}
+
+------------------------------------------
+package com.empower.spring;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+@ComponentScan("com.empower.spring")
+public class MyConfiguration {
+
+	@Bean
+	public Address add1()
+	{
+		return new Address("A123", "Bhoganahalli road", "Bengaluru", "560108");
+	}
+	
+	@Bean
+	public Address add2()
+	{
+		return new Address("B2", "Outer ring road", "Mysuru", "570109");
+	}
+	
+	
+}
+
+--------------------------------------------
+package com.empower.spring;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+    	AnnotationConfigApplicationContext ctx=new AnnotationConfigApplicationContext(MyConfiguration.class);
+    	Customer customer = ctx.getBean(Customer.class);
+    	System.out.println(customer);
+    }
+}
+
+-------------------------------------------
+Activity:
+Understand the difference between @Component and @Bean
+Define the beans and autowire by name
