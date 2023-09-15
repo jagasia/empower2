@@ -225,3 +225,24 @@ public class LoginServlet extends HttpServlet {
 }
 
 
+---------------------------
+
+doGet:
+	http://localhost:8081/15-sep-servlet-1/LoginServlet?username=jag&password=india
+doPost:
+	http://localhost:8081/15-sep-servlet-1/LoginServlet
+
+
+
+
+http://localhost:8081/15-sep-servlet-1/MyServlet?no1=2&no2=3
+URL Re-writing
+
+
+HTTP Method:
+	GET
+	POST
+	PUT
+	DELETE
+	PATCH
+

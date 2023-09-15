@@ -28,24 +28,24 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String username=request.getParameter("username");
-		String password=request.getParameter("password");
-		PrintWriter out = response.getWriter();
-		if(username.equals(password))
-		{
-			out.print("Login Failed");
-		}else
-		{
-			out.println("Login Successful");
-		}
+		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		String username=request.getParameter("username");
+		String password=request.getParameter("password");
+		response.setContentType("text/html");	//MIME type 
+		PrintWriter out = response.getWriter();
+		if(username.equals(password))
+		{
+			out.print("<font color=red>Login Failed</font>");
+		}else
+		{
+			out.println("<p style=color:green>Login Successful</p>");
+		}
 	}
 
 }
