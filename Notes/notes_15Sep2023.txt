@@ -1,0 +1,69 @@
+Day 15:
+Java Servlets
+-----------------
+Java code can be 
+	Scriplet
+	Servlet
+	MIDlet
+	
+Server side programming in java is called as Servlet
+JSP and Servlet
+	both are web components created using Java Enterprise Edition
+
+What is a servlet?
+	it is a class derived from HttpServlet
+	HttpServlet is derived from GenericServlet
+
+	if you write java program and embed html code inside it, it is Servlet
+	if you write html code and embed java code inside it, it is JSP
+
+html code is static
+	so in order to respond to user actions, we need dynamic aspect, ie., scripting.
+
+scripting is 2 types:
+	client side
+	server side
+
+client side:
+	javascript, vbscript etc are scripts that are executed at client's browser.
+
+server side:
+	ASP, JSP, PHP, Servlet
+	are server side scripts that runs in server and the output is sent to browser.
+
+	For accessing server side resources like database, we need server side scripting.
+
+Hello world program in servlet:
+1) File -> New -> Project
+	Dynamic Web Project			Eclipse for Java Enterprise / EE developers
+
+	Target runtime:	<none>
+		we can add target runtime
+		choose Apache Tomcat 9.0.37	folder that contains bin/lib
+	
+2) create a servlet
+	right click projecgt -> New -> Servlet
+	package name:		view
+	class name:		MyServlet
+
+3) Run as "Run on server"		
+4) Error:		Port 8080 required by Tomcat v9.0 Server at localhost is already in use. The server may already be running in another process, or a system process may be using the port. To start this server you will need to stop the other process or change the port number(s).
+
+we can change the port in which our server should run.
+	in "servers" tab,	(window -> Show view -> servers)
+	double click the server.
+		change the port number
+
+Run
+
+change the default browser.
+-----------------------
+Servlet can get input using "request" object
+Servlet can give output using "response" object
+
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		PrintWriter out = response.getWriter();
+		out.print("Hello this is empower best batch");
+	}
+
