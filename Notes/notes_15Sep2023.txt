@@ -321,3 +321,29 @@ Directives:
 	taglib
 	include
 
+------------------------------------------------
+CRUD 
+	we have done  CRUD in CUI. How it will be if we do it in GUI?
+	JSP & Servlet.
+	Tell me one entity name	
+		PRODUCT
+			ID
+			NAME
+			PRICE
+
+1) Create a dynamic web project		product-project
+2) Add jar files to the dynamic web project
+	copy jar files to lib folder		WebContent/WEB-INF/lib
+3) Create entity class	Product.java
+4) Create DAO	ProductDaoImpl.java
+5) product.jsp
+6) ProductServlet
+	
+
+
+
+for writing for loop in jsp,
+	we can use JSTL core
+
+JSTL	JSP Standard Tag Library
+-----------------------------------------
