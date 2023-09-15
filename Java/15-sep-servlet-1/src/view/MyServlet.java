@@ -28,8 +28,13 @@ public class MyServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String str1=request.getParameter("no1");
+		String str2=request.getParameter("no2");
+		
 		PrintWriter out = response.getWriter();
-		out.print("Hello this is empower best batch");
+		int no1=Integer.parseInt(str1);
+		int no2=Integer.parseInt(str2);
+		out.print("Sum of "+no1+" and "+no2+"="+(no1+no2));
 	}
 
 	/**
