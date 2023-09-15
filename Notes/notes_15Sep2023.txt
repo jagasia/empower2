@@ -103,7 +103,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class MyServlet
  */
-@WebServlet("/MyServlet")
+@WebServlet("/MyServlet")		//web module 3.0 onwards	so web.xml was not 				//required
 public class MyServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -257,3 +257,67 @@ we have to use database validation
 	group id:	com.empower.demo
 	artifact id:	user-module
 2) run the project
+---------------------------------------
+Late comers after break:
+	Ramyashree
+-------------------------------------------------
+Spring framework
+	Servlet & JSP 	(dynamic web project) is temporary
+	after servlet & jsp will come back to Spring again. (maven project)
+	spring boot	(we will download project from spring initializr)
+
+	
+-------------------
+Lets create a dynamic web project of module version less than 3
+	web.xml
+		deployment descriptor
+
+In new web module projects, ie., version 3.0 or 4.0 also, we can add a web.xml in 2 ways:
+	1) while creating project, next -> next-> tick the option to generate dep des xml file
+	2) after creating project, right click project -> Java EE tools -> Generate dep des stub
+
+web.xml
+	<servlet>
+		<servlet-name>MyServlet</servlet-name>
+		    <servlet-class>view.MyServlet</servlet-class>		
+	</servlet>
+  <servlet-mapping>
+    <servlet-name>MyServlet</servlet-name>
+    <url-pattern>/MyServlet</url-pattern>
+  </servlet-mapping>
+    <servlet-mapping>
+    <servlet-name>MyServlet</servlet-name>
+    <url-pattern>/ms</url-pattern>
+  </servlet-mapping>
+
+----------------------------------
+JSP
+	Java Server Pages
+	is translated to a servlet at runtime
+
+	Scriplets
+	Expressions
+	Declarations
+	Expression Language
+	Directives
+	Action tags
+
+Scriplet:
+	<%		%>
+
+Expression:
+	<%=		%>
+
+	is translated into 
+		out.print		in servlet
+
+Declarations:
+	<%!		%>
+
+Directives:
+	<%@		%>
+
+	page
+	taglib
+	include
+
