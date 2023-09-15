@@ -246,3 +246,14 @@ HTTP Method:
 	DELETE
 	PATCH
 
+----------------------------------------------------
+You have create login validation with dummy validation	equals 
+we have to use database validation
+	USER_MASTER table
+		USERNAME	PASSWORD	FIRST_NAME	
+
+1) Convert this dynamic web project into a maven project
+	right click project -> Configure -> Conver to Maven Project
+	group id:	com.empower.demo
+	artifact id:	user-module
+2) run the project
