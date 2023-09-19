@@ -8,6 +8,6 @@
 </head>
 <body>
 Hello welcome to my home page....!<br/>
-<a href="showProductPage">Products Page</a>
+<a href="product/show">Products Page</a>
 </body>
 </html>

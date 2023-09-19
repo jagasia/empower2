@@ -198,3 +198,172 @@ change the java version to 1.8 	(right click project - > properties)
 	3) project facets
 
 Add, update, delete
+-------------------------------------
+@RequestParam
+@PathVariable
+@ResponseBody
+
+ModelMap
+ModelAndView
+HttpSession
+ServletContext
+	These above 4 can be used at the end of the arguments in controller methods
+
+There can be several controller classes in a project.
+
+@Controller
+@RequestMapping("product")
+public class ProductController
+{
+	@GetMapping("/add")
+	public void add()
+	{}
+}
+@Controller
+@RequestMapping("customer")
+public class CustomerController
+{
+	@GetMapping("/add")
+	public void add()
+	{}
+}
+
+
+
+------------------------
+@RequestParam
+@PathVariable
+@ResponseBody
+
+
+@RequestParam
+	request.getParameter
+	@GetMapping("/select")
+	public String select(@RequestParam("id")Integer id, ModelMap model)
+	{
+
+http://localhost:8080/first-mvc/product/select?id=2
+	/dml?id=20
+		@RequestParam("id")Integer id
+
+@PathVariable
+	/dml/{id}
+		@PathVariable("id")Integer id
+
+http://localhost:8080/first-mvc/product/select1/2
+
+	@GetMapping("/select1/{id}")
+	public String select1(@PathVariable("id")Integer id, ModelMap model)
+	{
+
+
+
+@ResponseBody
+	if you use this annotation on a method, then that method is not returning an URL
+	that method returns the response that will be printed in the body of browser.
+
+@GetMapping
+public String home()
+{
+	return "index";
+}
+
+the above method returns the url
+------------------------------------------------------------
+@GetMapping
+@ResponseBody
+public String home()
+{
+	return "index";
+}
+
+the above method will print the String "index" on the browser.
+
+------------------------
+ModelMap
+ModelAndView
+HttpSession
+ServletContext
+	These above 4 can be used at the end of the arguments in controller methods
+
+
+ModelMap
+ModelAndView
+	both are having request and page scope. Only retains data for that redirection.
+
+HttpSession		(session)
+	retains the data till we logout
+
+ServletContext		(application)
+	retains data across all sessions
+
+
+------------------------------
+Activity:
+	Signup page should allow users to signup.
+	entity:	CUSTOMER		
+			ID, PWD, NAME, EMAIL, PHONE
+
+	Login page should check if your credentials 	(ID, PWD) are valid
+	valid means, redirect to products page.
+	invalid means, redirect to login page again.
+
+1) CustomerController
+2) create 2 jsp files:
+	signup.jsp
+	login.jsp
+
+
+CUSTOMER
+	username
+	password
+	name
+	email
+	phone
+
+1) create a dynamic web project "customer-module". Remember to add web.xml
+2) convert to maven project
+	right click project -> configure -> convert to maven project
+3) in pom.xml
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>4.3.9.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>4.3.9.RELEASE</version>
+		</dependency>
+		<!-- Servlet -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>2.2.222</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>5.2.7.RELEASE</version>
+		</dependency>
+
+4) in web.xml

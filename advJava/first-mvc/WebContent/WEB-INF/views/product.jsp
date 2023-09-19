@@ -55,7 +55,7 @@
   						<td>${p.id }</td>
   						<td>${p.name }</td>
   						<td>${p.price }</td>
-  						<td><a href="select?id=${p.id }" class="btn btn-info">Select</a></td>
+  						<td><a href="select1/${p.id }" class="btn btn-info">Select</a></td>
   					</tr>
   				</c:forEach>		
   			</tbody>
