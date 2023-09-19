@@ -30,5 +30,21 @@
         <property name="suffix">
             <value>.jsp</value>
         </property>
-</bean>
+	</bean>
+	
+	<bean id="dmds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="org.h2.Driver" />
+		<property name="url" value="jdbc:h2:file:./data/sampledata" />
+		<property name="username" value="sa" />
+		<property name="password" value="" />
+	</bean>
+	
+	<bean id="jt" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dmds" />
+	</bean>
+	
+	<bean id="pdao" class="com.empower.ecom.model.ProductDaoImpl">
+		<property name="jt" ref="jt" />
+	</bean>
+	
 </beans>

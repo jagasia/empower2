@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-Hello welcome to my home page....!
+Hello welcome to my home page....!<br/>
+<a href="showProductPage">Products Page</a>
 </body>
 </html>
