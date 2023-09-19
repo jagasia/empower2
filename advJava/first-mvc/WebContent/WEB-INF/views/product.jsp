@@ -24,14 +24,14 @@
     </div>
     <div class="col-sm-4">
     	<h3 class="text-center">Product Page</h3>
-    	<form method="post" action="product">
+    	<form method="post" action="dml">
     		Id:<input type="number" name="id" class="form-control" value="${product.id }" />
     		Name:<input type="text" name="name" class="form-control" value="${product.name }" />
     		Price:<input type="number" name="price" class="form-control" value="${product.price }" />
     		<br/>
-    		<input type="submit" value="Add" name="btn" class="btn btn-primary" />&nbsp;
-    		<input type="submit" value="Update" name="btn" class="btn btn-warning" />&nbsp;
-    		<input type="submit" value="Delete" name="btn" class="btn btn-danger" />
+    		<input type="submit" value="Add" name="add" class="btn btn-primary" />&nbsp;
+    		<input type="submit" value="Update" name="update" class="btn btn-warning" />&nbsp;
+    		<input type="submit" value="Delete" name="delete" class="btn btn-danger" />
     	</form>
     </div>
     <div class="col-sm-4">

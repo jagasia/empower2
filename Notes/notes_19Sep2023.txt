@@ -185,3 +185,16 @@ Product Project
 
 
 ctrl+shift+t
+
+https://github.com/jagasia/empower-product-mvc
+
+Activity:
+Create customer module to the existing project.
+
+When you import my project,
+change the java version to 1.8 	(right click project - > properties)
+	1) java build path
+	2) java compiler
+	3) project facets
+
+Add, update, delete

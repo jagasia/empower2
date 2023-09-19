@@ -6,7 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.empower.ecom.model.Product;
 import com.empower.ecom.model.ProductDaoImpl;
@@ -25,8 +28,7 @@ public class MyController {
 	@GetMapping("/showProductPage")
 	public String showProductsPage(ModelMap model)
 	{
-		List<Product> products = pdao.read();
-		model.addAttribute("products", products);
+		loadProducts(model);
 		return "product";
 	}
 	
@@ -35,9 +37,39 @@ public class MyController {
 	{
 		Product product = pdao.read(id);
 		model.addAttribute("product", product);
-		List<Product> products = pdao.read();
-		model.addAttribute("products", products);
+		loadProducts(model);
 
 		return "product";
+	}
+
+	
+	
+	@RequestMapping(value = "/dml",method = RequestMethod.POST, params = "add")	
+	public String addProduct(Product product, ModelMap model)
+	{
+		pdao.create(product);
+		loadProducts(model);
+		return "product";
+	}
+	
+	@RequestMapping(value = "/dml",method = RequestMethod.POST, params = "update")
+	public String updateProduct(Product product, ModelMap model)
+	{
+		pdao.update(product);
+		loadProducts(model);
+		return "product";
+	}
+	
+	@RequestMapping(value = "/dml",method = RequestMethod.POST, params = "delete")
+	public String deleteProduct(Product product, ModelMap model)
+	{
+		pdao.delete(product.getId());
+		loadProducts(model);
+		return "product";
+	}
+	
+	private void loadProducts(ModelMap model) {
+		List<Product> products = pdao.read();
+		model.addAttribute("products", products);
 	}
 }
