@@ -367,3 +367,357 @@ CUSTOMER
 		</dependency>
 
 4) in web.xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" version="4.0">
+  <display-name>first-mvc</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+        <servlet-name>spring</servlet-name>
+        <servlet-class>
+                org.springframework.web.servlet.DispatcherServlet
+        </servlet-class>
+        <init-param>
+       <param-name>contextConfigLocation</param-name>
+       <param-value>/WEB-INF/spring-servlet.xml</param-value>
+    </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+       <servlet-mapping>
+        <servlet-name>spring</servlet-name>
+        <url-pattern>/</url-pattern> 
+    </servlet-mapping>
+</web-app>
+
+5) spring-servlet.xml
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="
+         http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+         http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context-4.0.xsd
+         http://www.springframework.org/schema/tx
+         http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+         http://www.springframework.org/schema/aop
+         http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+         http://www.springframework.org/schema/mvc
+         http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+	<!-- DispatcherServlet Context: defines this servlet's request-processing 
+		infrastructure -->
+
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<mvc:annotation-driven />
+	<context:component-scan
+		base-package="com.empower.ecom" />
+
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
+		in the /WEB-INF/views directory -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix">
+			<value>/WEB-INF/views/</value>
+		</property>
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+	</bean>
+	
+		<bean id="dmds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="org.h2.Driver" />
+		<property name="url" value="jdbc:h2:file:./data/sampledata" />
+		<property name="username" value="sa" />
+		<property name="password" value="" />
+	</bean>
+	
+	<bean id="jt" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dmds" />
+	</bean>
+	
+	
+</beans>
+
+6) Customer.java
+package com.empower.ecom.model;
+
+public class Customer {
+	private String username;
+	private String password;
+	private String name;
+	private String email;
+	private String phone;
+	
+	public Customer() {}
+
+	public Customer(String username, String password, String name, String email, String phone) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.name = name;
+		this.email = email;
+		this.phone = phone;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	@Override
+	public String toString() {
+		return "Customer [username=" + username + ", password=" + password + ", name=" + name + ", email=" + email
+				+ ", phone=" + phone + "]";
+	}
+	
+	
+}
+
+7) CustomerDaoImpl.java
+package com.empower.ecom.model;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.BadSqlGrammarException;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
+
+@Component
+public class CustomerDaoImpl implements CustomerDao {
+	@Autowired
+	private JdbcTemplate jt;
+	
+	@Override
+	public void createCustomerTable()
+	{
+		try
+		{
+			jt.execute("create table customer (username varchar2(20) primary key, password varchar2(20), name varchar2(20), email varchar2(20), phone varchar2(20))");
+			System.out.println("Table is created now");
+		}catch(Exception ex)
+		{
+			System.out.println("Table already exists. Original exception is "+ex);
+		}
+		
+	}
+	
+	@Override
+	public void signup(Customer customer)
+	{
+		try {
+			int no=jt.update("INSERT INTO CUSTOMER VALUES(?,?,?,?,?)", customer.getUsername(), customer.getPassword(), customer.getName(), customer.getEmail(), customer.getPassword());
+			System.out.println(no+" row inserted");
+		}catch(BadSqlGrammarException ex)
+		{
+			System.out.println("Table does not exist. Creating now.");
+			createCustomerTable();
+			System.out.println("Re-trying insert now");
+			signup(customer);
+		}
+	}
+	
+	@Override
+	public Customer login(String username, String password)
+	{
+		String sql="SELECT * FROM CUSTOMER WHERE username=?";
+		Customer customer = jt.queryForObject(sql, new CustomerRowMapper(), username);
+		if(customer!=null)
+		{
+			if(customer.getPassword().equals(password))
+			{
+				return customer;
+			}
+		}
+		return null;
+	}
+}
+
+8) CustomerDao.java
+package com.empower.ecom.model;
+
+public interface CustomerDao {
+
+	void createCustomerTable();
+
+	void signup(Customer customer);
+
+	Customer login(String username, String password);
+
+}
+
+9) MyController.java
+package com.empower.ecom.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.empower.ecom.model.Customer;
+import com.empower.ecom.model.CustomerDao;
+
+@Controller
+public class MyController {
+	@Autowired
+	private CustomerDao cdao;
+	
+	@GetMapping("/showLoginPage")
+	public String showLoginPage()
+	{
+		return "login";
+	}
+	
+	@GetMapping("/showSignupPage")
+	public String showSignupPage()
+	{
+		return "signup";
+	}
+	
+	@PostMapping("/add")
+	@ResponseBody
+	public String addCustomer(Customer customer)
+	{
+		cdao.signup(customer);
+		return "Signup is successful. Click <a href=\"showLoginPage\">here</a> to login";
+	}
+	
+	@PostMapping("/validateLogin")
+	@ResponseBody
+	public String validateLogin(String username, String password)
+	{
+		Customer customer = cdao.login(username, password);
+		if(customer==null)
+		{
+			return "Login Failed. Click <a href=\"showLoginPage\">here</a> to login"; 
+		}else
+		{
+			return "Welcome "+customer.getName();
+		}
+	}
+	
+}
+
+10) login.jsp
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+<div class="container-fluid p-5 bg-primary text-white text-center">
+  <h1>Customer Module</h1>
+  <p>Resize this responsive page to see the effect!</p> 
+</div>
+  
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-sm-4">
+      
+    </div>
+    <div class="col-sm-4">
+      <h3>Login Page</h3>
+		<form method="post" action="validateLogin">
+			Username: <input type="text" name="username" class="form-control" />
+			Password: <input type="password" name="password" class="form-control" />
+			<input type="submit" value="Login!" class="btn btn-success" />&nbsp;
+			<input type="reset" value="Reset" class="btn btn-warning" />
+		</form>
+    </div>
+    <div class="col-sm-4">
+    </div>
+  </div>
+</div>
+</body>
+</html>
+
+11) signup.jsp
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+<div class="container-fluid p-5 bg-primary text-white text-center">
+  <h1>Customer Module</h1>
+  <p>Resize this responsive page to see the effect!</p> 
+</div>
+  
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-sm-4">
+      
+    </div>
+    <div class="col-sm-4">
+      <h3>Signup Page!</h3>
+		<form method="post" action="add">
+			Username: <input type="text" name="username" class="form-control" />
+			Password: <input type="password" name="password" class="form-control" />
+			Retype Password: <input type="password" name="cpassword" class="form-control" />
+			Name: <input type="text" name="name" class="form-control" />
+			Email: <input type="email" name="email" class="form-control" />
+			Phone: <input type="text" name="phone" class="form-control" /><br/>
+			<input type="submit" value="Sign Up!" class="btn btn-success" />&nbsp;
+			<input type="reset" value="Reset" class="btn btn-warning" />
+		</form>
+    </div>
+    <div class="col-sm-4">
+    </div>
+  </div>
+</div>
+</body>
+</html>
