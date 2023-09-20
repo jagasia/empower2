@@ -10,4 +10,16 @@ public class MyController {
 	{
 		return "index";
 	}
+	
+	@GetMapping("/showLogin")
+	public String showLoginPage()
+	{
+		return "login";
+	}
+	
+	@GetMapping("/showSignup")
+	public String showSignupPage()
+	{
+		return "signup";
+	}
 }

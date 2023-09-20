@@ -122,3 +122,166 @@ public class MyController {
 8) Stop and Run the application
 	localhost:8080
 
+----------------------------------------------------
+Activity:
+	Create 
+		login.jsp
+		signup.jsp
+
+	in controller, create the methods to show these pages.
+
+-------------------------------------------------------
+spring boot MVC with h2
+
+Spring	
+	core
+	jpa		Java Persistence API
+	mvc
+	rest
+	security
+
+JPA
+	data access
+	we dont need to write SQL statements like SELECT, INSERT, UPDATE, DELETE
+	automatically create the tables for the entity classes we have
+
+	ORM	Object Relational Mapping
+
+	JPA	concept
+		EJB
+		Hibernate framework
+		JPA framework
+		Spring Data JPA
+
+Relationship between entities:	(remind me)
+
+Product
+	id
+	name
+	price
+
+JPA repository we use. 
+CrudRepository	conversion of object to JSON was not automatic. So we use jpa repository
+
+----------------------
+1) create a spring boot project
+2) dependencies
+	spring web
+	spring data jpa
+	h2
+	apache tomcat embed
+3) application.properties
+	prefix
+	suffix
+spring.datasource.url=jdbc:h2:file:./data/sampledata
+spring.datasource.username=sa
+spring.datasource.password=
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.H2Dialect
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.properties.hibernate.show_sql=true
+
+4) Product.java		(entity)
+5) ProductRepository.java	(repository interface)
+6) ProductController.java	(controller)
+7) product.jsp
+
+
+
+@Entity
+@Table(name="PRODUCT")
+public class Product
+
+if we do not mention the table name, then it is same as entity class name.
+if entity class name is 	Product
+then table name is		PRODUCT
+
+if entity class name is 	UserDetails
+then table name is		USER_DETAILS
+
+Sometimes, we dont want jpa to change the names,:
+spring.jpa.hibernate.naming.physical-strategy=org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
+-------------
+Entity class should contain a primary key COMPULSORY.
+	@Id
+
+@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
+
+auto generation does not work for String, Double etc. works only for Integer types
+
+4) Product.java		(entity)
+package com.empower.ecom.model;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="PRODUCT")
+public class Product {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
+//	@Column(name = "PRODUCT_NAME")
+	private String name;
+	private Double price;
+	
+	public Product() {}
+
+	public Product(Integer id, String name, Double price) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.price = price;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Double getPrice() {
+		return price;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
+	}
+
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", name=" + name + ", price=" + price + "]";
+	}
+	
+}
+
+
+5) ProductRepository
+package com.empower.ecom.model;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface ProductRepository extends JpaRepository<Product, Integer>
+{
+
+}
+
+6) ProductController
