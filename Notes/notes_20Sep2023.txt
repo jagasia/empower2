@@ -1,0 +1,57 @@
+Day 17: (20-Sep-2023)
+-----------------------------
+Spring Boot(RESTFul Service, POSTMAN, …), Maven Tool
+
+Spring Boot:
+------------------
+	Spring boot is convention over configuration. If you follow the convention, you do not 		need configuration.
+	Auto-Configuration
+	Standalone
+	Starter dependencies
+	CLI		Command Line Interface
+		without any IDE, we can completely do a project using notepad and cmd
+
+Demo:
+	create a hello world program in spring boot.
+
+https://start.spring.io/
+
+it will take us to spring initializr
+
+Project: Maven
+Language: Java
+Spring boot version: 2.7.15
+group id: com.empower.ecom
+artifact: first-boot
+packaging: 	war 	(for mvc) 	and jar for restful webservices
+java version:	8
+dependencies:
+	Spring Web
+
+click the generate button to download the zip
+unzip to your workspace folder
+
+How to import?
+File -> Import -> 		Existing maven projects
+				choose the location where pom.xml is present
+allow the download process to complete.
+
+version issues:
+	right click project-> properties
+		java build path		check jdk version
+		java compiler
+		project facets
+
+
+open the Application.java	(where main method is present)
+	if project name is "first-boot" then application class name is FirstBootApplication
+
+System.out.println("Hello world");
+
+Run the project as "Java Application"
+
+If port number 8080 is in use, we can change it:	in configuration file
+	application.properties:		(under src/main/resources)
+
+		server.port=8081
+
