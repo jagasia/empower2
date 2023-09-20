@@ -285,3 +285,14 @@ public interface ProductRepository extends JpaRepository<Product, Integer>
 }
 
 6) ProductController
+
+
+Right click Project -> Run As -> Maven Build
+	goals:	clean install
+Run.
+	
+---------------------------------------------------------
+Spring Forms
+
+1) add taglib for spring form
+	<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,15 +19,15 @@
 	<div class="col-md-4"></div>
 	<div class="col-md-4">
 		<h3>Product Page</h3>
-		<form method="post" action="dml">
-			Id:<input type="number" name="id" class="form-control" />
-			Name:<input type="text" name="name" class="form-control" />
-			Price:<input type="number" name="price" class="form-control" />
+		<form:form method="post" action="dml" modelAttribute="product">
+			Id:<form:input type="number" path="id" class="form-control" />
+			Name:<form:input type="text" path="name" class="form-control" />
+			Price:<form:input type="number" path="price" class="form-control" />
 			<br/>
 			<input type="submit" name="add" value="Add" class="btn btn-info" />&nbsp;
 			<input type="submit" name="update" value="Update" class="btn btn-warning" />&nbsp;
 			<input type="submit" name="delete" value="Delete" class="btn btn-danger" />&nbsp;
-		</form>
+		</form:form>
 	</div>
 	<div class="col-md-4"></div>
 </div>
@@ -46,7 +47,7 @@
   						<td>${p.id }</td>
   						<td>${p.name }</td>
   						<td>${p.price }</td>
-  						<td><a href="select?id=${p.id }" class="btn btn-info">Select</a></td>
+  						<td><a href="/select/${p.id }" class="btn btn-info">Select</a></td>
   					</tr>
   				</c:forEach>		
   			</tbody>
