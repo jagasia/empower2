@@ -55,3 +55,70 @@ If port number 8080 is in use, we can change it:	in configuration file
 
 		server.port=8081
 
+Important things to follow:
+1) Application class	(ex:	FirstBootApplication)
+	this class is present in a package. That package is the base package.
+	All other classes and interfaces must be present inside the base package (or its sub 	package)
+
+
+com.empower.ecom
+com.empower.ecom.model
+com.empower.ecom.controller
+com.empower.ecom.config
+
+all the above are under com.empower.ecom package only
+com.empower.model		NOT ALLOWED
+com.empower.controller	NOT ALLOWED
+
+application.properties is our configuration file. We can have many configuration classes in addition to this.
+
+-------------------------------------------------------------
+Spring Boot MVC
+1) Create spring boot project using spring initializr
+
+Project:	Maven
+Language:	Java
+Spring Boot:	2.7.15
+Group:	com.empower.ecom
+Artifact:	20-sep-mvc
+Packaging:	war
+java:	8
+Dependencies: web
+
+Upto Hello world, it is done.
+
+2) under webapp folder, create "WEB-INF/views" folder
+3) inside views folder, create index.jsp
+4) index.jsp		hello world
+5) application.properties	(this file is present under src/main/resources folder)
+server.port=8080
+spring.mvc.view.prefix=/WEB-INF/views/
+spring.mvc.view.suffix=.jsp
+
+6) create the controller class.	Remember it must be inside base package or its sub package
+package com.empower.ecom.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class MyController {
+	@GetMapping
+	public String home()
+	{
+		return "index";
+	}
+}
+
+7) Error:
+"Path with "WEB-INF" or "META-INF": [WEB-INF/views/index.jsp]"
+
+	solution:
+		in pom.xml add a dependency:
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+		</dependency>
+8) Stop and Run the application
+	localhost:8080
+
