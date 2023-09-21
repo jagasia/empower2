@@ -1,0 +1,71 @@
+Day 18: (21-Sep-2023)
+-----------------------------
+MVC forms validation	****
+Login - Logout
+Image upload and display
+Spring boot Rest
+Swagger
+Postman
+
+---------------------------
+Validation
+	checking whether data entered is correct or not
+
+Spring forms (taglib)
+	<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
+has a support for displaying error message.
+
+To define validations???
+	where we define the rules?	in Entity class.
+
+1) add dependency to pom.xml
+for that we need to add the following dependency:
+	<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
+<dependency>
+    <groupId>org.hibernate</groupId>
+    <artifactId>hibernate-validator</artifactId>
+    <version>6.0.13.Final</version>
+</dependency>
+
+
+2) define the rules in entity class
+@Entity
+@Table(name="PRODUCT")
+public class Product {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
+	@Size(min = 5, message = "Product name must be atleast 5 characters")
+	private String name;
+	private Double price;
+
+3) In controller, we need to validate while adding a new product
+	@RequestMapping(value = "dml", method = RequestMethod.POST, params = "add")
+	public ModelAndView addProduct(@Valid Product product, BindingResult br)
+	{
+		ps.addProduct(product);
+		return showProductPage();
+	}
+
+
+I have used 
+@Size
+	is used for length of a string
+@Min
+@Max
+	are used for numeric fields ranges
+-------------------------------------------------------
+		<form:form method="post" action="dml" modelAttribute="product">
+			Id:<form:input type="number" path="id" class="form-control" /><br/>
+			Name:<form:input type="text" path="name" class="form-control" />
+			<form:errors style="color:red" path="name" /><br/>
+			Price:<form:input type="number" path="price" class="form-control" />
+			<form:errors style="color:red" path="price" />
+			<br/>
+			<input type="submit" name="add" value="Add" class="btn btn-info" />&nbsp;
+			<input type="submit" name="update" value="Update" class="btn btn-warning" />&nbsp;
+			<input type="submit" name="delete" value="Delete" class="btn btn-danger" />&nbsp;
+		</form:form>
+
+-------------------------------------------

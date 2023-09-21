@@ -2,9 +2,14 @@ package com.empower.ecom.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,25 +22,38 @@ import com.empower.ecom.service.ProductService;
 public class ProductController {
 	@Autowired
 	private ProductService ps;
+		
+	@ModelAttribute
+	public void getAllProducts(ModelMap model)
+	{
+		List<Product> products = ps.retrieveAllProducts();
+		model.addAttribute("products",products);
+	}
 	
 	@GetMapping
 	public ModelAndView showProductPage()
 	{
 		//retrieve all products and store in model
-		List<Product> products = ps.retrieveAllProducts();
 		ModelAndView mv=new ModelAndView();
 		mv.setViewName("product");
 //		Product product=ps.findProductById(2);
 		mv.addObject("product", new Product());
-		mv.addObject("products", products);
 		return mv;
 	}
 	
 	@RequestMapping(value = "dml", method = RequestMethod.POST, params = "add")
-	public ModelAndView addProduct(Product product)
+	public ModelAndView addProduct(@Valid Product product, BindingResult br, ModelMap model)
 	{
-		ps.addProduct(product);
-		return showProductPage();
+		if(!br.hasErrors())
+		{
+			ps.addProduct(product);
+		}
+		ModelAndView mv=new ModelAndView();
+		mv.setViewName("product");
+//		Product product=ps.findProductById(2);
+		mv.addObject("product", product);
+		getAllProducts(model);
+		return mv;
 	}
 	
 	@RequestMapping(value = "dml", method = RequestMethod.POST, params = "update")

@@ -20,9 +20,11 @@
 	<div class="col-md-4">
 		<h3>Product Page</h3>
 		<form:form method="post" action="dml" modelAttribute="product">
-			Id:<form:input type="number" path="id" class="form-control" />
+			Id:<form:input type="number" path="id" class="form-control" /><br/>
 			Name:<form:input type="text" path="name" class="form-control" />
+			<form:errors style="color:red" path="name" /><br/>
 			Price:<form:input type="number" path="price" class="form-control" />
+			<form:errors style="color:red" path="price" />
 			<br/>
 			<input type="submit" name="add" value="Add" class="btn btn-info" />&nbsp;
 			<input type="submit" name="update" value="Update" class="btn btn-warning" />&nbsp;
