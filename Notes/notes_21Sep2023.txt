@@ -275,3 +275,18 @@ public class MyController {
 	}
 }
 
+---------------------
+Swagger
+
+1) in pom.xml	add the following dependency:
+<dependency>
+    <groupId>io.springfox</groupId>
+    <artifactId>springfox-boot-starter</artifactId>
+    <version>3.0.0</version>
+</dependency>
+2) in Configuration class/ Application.java, enable swagger
+@EnableSwagger2
+3) in application.properties:
+spring.mvc.pathmatch.matching-strategy=ant-path-matcher
+4) check in browser
+	http://localhost:8080/swagger-ui/
