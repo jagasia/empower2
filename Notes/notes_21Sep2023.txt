@@ -290,3 +290,28 @@ Swagger
 spring.mvc.pathmatch.matching-strategy=ant-path-matcher
 4) check in browser
 	http://localhost:8080/swagger-ui/
+
+-------------------------------
+Activity:
+Vehicle
+	id		auto generated
+	name
+	color
+	model		is a year
+
+1) create a spring boot project	
+	maven
+	java
+	2.7.15
+	jar
+	8
+	dependencies:
+	spring web
+	spring data jpa
+	h2
+2) Vehicle.java		entity
+3) VehicleRepository.java	repository
+4) VehicleService.java		service
+5) VehicleController.java	controller		rest controller
+6) use swagger
+Test the rest api for 	GET, POST, PUT, DELETE
