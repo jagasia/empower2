@@ -69,3 +69,48 @@ I have used
 		</form:form>
 
 -------------------------------------------
+Image upload and display
+byte []
+
+mysql:
+	tinyblob
+	mediumblob	
+	longblob		(suitable for image files)	
+
+in application.properties
+	lets enable h2 console and mention the url
+
+spring.h2.console.enabled=true
+spring.h2.console.path=/h2
+
+
+-------------------------------Image in product
+1) add a property
+	byte[] pic;
+
+generate getters and setters for this
+2) in product.jsp
+<form method="post" action="dml">
+			Id:<input type="number" name="id" class="form-control" />
+			Name:<input type="text" name="name" class="form-control" />			
+			Price:<input type="number" name="price" class="form-control" />			
+			Pic:<input type="file" name="pic" class="form-control" /><br/>
+			<input type="submit" name="add" value="Add" class="btn btn-info" />&nbsp;
+			<input type="submit" name="update" value="Update" class="btn btn-warning" />&nbsp;
+			<input type="submit" name="delete" value="Delete" class="btn btn-danger" />&nbsp;
+		</form>
+3) in controller
+	@RequestMapping(method = RequestMethod.POST, value = "add1")
+	@ResponseBody	
+	public ModelAndView addProduct1(@RequestParam("id")Integer id,@RequestParam("name") String name,@RequestParam("price") Double price,@RequestParam("pic") MultipartFile file) throws IOException
+	{
+		Product product=new Product(id, name, price);
+		product.setPic(file.getBytes());
+		ps.addProduct(product);
+		return showProductPage();
+	}
+
+4) display the image in jsp:
+the byte array should be converted into Base64 String
+
+Base64 string belongs to a jar file
