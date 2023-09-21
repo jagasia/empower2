@@ -2,7 +2,7 @@ Day 18: (21-Sep-2023)
 -----------------------------
 MVC forms validation	****
 Login - Logout
-Image upload and display
+Image upload and display	****
 Spring boot Rest
 Swagger
 Postman
@@ -135,3 +135,143 @@ in maven, we can add the dependency
 <td>
   						<img width="100" src="data:image/jpg;base64,${p.pic1 }" />
   						</td>
+------------------------------------------------
+Spring boot Rest
+-----------------------
+	REST stands for REpresentational State Transfer
+
+History of webservices:
+--------------------------------
+	2001 SOAP webservices 	Simple Object Access Protocol
+
+1999	microsoft presented white paper at W3C on XML
+	XML be the data interchange format across heterogenous applications (Interoperability)
+
+	a data format to be used by all applications as a standard.	XML
+Using xml as a format, SOAP webservices evolved in 2001
+
+SOAP
+	XML
+REST
+	XML
+	JSON
+	HTML
+	TEXT
+
+RESTful Webservices		REST API
+REST principles:
+--------------------------
+	uniform URI
+		http://localhost:5000/product
+
+
+http://localhost:5000/product
+	POST		adding a product
+	PUT		updating a product
+	DELETE		deleting a product
+	GET		retrieving all products
+	GET 	/{id}	retrieve one product by id
+	PATCH		update few of the properties of a product
+
+
+	
+	Statelessness:
+		every request is independent.
+
+	Layered System:
+		example, API in one server, Database in another server, authentication in another server	
+
+	Code on Demand:
+		different format based on demand. XML or JSON
+
+-----------------------------------
+Hello world in Spring Boot REST
+
+In MVC
+	we create @Controller
+In REST
+	we create @RestController
+
+@RestController = @Controller + @ResponseBody
+
+-----------------
+1) create a spring boot project
+2) create a rest controller
+@RestController
+public class MyController {
+	
+	@GetMapping
+	public String home()
+	{
+		return "Welcome to my first rest api";
+	}
+}
+-------------------------------
+In our project, we will create one or more rest apis.
+
+there are already some rest apis available in the world. 
+
+https://jsonplaceholder.typicode.com/todos
+	
+In browser, address bar, if you type and enter an URL, then you are call it using GET method only
+
+I can use POSTMAN to access other http methods like
+	POST
+	PUT
+	DELETE
+	PATCH
+	GET
+
+what is postman?
+	Postman is a popular software application that is used by developers and API (Application Programming Interface) testers to simplify the process of testing APIs. It provides a user-friendly interface for making HTTP requests to APIs and inspecting the responses. Postman is commonly used during the development and testing phases of software projects to ensure that APIs are functioning correctly and to facilitate collaboration among team members.
+
+
+in software centre, check is postman is present and if present, install it.
+
+
+https://api.instantwebtools.net/v1/airlines
+	this rest api allow us to do
+		GET		all flights
+		GET		find flight by id
+		POST		to add a new fligh
+
+POSTMAN
+	allow us to access a rest api using any HTTP method
+
+
+package com.empower.ecom.controller;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class MyController {
+	
+	@GetMapping
+	public String home()
+	{
+		return "Welcome to my first rest api";
+	}
+	
+	@PostMapping
+	public String add()
+	{
+		return "Added";
+	}
+	
+	@PutMapping
+	public String update()
+	{
+		return "Update";
+	}
+	
+	@DeleteMapping
+	public String delete()
+	{
+		return "Deleted";
+	}
+}
+
