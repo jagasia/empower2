@@ -315,3 +315,4 @@ Vehicle
 5) VehicleController.java	controller		rest controller
 6) use swagger
 Test the rest api for 	GET, POST, PUT, DELETE
+--------------------------------------------------------------------
