@@ -114,3 +114,24 @@ generate getters and setters for this
 the byte array should be converted into Base64 String
 
 Base64 string belongs to a jar file
+apache-commons.jar
+
+in maven, we can add the dependency
+<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+<dependency>
+    <groupId>commons-io</groupId>
+    <artifactId>commons-io</artifactId>
+    <version>2.13.0</version>
+</dependency>
+
+5) in entity class, add a getter method that converts the byte [] into Base64 string
+	public String getPic1()
+	{
+		//convert the byte [] into Base64 String
+		return Base64.encodeBase64String(pic);
+	}
+
+6) in jsp
+<td>
+  						<img width="100" src="data:image/jpg;base64,${p.pic1 }" />
+  						</td>
