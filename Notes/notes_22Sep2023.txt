@@ -130,3 +130,10 @@ Department
 	id
 	name
 	location
+-------------------------------------
+spring
+type of bean scopes
+type of dependency injection
+type of autowiring
+type of ApplicationContext
+bean and component

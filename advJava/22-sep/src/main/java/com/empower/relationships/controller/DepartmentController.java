@@ -16,7 +16,7 @@ import com.empower.relationships.model.Department;
 import com.empower.relationships.model.DepartmentService;
 
 @RestController
-@RequestMapping("department")
+@RequestMapping("dept")
 public class DepartmentController {
 	@Autowired
 	private DepartmentService ds;

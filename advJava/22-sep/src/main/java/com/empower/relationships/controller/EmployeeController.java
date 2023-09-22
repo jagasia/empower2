@@ -16,7 +16,7 @@ import com.empower.relationships.model.Employee;
 import com.empower.relationships.model.EmployeeService;
 
 @RestController
-@RequestMapping("employee")
+@RequestMapping("emp")
 public class EmployeeController {
 	@Autowired
 	private EmployeeService es;
