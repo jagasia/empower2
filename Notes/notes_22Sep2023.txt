@@ -81,3 +81,33 @@ Unix
 	what is shell scripting?
 	variables
 	Pipes & Filters
+
+Unix is an operating system used for multi tasking
+Linux is open source
+Unix is licensed operating system
+Unix is more complex
+Linux provides GUI also
+Commands are same
+	pwd		present working directory
+	ls		list
+	ls -l		long list
+	passwd		change password	(don't try)
+	
+we can use pipe to combile the commands
+	ls | grep "@"	all files containing @ are displayed
+	ls | grep "@" | wc -l	the word count of lines
+
+	mv		move or rename
+	cp		copy
+	mkdir		make directory
+	cd		change directory
+	rmdir		remove directory
+	exit		closes cmd
+	clear		clears screen
+	rm		remove file
+	
+identify as many commands in unix/linux
+
+we can also create programs (scripts) in shell
+declare variables, arrays, if conditions etc
+----------------------------------------------------
