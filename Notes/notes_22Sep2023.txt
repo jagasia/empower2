@@ -73,3 +73,11 @@ mvc:
 2) prefix and suffix
 3) create folder for jsp files
 4) controller
+-------------------------------------------------
+Unix
+	what is unix?
+	what is difference between unix and linux?
+	what is shell?	types of shells
+	what is shell scripting?
+	variables
+	Pipes & Filters
