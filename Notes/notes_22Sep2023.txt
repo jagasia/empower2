@@ -111,3 +111,22 @@ identify as many commands in unix/linux
 we can also create programs (scripts) in shell
 declare variables, arrays, if conditions etc
 ----------------------------------------------------
+Relationships
+	1 to 1
+	1 to M
+	M to 1
+	M to M
+
+Employee vs Department
+M		1
+
+Employee
+	id
+	name
+	department
+
+
+Department
+	id
+	name
+	location
