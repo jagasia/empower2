@@ -1,0 +1,75 @@
+Day 19: (22-Sep-2023)
+------------------------------
+Email from Spring boot
+Relationships
+Queries
+Security
+
+Steps for email from spring boot project:
+1) create an email for (from address)
+	how to configure the gmail to allow "App access"?
+	i) Login to gmail account
+	ii) Under profile icon-> Manage your google account
+	iii) search "App passwords"
+	iv) App name: enter the app name
+	it will generate a password. Copy that password
+		empower-project-1
+		uazv bvtd zces rujh
+2) create a spring boot project
+	add the email dependency
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
+
+3) in application.properties
+spring.mail.host=smtp.gmail.com
+spring.mail.port=587
+spring.mail.username=jag.javaprogram@gmail.com
+spring.mail.password=jnuekytnyevvyihl
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true
+
+4) create a email sender bean
+package com.empower.email;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.stereotype.Component;
+
+@Component
+public class EmailServiceImpl {
+
+    @Autowired
+    private JavaMailSender emailSender;
+
+    public void sendSimpleMessage(
+      String to, String subject, String text) {
+        
+        SimpleMailMessage message = new SimpleMailMessage(); 
+        message.setFrom("jag.javaprogram@gmail.com");
+        message.setTo(to); 
+        message.setSubject(subject); 
+        message.setText(text);
+        emailSender.send(message);
+        
+    }
+}
+
+5) auto wire this bean in controller
+@Controller
+public class MyController {
+	@Autowired
+	private EmailServiceImpl emailService;
+
+check demo:
+	22-email-demo
+
+
+
+mvc:
+1) apache tomcat embed
+2) prefix and suffix
+3) create folder for jsp files
+4) controller
