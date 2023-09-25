@@ -33,6 +33,18 @@ public class EmployeeController {
 	public Employee read(@PathVariable("id") Integer id) {
 		return es.read(id);
 	}
+	@GetMapping("/name/{name}")
+	public List<Employee> findEmployeesByName(@PathVariable("name") String name)
+	{
+		return es.findEmployeesByName(name);
+	}
+	
+	@GetMapping("/salary/{from}/{to}")
+	public List<Employee> findEmployeesBySalaryRange(@PathVariable("from")Double from,@PathVariable("to") Double to)
+	{
+		return es.findEmployeesBySalaryRange(from, to);
+	}
+	
 	@PutMapping
 	public Employee update(@RequestBody Employee employee) {
 		return es.update(employee);
@@ -42,6 +54,6 @@ public class EmployeeController {
 		return es.delete(id);
 	}
 	
-	
+
 	
 }

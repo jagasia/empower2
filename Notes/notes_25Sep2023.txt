@@ -59,3 +59,109 @@ Install git in your computer from software center.
 after installation
 in windows start menu, type "Git Bash"
 open git bash to execute "linux/unix" commands in your system.
+-------------------------------------------------------------------------------------
+C programming language:
+------------------------------------
+C is a structured language.
+	main function is the first function to execute
+There are many C platforms and compilers. There are differences in these C language itself.
+Size of int is 2 in 32 bit platform. but the size of int is 4 bytes in 64 bit platform.
+
+Turbo C
+GCC
+
+-----------------------------
+Control statements, Arrays, Strings
+	if
+	if else
+	if else if else
+	switch case
+	break	continue
+	while
+	do while
+	for
+
+
+data types in C language:
+-----------------------------------
+Data Type 
+
+short int 
+
+unsigned short int 
+
+unsigned int 
+
+int 
+
+long int 
+
+unsigned long int 
+
+long long int 
+
+unsigned long long int 
+
+signed char 
+
+unsigned char 
+
+float 
+
+double 
+
+long double 
+
+
+------------------------------------
+
+
+
+#include <stdio.h>
+
+int main()
+{
+    char c='A';
+    int i=-1;
+    if(c)
+        printf("Good");
+    else
+        printf("Bad");
+
+    printf("%d",c);
+    return 0;
+}
+
+-------------------------------
+different beween 
+	break and continue
+
+break
+	exits the loop
+	skips all the lines below
+
+continue
+	skips all the lines below
+	forces the next iteration
+
+---------------------------------------------------
+In spring data JPA, how to write Queries?
+	why we need to write queries?
+		for requirements other than usual.
+		CRUD are already provided by JPA
+
+
+Find All Employees by Id		(already done)
+
+
+EMPLOYEE	(table)
+Employee		(class)
+
+@Query("select e from Employee e where e.salary between :from and :to")
+List<Employee> findEmployeesBySalaryRange(@Param("from") Double from, @Param("to") Double two);
+
+
+Activity:
+Allow users to find employees by name.
+	name can be case insensitive
+	a portion of name can be typed in the search

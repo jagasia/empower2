@@ -12,6 +12,7 @@ public class Employee {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	private String name;
+	private Double salary;
 
 	@ManyToOne
 	private Department department;
@@ -22,6 +23,15 @@ public class Employee {
 		super();
 		this.id = id;
 		this.name = name;
+		this.department = department;
+	}
+	
+
+	public Employee(Integer id, String name, Double salary, Department department) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.salary = salary;
 		this.department = department;
 	}
 
@@ -48,10 +58,20 @@ public class Employee {
 	public void setDepartment(Department department) {
 		this.department = department;
 	}
+	
+	
+
+	public Double getSalary() {
+		return salary;
+	}
+
+	public void setSalary(Double salary) {
+		this.salary = salary;
+	}
 
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", name=" + name + ", department=" + department + "]";
+		return "Employee [id=" + id + ", name=" + name + ", salary=" + salary + ", department=" + department + "]";
 	}
 	
 }

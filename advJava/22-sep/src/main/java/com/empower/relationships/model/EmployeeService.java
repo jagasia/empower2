@@ -44,4 +44,14 @@ public class EmployeeService {
 		return temp;
 	}
 	
+	public List<Employee> findEmployeesByName(String name)
+	{		
+		return er.findByName(name);
+	}
+	
+	public List<Employee> findEmployeesBySalaryRange(Double from, Double to)
+	{
+		return er.findEmployeesBySalaryRange(from, to);
+	}
+	
 }
