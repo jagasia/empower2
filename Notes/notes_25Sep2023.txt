@@ -250,3 +250,56 @@ check any url
 
 Activity:
 	to try upto this.
+-----------------------------------
+before lunch break, we configured the username and password in application.properties
+
+1) create a configuration class
+	class MySecurityConfiguration implements WebSecurityConfigurer
+	class MySecurityConfiguration extends WebSecurityConfigurerAdapter
+
+
+
+@Configuration
+public class MyConfiguration extends WebSecurityConfigurerAdapter
+{
+
+}
+
+2) override the configure method
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		// TODO Auto-generated method stub
+		super.configure(auth);
+	}
+
+3) replace the code inside configure method and finally the config class looks like:
+@Configuration
+public class MyConfiguration extends WebSecurityConfigurerAdapter
+{
+	@Autowired
+	private MyUserDetailsService userDetailsService;
+
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth.userDetailsService(userDetailsService);
+	}
+	
+	@Bean
+	public PasswordEncoder passwordEncode()
+	{
+		return NoOpPasswordEncoder.getInstance();
+	}
+}
+4) MyUserDetailsService:
+@Service
+public class MyUserDetailsService implements UserDetailsService
+{
+
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		return new User("latha","latha@123",new ArrayList<>());
+	}
+
+}
+----------------------------Run and check
+
