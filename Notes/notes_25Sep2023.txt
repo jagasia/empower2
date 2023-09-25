@@ -54,3 +54,8 @@ to run
 Activity:
 Create a shell script and declare variables and create functions, call them multiple times with different arguments.
 Run the script.
+----------------------
+Install git in your computer from software center.
+after installation
+in windows start menu, type "Git Bash"
+open git bash to execute "linux/unix" commands in your system.
