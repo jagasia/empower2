@@ -165,3 +165,88 @@ Activity:
 Allow users to find employees by name.
 	name can be case insensitive
 	a portion of name can be typed in the search
+
+select e from Employee e where UPPER(e.name) LIKE '%:name%'
+----------------------------------------------------------------
+if you require demo, remind me afternoon.
+----------------------------------------------------------
+Spring Security
+-----------------------
+	Authentication
+		
+	Authorization
+	Access control List	(who is allowed and not)
+	only specific users are allowed
+	
+	
+Authentication
+	is the process of checking the identity of the user
+Authorization
+	is the process of checking if the user has permission or not
+Impersonation
+	acting on behalf of other
+
+------------------------------------------------------------
+Spring boot security
+
+add the spring boot starter security dependency to the pom.xml
+
+by adding this dependency, it automatically configures the security.
+SecurityAutoConfiguration.class
+
+package com.empower.ecom;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@SpringBootApplication(exclude = SecurityAutoConfiguration.class)
+@RestController
+public class Application {
+	
+	@GetMapping
+	public String home()
+	{
+		return "Hi welcome";
+	}
+
+	public static void main(String[] args) {
+		SpringApplication.run(Application.class, args);
+		System.out.println("Hello world");
+	}
+
+}
+
+///////////////////////
+@SpringBootApplication(exclude = SecurityAutoConfiguration.class)
+this prevents the auto configuration
+
+
+now restart
+try to access 
+	localhost:8080
+
+it is asking username & password
+
+username:		user
+password:		9b0617d6-855e-4626-9f73-6afd1d97d4a7
+
+this password changes when we restart.
+
+------------------------------
+how to change the username and password?
+
+in application.properties:
+spring.security.user.name=sumanth
+spring.security.user.password=sumanth@123
+
+
+now, restart
+check any url
+	login page comes
+	enter the username and password as per configuration
+
+Activity:
+	to try upto this.
