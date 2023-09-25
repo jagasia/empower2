@@ -1,0 +1,56 @@
+Day 20: (25-Sep-2023)
+-----------------------------
+Shell Scripting, Variables, Functions
+
+Shell is not a scripting language, it is an environment to run scripts.
+Shell is similar to cmd prompt in windows.
+
+What is a script?
+	it is a program.
+	that can declare variables, assign values, arrays, create functions, call them, get input, print output, etc
+
+how to create a script file?	we need an editor?
+	vi editor
+type	"vi" in bash
+
+vi sumanth.sh
+
+this editor has 2 modes:
+	i) insert mode
+	ii) execute mode
+
+insert mode:
+	you can type text
+execute mode:
+	you can type commands like		save, exit, delete
+
+commands:
+	i		for switching to insert mode
+	w		save
+	q		quit
+
+
+vi sumath.sh	(i for insert mode)
+-------------------------------------------------------
+function display()
+{
+        echo Hi, your first name is $1 and your lastname is $2.
+}
+
+name=Jag;
+echo Hello $name;
+
+today=`date`;
+echo Today is $today;
+
+display Chenna KeshavaReddy
+
+--------------------------------
+to exit
+	esc :wq
+
+to run
+	./sumanth.sh
+Activity:
+Create a shell script and declare variables and create functions, call them multiple times with different arguments.
+Run the script.
