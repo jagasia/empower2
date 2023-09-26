@@ -196,3 +196,410 @@ Sample Input 2:
 Sample Output 2:
 2 4 0 0 
 
+------------------------------Challenge ends at 08:30
+how to convert an array of integers to a single integer
+
+1 2 3 4 5 
+1
+2
+1+2	=	12
+1*10+2	=	12
+12+3	=	123
+12*10+3	=	123
+
+--------------------------------
+Solution:
+#include <stdio.h>
+#include <math.h>
+
+int main()
+{
+    int n=0;
+    scanf("%d",&n);
+    int arr[n];
+    for(int i=0;i<n;i++)
+    {
+        scanf("%d",&arr[i]);
+    }
+    int x=0;
+    scanf("%d",&x);
+    
+    int num=0;
+    for(int i=n-1,j=0;i>=0;i--,j++)
+    {
+        int digit=arr[i];
+        num+=pow(10,j)*digit;
+        
+    }
+    // printf("%d\n",num);
+    num+=x;
+    printf("%d",num);
+}
+---------------------------------------------
+String in c language:
+	if we do not use any library like 		string.h
+	then a string in c language is a char array.
+
+char arr[10];		//this is a character array.
+	
+If you want to store 10 characters in a char array, then 
+char arr[11];		//last position is provided for a null  terminator
+
+	'\0'
+
+
+
+c language provides more functions to capture string inputs
+
+the following functions are used to capture character inputs:
+getc		
+getchar
+getch
+
+the following function is for string:
+gets
+
+Activity:
+Identify the use of
+getc
+getch
+getchar
+gets
+
+puts
+putc
+--------------------------------------------------
+
+int main()
+{
+    char input='\0';
+    int n=0;
+    scanf("%d",&n);
+    char arr[n];
+    for(int i=0;i<n;i++)
+    {
+        arr[i]=getc(stdin);
+    }
+    //
+    for(int i=0;i<n;i++)
+    {
+        printf("%c\n",arr[i]);
+    }
+    return 0;
+}
+
+
+
+8
+a
+a
+b
+c
+n
+s
+d
+n
+----------------------------------------------------
+Last Character
+
+Rahul was tired after studying for so long , so he thought to play a small game with the words from his book . He opens a random page and selects a random word from it , and also  chooses the last digit of that page number n . Given an array of characters,Write a program to help Rahul find the last character that occurs n(last digit of the page number) times in the array . If no such character exists,then print -1.
+
+Input Format:
+First input is an integer that denotes the size of the array.
+Second line consists of  series of characters  seperated by a space that denotes the array values.
+Third input is an integer that denotes the n value.
+
+Output Format:
+Output is a character that denotes the last character which occurs n times.
+
+Sample Input 1:
+8
+a a b c n s d n
+2
+
+Sample Output 1:
+n
+
+Explanation:
+    In the given array 'a' and 'n' occurs 2 times which is equal to the n value . Even though 'a' occurs twice ,'n' is the one that occurs last.    
+    
+Sample Input 2:
+5
+a b c d e
+3
+
+Sample Output 2:
+-1 
+
+
+--------------
+Solution:
+#include <stdio.h>
+
+int main()
+{
+    char input='\0';
+    int n=0;
+    scanf("%d",&n);
+    getc(stdin);
+    char arr[n];
+    for(int i=0;i<n;i++)
+    {
+        do{
+            scanf("%c",&arr[i]);
+        }while(arr[i]==10);
+    }
+    int x=0;
+    scanf("%d",&x);
+
+    char result='\0';
+    for(int i=0;i<n-1;i++)
+    {
+        int count=1;
+        for(int j=i+1;j<n;j++)
+        {
+            // printf("Comparing %c with %c\n",arr[i],arr[j]);
+            if(arr[i]==arr[j])
+            {
+                count++;
+            }
+        }
+        if(count==x)
+        {
+            result=arr[i];
+        }
+    }
+    printf("Result.....................\n");
+    if(result=='\0')
+        printf("-1");
+    else{
+        printf("%c",result);
+    }
+    return 0;
+}
+-----------------------
+Challenge:
+Java_PF_6.docx
+
+Historical Era
+
+Mohan came across many ancient people while reading a book . He was curious to know at what era they all would have lived .  Given a year(X) as input , Write a program to help Mohan find which century they belong to and categorize them into one of the following periods : " Prehistorical period " , " Vedic Period " , "Second Urbanisation " , " Early Modern Period " , " Modern Period " .
+
+Note:
+Prehistorical period       -    0-2nd
+Vedic Period                      -    3rd-6th
+Second Urbanisation    -    7th-13th
+Early Modern Period      -    14th-18th
+Modern Period                  -    19th-present
+
+Input format:
+First input is an integer that denotes the year value X.
+
+Output format:
+First line of output is an integer that denotes the century value.
+Second line consists of a string that denotes the Prehistorical period/Vedic Period/Second Urbanisation/Early Modern Period/Modern Period.
+
+Sample Input 1:
+1222
+
+Sample Output 1:
+13
+Second Urbanisation
+
+Sample Input 1:
+1947
+
+Sample Output 1:
+20
+Modern Period 
+-------------------------Solution
+#include <stdio.h>
+
+int main()
+{
+    int year=0;
+    scanf("%d",&year);
+    
+    int century=year/100+1;
+    char *period;
+    
+    printf("%d\n",century);
+    
+    if(century<=2)
+    {
+        //0-2nd
+        strcpy(period,"Prehistorical period");
+    }else if(century<=6)
+    {
+        strcpy(period,"Vedic Period");
+    }else if(century<=13)
+    {
+        strcpy(period,"Second Urbanisation");
+    }else if(century<=18)
+    {
+        strcpy(period,"Early Modern Period");
+    }else
+    {
+        strcpy(period,"Modern Period");
+    }
+    printf("%s",period);
+    return 0;
+}
+--------------------------------------------------------
+Challenge:
+N-smallest Elements
+
+Shreya was attending a coding competition and she was progressing good . Suddenly she got stuck in a problem where she needs to find the n-smallest elements in an array . Given an array of integers of size N and n value as inputs , Write a program to help Shreya find the first - n smallest elements from the array but they must be in the same order as they are in given array.
+
+Input Format :
+First input is an integer that denotes the size of the array, N.
+Second line consists of series of integers seperated by a space that denotes the array values.
+Third input is an integer that denotes the n value.
+
+Output Format:
+Output is a series of integers seperated by a space that denotes the n smallest elements.
+
+Sample Input 1:
+5
+4 8 2 5 9
+3
+
+Sample Output 1:
+4 2 5
+
+Sample Input 2:
+10
+7 3 8 11 55 22 1 6 13 2
+5
+
+Sample Output 2:
+7 3 1 6 2 
+
+
+
+5
+4
+8
+2
+5
+9
+3
+
+----------------------------------------
+functions 
+	int sum(int i, int j)
+pointers
+	are variable that can contain the reference of other variables
+	pointers of a type, can refer to variables of same type
+
+#include <stdio.h>
+
+int main() {
+    int age=20;
+    int *ptr=&age;	
+    *ptr=100;
+    printf("%d",age);
+    return 0;
+}
+
+
+* symbol is used to declare a pointer.
+int *ptr;	//here, * means, we are declaring a pointer.		* 	=	indirection
+ptr=&age;	//here, we do not use *	but & is used as "address of" operator
+
+
+
+*ptr=100;	//here, * means, value of....	100 is not stored in ptr.	100 is stored in a variable, which ptr refers to.
+we have actually changed the value of age variable.
+
+there are no 2 variables of type int.
+ptr is not a variable of type int. it is a variable that can hold the reference of int variable.
+
+
+#include <stdio.h>
+
+int main() {
+    int arr[3][3]={
+        {88,5,72},
+        {511,252,335},
+        {1,24,98}
+    };
+    printf("%d",*(*(arr+1)));
+    return 0;
+}
+
+arr[10]
+arr is the pointer to the first element of the array
+
+arr[10][10]
+*arr is the pointer to the first row first element
+
++1 will move to next element of first row
+
+*(arr+1)	second row
+
+if you want value of an element in 2 dimensional array, 2 asterisk is required
+
+
+int arr[10]
+arr is the name of the array, it refers to the address of first element.
+all other elements are accessed using index
+
+arr[0]	=	move 0 unit from first element
+arr[1]	=	move 1 unit from first element
+
+Write a swap function that accepts 2 integers and swap them.
+Do it in c language
+
+
+you can use pointers
+
+
+#include <stdio.h>
+
+void swap(int *i, int *j)//i and j are formal parameters
+{
+    int temp=*i;
+    *i=*j;
+    *j=temp;
+    printf("Inside swap function: i=%d and j=%d\n",*i,*j);
+}
+
+int main() {
+    int x=20;
+    int y=30;
+    swap(&x,&y);  //x and y are actual parameters
+    printf("But in main function: x=%d and y=%d\n",x,y);
+    return 0;
+}
+
+--------------------------------------
+Full Prime
+
+Siva always try to play with the numbers , he does so because he thinks that it will lead to some special numbers . One day he came up with an idea to know the numbers that are considered as Full Prime .  Full prime is a prime number where each of its digits is also a prime . Given a range from X to Y ,write a program to help Siva find the numbers (excluding X and Y ) that are full primes . If no such numbers exist between the given range,then print -1.
+
+Note1: Mention the maximum range of number will vary from 1 to 1000.
+
+Note2: 1 is not a prime number. 
+
+
+Input Format:
+First Input is an integer that denotes the X value.
+Second Input is an integer that denotes the Y value.
+
+Output Format:
+Output is a series of integers separated by a comma that is considered as a full prime.
+
+Sample Input 1:
+1
+50
+
+Sample Output 1:
+2,3,5,7,23,37
+
+Sample Input 2:
+8
+10
+
+Sample Output 2:
+-1 
