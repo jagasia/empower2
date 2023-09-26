@@ -1,0 +1,127 @@
+Day 21: (26-Sep-2023)
+------------------------------
+C programming:
+	control statements, arrays, strings
+
+-------------------------------------------------------------
+if
+if-else
+if-else if-else
+switch case
+while
+do-while
+for-loop
+----------------------------
+arrays
+	sizing the arrays are done while declaring itself
+
+	int arr[10];		we have declared an array and sized it there itself
+	in old version, the size must be constant.
+
+	but in new versions, we are allowed to provide variable as size
+
+
+Demo:
+Profit Share
+Ramu, Gopu and Samu are three friends who own a fruit shop. All three have invested certain amount for starting the shop. They share the profit proportionate to the ratio of the shares they have invested. Given the Profit amount and the ratio of shares of Ramu,Gopu and Samu ,write a program to find the amount of profit that will go to Ramu, Gopu and Samu.
+
+Input Format:
+First line is an integer that denotes the Profit Amount.
+Second line consists of 3 Space separated integers that denote the ratio values of Ramu,Gopu,Samu respectively
+
+Output Format:
+A double value that denotes the Ramu's profit amount.
+A double value that denotes the  Gopu's profit amount.
+A double value that denotes the  Samu's profit amount.
+[Note : The output values are rounded off to 2 decimal places]
+
+Sample Input 1:
+10000
+2 4 4
+
+Sample Output 1:
+2000.00
+4000.00
+4000.00
+
+Sample Input 2:
+25000
+4 5 6
+
+Sample Output 2:
+6666.67
+8333.33
+10000.00 
+-------------------------
+Solution:
+
+/******************************************************************************
+
+                            Online C Compiler.
+                Code, Compile, Run and Debug C program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <stdio.h>
+
+int main()
+{
+    int profit,ramu,gopu,samu;
+    scanf("%d",&profit);
+    scanf("%d",&ramu);
+    scanf("%d",&gopu);
+    scanf("%d",&samu);
+    
+    double r,g,s;
+    
+    int total=ramu+gopu+samu;
+    double x=(double)profit/total;
+    
+    r=ramu*x;
+    g=gopu*x;
+    s=samu*x;
+    
+    
+    printf("%.2f\n",r);
+    printf("%.2f\n",g);
+    printf("%.2f\n",s);
+
+}
+
+---------------------------------------------------------
+House for Sale
+Ramu has bought a house for X rupees, and he has planned to sell it after n years. He knows the rate at which the house value changes each year, for n years. He is very eager to know the value of his house after n years. 
+Write a    progam to help Ramu know the value of his house after n years.
+
+Note: The value of the house can increase as well as decrease.
+
+Input Format:
+First line of the input is an integer that corresponds the value X.
+Second line of the input is the number of years, n.
+Third line consists of n space separated integers that correspond to the rates at which the house value changes every year.
+
+Output Format:
+Output is a double value that coresponds to the value of Ramu's House after n years.(rounded off to 2 decimal places).
+
+Sample Input 1:
+150000
+3
+10 12 -10
+Sample Output 1:
+166320.00 
+
+Explanation:
+Cost of house 150000
+Value of house increaes 10 % in first year = 150000.00 + 15000.00 = 165000.00
+Value of house increaes 12 % in second year = 165000.00 +19800.00 = 184800.00
+Value of house decreases 10 % in third year = 184800.00 - 18480.00 = 166320.00
+
+After the third year the house value is 166320.00 . 
+
+Sample Input 2:
+10000
+3
+1 2 3
+Sample Output 1:
+10611.06 
