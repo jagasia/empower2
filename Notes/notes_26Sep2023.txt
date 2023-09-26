@@ -2,7 +2,6 @@ Day 21: (26-Sep-2023)
 ------------------------------
 C programming:
 	control statements, arrays, strings
-
 -------------------------------------------------------------
 if
 if-else
@@ -125,3 +124,75 @@ Sample Input 2:
 1 2 3
 Sample Output 1:
 10611.06 
+
+
+7:41
+complete this challenge by 7:51
+--------------------------------------------
+Solution:
+/******************************************************************************
+
+                            Online C Compiler.
+                Code, Compile, Run and Debug C program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <stdio.h>
+
+int main()
+{
+    int x=0;
+    scanf("%d",&x);
+    int n=0;
+    scanf("%d",&n);
+    int arr[n];
+    for(int i=0;i<n;i++)
+    {
+        scanf("%d",&arr[i]);
+    }
+    
+    //calculation
+    double output=x;
+    for(int i=0;i<n;i++)
+    {
+        // printf("%.2f",output);
+        // printf(".......");
+        output+=((double)arr[i]/100*output);
+    }
+    
+    printf("%.2f",output);
+
+}
+
+-----------------------------------------------------------
+Challenge:
+Number Addition
+ Gopu is a third grade kid, and new to numbers and the operations performed on it. Parallel to that he learns computer programming. So instead of storing a number in an integer variable, A, he created an array and stored the digits in that array. Now, if a second number, X, is given (as a single integer), he needs to calculate the sum.
+Write a program to help Gopu in finding the sum and print the resultant value.
+
+Input format:
+First line of the input is an integer that denotes the number of digits, n, in the first number, A.
+Second line of the input consists of space separated integers(single digit each), which corresponds to the n digits of the first number, A.
+Third line of the input is an integer that denotes the  second number, X.
+
+Note: The maximum value of 'n', i.e., the number of digits in A is 100.
+
+Output format:
+Space separated digits of the resultant number.
+
+Sample Input 1:
+5
+1 2 3 4 5
+1
+Sample Output 1:
+1 2 3 4 6
+
+
+Sample Input 2:
+4
+2 3 8 9
+11
+Sample Output 2:
+2 4 0 0 
+
