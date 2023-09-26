@@ -603,3 +603,104 @@ Sample Input 2:
 
 Sample Output 2:
 -1 
+
+Hint:	for test case 1 as example
+	you should create loop from 1 and 50
+	create a separate function that checks if the given number is a prime number or not.
+	isPrime(2)
+	isPrime(3)
+	isPrime(4)
+	.....
+	isPrime(50)
+
+if yes, then split the number into digits
+	check each digit is prime or not using the same isPrime function.
+
+
+
+18
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+
+
+to get each digit of a number
+if we modulo a number by 10, we get its last digit
+if we divide that number by 10, we remove that last digit
+----------------------
+Solution:
+#include <stdio.h>
+
+int isPrime(int num)
+{
+    if(num<=1)
+        return 0;
+    for(int i=2;i<=num/2;i++)
+    {
+        if(num%i==0)
+            return 0;
+    }
+    return 1;
+}
+
+int main() {
+    int start, end;
+    scanf("%d",&start);
+    scanf("%d",&end);
+    int count=0;
+    int isFirst=1;
+    for(int i=start;i<=end;i++)
+    {
+        if(isPrime(i))
+        {
+            //work on each digit of i
+            int temp=i;
+            int flag=1;
+            // printf("when i = %d\n------------\n",i);
+            if(i<10)
+            {
+                if(!isFirst)
+                    printf(",");
+                printf("%d",i);
+                isFirst=0;
+                continue;
+            }
+            while(temp>0)
+            {
+                int digit=temp%10;
+                // printf("Checking digit: %d\n",digit);
+                if(!isPrime(digit))
+                {
+                    flag=0;
+                    break;
+                }
+                temp/=10;
+            }
+            if(flag)
+            {
+                count++;
+                if(isFirst==0)
+                {
+                    printf(",");
+                }
+
+               printf("%d",i);
+               isFirst=0;
+            }
+         
+        }
+       
+    }
+     if(count==0)
+            printf("-1");
+    return 0;
+}
+--------------------------------------------
