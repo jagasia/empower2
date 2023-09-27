@@ -104,3 +104,104 @@ return a token
 https://github.com/jagasia/springsecurity
 
 https://youtu.be/edCb38T4YGc
+-----------------------------------------------------------------
+
+C language
+
+functions, pointers, structures, files
+
+in c language, we are allowed to use "static" inside function
+
+/******************************************************************************
+
+                            Online C Compiler.
+                Code, Compile, Run and Debug C program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <stdio.h>
+
+void display();
+
+int main()
+{
+    printf("Hello World\n");
+    display();
+    display();
+    display();
+
+    return 0;
+}
+
+
+void display()
+{
+    static int i=0;
+    i++;
+    printf("Not ok:%d\n",i);
+}
+
+-------------------------
+Pointer arithmetic
+
+Structure
+	is used to create user defined data type
+	composite type
+
+/******************************************************************************
+
+                            Online C Compiler.
+                Code, Compile, Run and Debug C program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <stdio.h>
+#include<string.h>
+
+struct Address
+{
+    char dno[10];
+    char street[20];
+    char city[20];
+    char state[20];
+    int pincode;
+    
+   
+};
+
+
+int main()
+{
+    // int arr[]={55,100,65,39,96,22}; 
+    // printf("%d",*(arr+1));
+    struct Address a1;
+    // a1.dno="A451";
+    strcpy(a1.dno,"A-451");
+    strcpy(a1.street,"Boganahalli road");
+    strcpy(a1.city,"Bengaluru");
+    strcpy(a1.state,"Karnataka");
+    a1.pincode=560103;
+    printf("Door no:%s\nStreet:%s\nCity:%s\nState:%s\nPincode:%d\n",a1.dno,a1.street,a1.city,a1.state,a1.pincode);
+    printf("Hello world");
+    return 0;
+}
+
+
+
+--------------------------
+Activity:
+------------
+fopen
+fscanf
+fprintf
+fgets
+fgetc
+fputs
+fputc
+fflush
+to read and write objects to and from file:		struct
+fread
+fwrite
+

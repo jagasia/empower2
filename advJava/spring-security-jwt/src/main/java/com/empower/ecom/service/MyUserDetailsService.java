@@ -1,6 +1,7 @@
 package com.empower.ecom.service;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,11 @@ public class MyUserDetailsService implements UserDetailsService
 	public MyUser create(MyUser user)
 	{
 		return ur.save(user);
+	}
+	
+	public List<MyUser> read()
+	{
+		return ur.findAll();
 	}
 
 }

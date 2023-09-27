@@ -9,10 +9,12 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import com.empower.ecom.filter.JwtFilter;
 import com.empower.ecom.service.MyUserDetailsService;
@@ -37,12 +39,13 @@ public class MySecurityConfiguration extends WebSecurityConfigurerAdapter {
 		return super.authenticationManagerBean();
 	}
 
+	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 		.cors().and()
 		.csrf().disable()
-		.authorizeRequests().antMatchers("/login","/dummy","/signup")
+		.authorizeRequests().antMatchers("/login","/dummy","/signup","/all","/h2/**","/h2-console/**")
 		.permitAll().anyRequest().authenticated()
 		.and().exceptionHandling().and().sessionManagement()
 		.sessionCreationPolicy(SessionCreationPolicy.STATELESS);

@@ -1,5 +1,7 @@
 package com.empower.ecom.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -59,5 +61,12 @@ public class MyController {
 	public MyUser signup(@RequestBody MyUser user)
 	{
 		return us.create(user);
+	}
+	
+	
+	@GetMapping("/all")
+	public List<MyUser> retrieveAllUsers()
+	{
+		return us.read();
 	}
 }
