@@ -1,0 +1,104 @@
+Day 22: (27-Sep-2023)
+------------------------------
+We are going to learn:
+C language 
+	pointers and structures
+Pro *C
+Spring Security with JWT
+Project titles
+------------------------------------------
+Spring security:
+	we have already learned 
+		Security configuration
+		UserDetailsService
+		UserDetails
+		User
+		
+JWT
+	JSON Web Token
+
+What is JSON?
+	JavaScript Object Notation
+
+We are able to create only the backend alone and test it using postman
+means, we should be able to send objects to the rest api, and also
+			receive objects from the rest api.
+
+to send objects to a rest api (rest api developed in any platform)
+we need a format
+
+earlier, xml was the format used. (during SOAP web services)
+now, during RESTful webservices, JSON is the most preferred format.
+
+JSON format:
+
+{
+	"id":"1",
+	"name":"Raja",
+	"department":{"id":"123","name":"ECE"
+	}
+}
+
+
+[]	means	array		in javascript
+
+
+[{
+	"id":"1",
+	"name":"Raja",
+	"department":{"id":"123","name":"ECE"
+	}
+},
+{
+	"id":"1",
+	"name":"Raja",
+	"department":{"id":"123","name":"ECE"
+	}
+}
+]
+
+-------------------------------------------
+JWT
+	JSON Web Token
+
+A RESTful Webservice is STATELESS
+
+1) when one webservice allows us to login,
+2) other webservices of same group, does not remember that we have logged in.
+3) so the login service, should return a JWT token
+4) that token should be used in the header of subsequent requests made to same or different webservice. How different webservices can accept same token? it is possible if all these services, use same secret key.	Secret key must be complex (like atleast 5 characters)
+
+Steps:
+1) in pom.xml, add the jjwt dependency
+2) JwtUtil class
+	methods like	
+		createToken
+		generateToken
+		extractUsername
+	and all methods related to JWT.	This class is same for any project. we can customize
+		like 	token validity is 10 hours. we can change it if required.
+
+3) JwtFilter
+	which should be intercepting all requests coming to our service.
+	same code for any project.
+4) in security configuration
+	we have to allow only urls like		"/login", "/signup"
+	anyRequest.authenticated
+5) after login is successful, we have to create a jwt token and return that token as response.
+	
+
+
+
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.9.1</version>
+		</dependency>
+
+
+return a token
+	i) valid token
+	ii) a message
+
+
+https://github.com/jagasia/springsecurity
