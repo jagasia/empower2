@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"  %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,14 +24,14 @@
     </div>
     <div class="col-sm-4">
       <h3>Candidate Page</h3>
-      <form>
-      	Id:<input type="number" name="id" class="form-control" />
-      	First Name:<input type="text" name="id" class="form-control" />
-      	Last Name:<input type="text" name="id" class="form-control" /><br/>
+      <form:form method="post" action="/dml" modelAttribute="candidate">
+      	Id:<form:input type="number" path="id" class="form-control" />
+      	First Name:<form:input type="text" path="firstName" class="form-control" />
+      	Last Name:<form:input type="text" path="lastName" class="form-control" /><br/>
       	<input type="submit" value="Add" name="add" class="btn btn-info" />&nbsp;
       	<input type="submit" value="Update" name="update" class="btn btn-warning" />&nbsp;
       	<input type="submit" value="Delete" name="delete" class="btn btn-danger" />
-      </form>
+      </form:form>
     </div>
     <div class="col-sm-4">
       
@@ -54,7 +55,7 @@
   					<td>${c.id }</td>
   					<td>${c.firstName }</td>
   					<td>${c.lastName }</td>
-  					<td></td>
+  					<td><a href="/select/${c.id }" class="btn btn-primary">Select</a></td>
   				</tr>
   			</c:forEach>
   			</tbody>
