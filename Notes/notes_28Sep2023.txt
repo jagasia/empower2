@@ -182,3 +182,26 @@ run the rest pi	"spring-jpa"
 run the mvc 	"candidate-mvc"
 complete the code for
 	add/update/delete/select
+
+Refer "candidate-mvc" for complete details.
+Activity:
+In your project, identify the entities involved.
+Create the rest api for each entity.
+create mvc project and access the rest api and test it.
+---------------------------------
+In your project, you have identified one entity and created a rest api for CRUD
+ex:	Product
+product-api		(rest api)
+product-mvc		(jsp pages and access the rest api using feign client)
+
+user-service		(rest api)
+	should provide signup (add a new user to users table)
+	should provide login (check if username and password are correct and return user)
+
+Signup:
+	validations in jsp form
+	email otp validation
+
+after signup:
+	login and allow user to add products.
+------------------------------
