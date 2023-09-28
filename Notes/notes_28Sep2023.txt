@@ -109,3 +109,76 @@ Activity:
 	test it in postman
 
 	Now, create another rest api and use RestTemplate to call the previous rest api.
+--------------------------------------------------------------------
+Before break, we learnt to call a restful webservice using
+	HttpURLConnection
+	RestTemplate
+now, we will use 
+	FeignClient
+to access the restful webservice from another webservice or mvc project.
+
+Scenario:
+	we already have a rest api for "Candidate"
+		http://localhost:5000/candidate
+
+Create a new MVC project that contains 
+		candidate.jsp
+			CRUD form and tables to display
+
+	When the entire backend (model) is readily available as a REST api,
+	what will you do in MVC?
+		Routing, redirection show view etc all that related to "view" and "controller".
+		But MVC should not contain
+			JPA repository
+			whenever database part is required, mvc project should call rest 			api
+
+	we will use FeignClient to make MVC project access the REST api
+
+------------------------------------------------------
+1) create mvc project "candidate-mvc"
+	dependencies:
+		spring web
+		apache tomcat embed		(for jsp)
+		jstl
+		open feign
+2) 	application.properties
+		prefix
+		suffix
+		server.port	8080
+3) 	WEB-INF/jsp	folder
+		candidate.jsp
+4) Candidate.java
+	just for type reference.	Do not need @Entity, @Id etc here
+5) CandidateApi.java		interface that is used to refer to the REST api
+	http://localhost:5000/candidate
+@FeignClient(name = "customer-api",url = "http://localhost:5000/candidate")
+public interface CandidateApi {
+	@PostMapping
+	public Candidate create(@RequestBody Candidate candidate);
+	
+	@GetMapping
+	public List<Candidate> read();
+	
+	@GetMapping("/{id}")
+	public Candidate read(@PathVariable("id") Integer id);
+	
+	@PutMapping
+	public Candidate update(@RequestBody Candidate candidate);
+	
+	@DeleteMapping("/{id}")
+	public Candidate delete(@PathVariable("id") Integer id);
+}
+
+6) MyController.java
+	@Controller
+		we will autowire the CandidateApi
+		and then we will be able to call the methods of candidate api
+
+7) in application file, under the @SpringBootApplication annotation
+	@EnableFeignClients
+-------------------------
+Activity:
+run the rest pi	"spring-jpa"
+run the mvc 	"candidate-mvc"
+complete the code for
+	add/update/delete/select
