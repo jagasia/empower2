@@ -68,4 +68,44 @@ get	a json
 create a java project and access that webservice using the url
 mention the correct MIME type to access and print the message retrieved from webservice.
 
+-------------------------
+How to access a rest api from an mvc project?
+	feign client
+	rest template	(spring boot)
 
+
+spring-jpa
+	is running in 5000 port
+		http://localhost:5000/candidate
+28-sep-1
+	is running in 5001 port. Today we have created this restful webservice.
+	from here, we want to access spring-jpa webservice.
+
+	we use RestTemplate to access another webservice.
+
+
+
+@RestController
+@RequestMapping("/client")
+public class MyController {
+	
+	@GetMapping
+	public Candidate home()
+	{
+		//i am going to access
+		//http://localhost:5000/candidate
+		RestTemplate rt=new RestTemplate();
+		ResponseEntity<Candidate> c = rt.getForEntity("http://localhost:5000/candidate/1", Candidate.class);
+		Candidate candidate=c.getBody();
+		return candidate;
+	}
+}
+
+
+above code, uses RestTemplate to access another rest api by using URL
+----------------------
+Activity:
+	If you not already have a rest api, create one.
+	test it in postman
+
+	Now, create another rest api and use RestTemplate to call the previous rest api.
