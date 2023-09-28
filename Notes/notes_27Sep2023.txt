@@ -205,3 +205,41 @@ to read and write objects to and from file:		struct
 fread
 fwrite
 
+
+------------------------------Spring hands on test url-------------------
+https://forms.office.com/r/auQEcCtCMA
+
+1) Entity class
+	@Entity
+	@Id
+
+2) Repository
+	@Repository
+	extends JpaRepository<Candidate,Integer>
+3) Service
+	autowire
+	create
+	read
+	read (id)
+	update
+	delete
+3) Controller
+	@RestController
+	autowire
+
+	all http methods
+		GET
+		GET
+		POST
+		PUT
+		DELETE
+----------------------------
+after login, we got jwt token
+
+next requests, should use this token
+
+Spring boot MVC projects can access REST apis using
+	i) Feign client 	(or)
+	ii) Rest template
+
+	iii) Accessing a rest api from a java code.

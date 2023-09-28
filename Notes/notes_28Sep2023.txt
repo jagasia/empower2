@@ -1,0 +1,71 @@
+Day 23: (28-Sep-2023)
+------------------------------
+To call RESTful webservice,
+1) java program
+2) mvc project using feign client
+3) Rest Template
+----------------------------------------------
+You will have multiple web service projects running simultaneously. How one service running in a separate port can call another service running in a different port?
+Otherwise, you will tend to create a single project that contains, all entities, repositories, services, controllers all in one project for your convenience. But that does not form a microservices architecture.
+
+If you try to make payment in an app like swiggy/ bookmyshow and find that credit card payment fails. You may try Gpay or netbanking or lazy pay.
+These are independent services. One is down, doesn't affect another.
+
+Entity classes, can be copied to all the services. (remove the annotations in all other projects)
+They serve as a type. 
+
+
+1) Java project:
+	how to call a restful webservice (no matter, in which technology it is created) from a java project.
+	first lets run a web service.
+
+We have created a simple restful webservice running the 5001 port. We are able to access it using the below url:
+	http://localhost:5001/
+
+Lets see how to access this webservice from a java project.
+----------
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+public class Main {
+
+	public static void main(String[] args) {
+		//to access the webservice at http://localhost:5001/
+		try {
+
+            URL url = new URL("http://localhost:5001/employee");//your url i.e fetch data from .
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            conn.setRequestProperty("Accept", "application/json");
+            if (conn.getResponseCode() != 200) {
+                throw new RuntimeException("Failed : HTTP Error code : "
+                        + conn.getResponseCode());
+            }
+            InputStreamReader in = new InputStreamReader(conn.getInputStream());
+            BufferedReader br = new BufferedReader(in);
+            String output;
+            while ((output = br.readLine()) != null) {
+                System.out.println(output);
+            }
+            conn.disconnect();
+
+        } catch (Exception e) {
+            System.out.println("Exception in NetClientGet:- " + e);
+        }
+		System.out.println("Hello world");
+	}
+
+}
+
+---------------------------
+Activity:
+Create a simple restful webservice that contains url for
+get	a simple message
+get	a json
+
+create a java project and access that webservice using the url
+mention the correct MIME type to access and print the message retrieved from webservice.
+
+
