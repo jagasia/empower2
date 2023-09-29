@@ -205,3 +205,41 @@ Signup:
 after signup:
 	login and allow user to add products.
 ------------------------------
+How to run a spring boot application from cmd prompt:
+using mvn 
+
+
+http://localhost:5000/candidate
+since the project spring-jpa is not running, we are not able to get results.
+now, lets run this project.
+go the location where pom.xml is present
+
+go to cmd in that location:
+	mvn spring-boot:run
+
+now
+http://localhost:5000/candidate
+is working.
+
+Task:
+Run spring boot project from command prompt.
+	mvn spring-boot:run
+
+------------------------
+For every project
+	i) list of entities and their relationships (1-M)
+	ii) identify the attributes of the entities
+	iii) CRUD for master entities
+
+
+Product
+	id
+	name
+	mfgDate		(remind me how to use dates)
+	expDate
+	price
+	brand
+	category
+
+-----------------------------
+HTML		vs code

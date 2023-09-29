@@ -1,0 +1,86 @@
+Day 24: (29-Sep-2023)
+------------------------------
+Jenkins
+Continues Integration and Continues Development
+
+We dont need to install anything for jenkins.
+We just need to download jenkins war file from jenkins portal.
+thats all.
+
+Why we need Jenkins? What is Continuous Integration and Continuous Development?
+	shortly called as CI/CD
+
+CI/CD is very popular approach.
+
+What is CI/CD?
+
+Scenario:
+	Suppose, you (Skanda) develop a project.
+	Nitin is the deployer. He has AWS a/c credentials and so he only can deploy the project in AWS
+	
+	After sometime, Skanda do some changes to the project.
+	How does that change reflect in AWS server?
+		Nitin has to re-deploy the project.
+
+	This process is complicated.
+This is where, CI/CD helps us.
+
+Solution:
+------------
+	If Skanda push the project to git hub (or any such platform)
+	And Nitin deploy the application from git hub (or any such platform)
+	Then, Nitin has created a pipeline for git in aws.
+
+	Whenever Skanda push the changes to git. Then the changes are captured by the CI/CD pipeline from git. Git notifies as push notification.
+
+	Problem solved.
+
+we learn AWS later.
+we learn Git later.
+
+But we can orchestrate this process in Jenkins now.
+First of all, how to run a java program using Jenkins. You can learn now.
+I can push projects to git and give you the link. You can proceed with practicals now.
+
+During training room session, we will install git and proceed.
+
+Lab setup for Jenkins:
+1) download jenkins war file from 
+	https://www.jenkins.io/download/
+
+2) keep the war file in c:\softwares\jenkins\ 
+
+3) How to run jenkins in our system?
+	go to the folder where jenkins war file is present
+	cmd
+		
+we are in cmd prompt where jenkins war is present.
+4)
+	java -jar jenkins.war
+
+
+
+delete the new war from downloads folder and softwares folder
+now, download old version that support java 8 from:
+https://get.jenkins.io/war-stable/2.164.1/
+
+
+Jenkins is fully up and running
+
+check localhost:8080
+
+Steps for jenkins:
+1) download jenkins war file.
+	ensure that the version supports java 8
+	https://get.jenkins.io/war-stable/
+		the above url, shows the list of jenkins versions and their support to jdk
+2) copy the jenkins war file to softwares folder
+3) go to cmd prompt where this war file is present
+4) java -jar jenkins.war
+5) when you see "Jenkins is fully up and running"
+	go to browser
+		http://localhost:8080
+6) Login to jenkins as admin:
+	admin
+	admin
+7) inform me once you successfully logged in to jenkins
