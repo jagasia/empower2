@@ -84,3 +84,212 @@ Steps for jenkins:
 	admin
 	admin
 7) inform me once you successfully logged in to jenkins
+
+-----------------------
+Solution for "Java is not recognized" problem:
+
+1) copy the location of your jdk
+	c:\program files\amazon corretto\jdk 1.8\bin
+
+2) copy the location and append this to the path env variable.
+
+open a new cmd prompt and check
+	java -version
+---------------------
+Now, you are able to see the dashboard.
+Lets run a java program in jenkins:
+
+1) create a java program
+	Hello.java
+
+public class Hello
+{
+	public static void main(String []args)
+	{	
+		System.out.println("Hello this is empower batch");
+	}
+}
+
+2) in jenkins dashboard, create a new item
+name of the item:	empower-1
+freestyle project
+click ok
+
+Before build:
+	copy the Hello.java file to 
+	C:\Users\rjaga\.jenkins\workspace\empower-3
+		in your case, profile name is 6 digit
+Build step:
+	execute windows batch command
+
+save
+build now
+check the builds and console.
+
+---------------------
+
+
+	java -jar jenkins.war --enable-future-java
+
+
+
+Activity:
+create a git repository and push a spring boot project to the git.
+pom.xml is present in the home
+
+create a jenkins project and the build command 
+windows batch
+	mvn spring-boot:run
+
+--------------------------
+Language features
+datatypes
+programming constructs
+
+----------------------------------------
+Using Jenkins, you should be able to run a java project/ program
+you should be able to deploy the java program, or
+spring boot application
+and build the app in jenkins.
+the changes pushed to git must reflect in subsequent build in jenkins.
+
+-----------------------------------------------
+HTML
+	Learning html is very import for creating web applications.
+	Hypertext Markup Language
+HTML is very simple markup language have a huge set of vocabulary.
+	Predefined tags that we need to learn.
+
+a html file must contain a root element called <html>
+
+Elements		also called as Tags
+Attributes		additional values for an element
+Entities		used whenever markup syntax is confusing
+Comments	provide explanation of the code
+Directives		used in server side scripts
+Scripts		compute, calculate, validate and produce output of expressions
+
+<HTML>		is the root element of a html program
+<BODY> and <HEAD> are the two child tags of HTML tag
+
+<HEAD>		contains the program that must be loaded in memory even before the page is rendered (displayed)
+		SCRIPTS that my be loaded early\
+
+BODY		contains the code mostly that is displayed in the browser
+
+HTML 		means, presentation. How the data must be displayed?
+		list
+		table
+		columns
+		center/	left/	right/	justify?
+		bold?		italic	underlined
+		Heading size from 1 to 6		1 being largest
+		color?		background-color?
+		
+Front End
+UI
+View
+
+Presentation
+
+1) Block Elements
+2) In-line Elements
+
+<div>This is a block</div>
+<div>This is another block</div>
+	div always presents the data in a separate line.
+
+you might have seen multiple divs in same row in bootstrap.
+
+
+<span>1</span>
+<span>2</span>
+both are displayed in same line
+
+<p>this paragraph is <div>displayed</div> in same line</p>
+	NO, the div will appear in separate line
+
+<p>this paragraph is <span>displayed</span> in same line</p>
+	YES, the span appear in same line
+
+P
+DIV
+TABLE
+H1...H6
+these are block elements they appear in separate line.
+
+
+We use visual studio code to practise html programs.
+
+Tags must nest properly.
+	<p><b><i>this is a paragraph</i></b></p>
+
+Tags are case insensitive.		UPPER or lower or MiXeD case also fine
+	(xml is case sensitive. HTML is not)
+
+attributes are provided in double quotes.
+
+<p align="center">This is a paragraph</p>
+	align is the attribute of p element.	value may be number, but must be in 	double quotes
+
+	this rule is not implemented strictly. but follow this.
+
+Entities:
+	&nbsp;
+	&gt;
+	&ge;
+	&lt;
+	&le;
+	&eq;
+	&ne;
+
+<p>i<10</p>		this is confusing?
+<p>i&lt;10</p>		&lt; is 	< symbol
+
+<c:if test="p.age &gt; 0">
+
+
+Comments:
+	<!--	this is a comment 	-->
+
+Some elements are 
+	empty tags
+Some elements are 
+	body tags
+
+<br/>		is an empty element.
+also
+<hr/>		print a horizontal line
+	empty tags use / at the end.		this rule is not followed much.
+
+
+
+<b>this is printed in bold</b>
+		this is body tag	/ content element
+		they has start tag and end tag
+
+In ReactJs, these rules must be followed strictly.
+
+<table>
+	<thead>
+		<tr>	(nobody is using. in react, you get warning)
+			<th>S.No.</th>
+		</tr>
+	</thead>
+</table>
+
+-------------------------------
+Heading elements
+Table elements
+Form elements
+	INPUT elements		HTML5 	many type of input elements
+
+-------------------------------------------------------------------
+<%@page
+<%@taglib
+<!DOCTYPE html>		implies this is a HTML 5 page
+
+
+
+
+
