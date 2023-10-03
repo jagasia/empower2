@@ -1,0 +1,30 @@
+Day 25: (03-Oct-2023)
+------------------------------
+What is Pro C?
+	is a part of Oracle software.
+	precomp folder in oracle home directory is used for Pro C.
+Precomp means pre compiler
+
+Pro C is a language which must be translated into C language code.
+C language again will be compiled to get object code that can be execute.
+
+Why Pro C is required?
+	it is required, when you want to execute SQL statement from C language.
+
+To compile proc program to c program, we use
+	proc
+
+one.proc	to one.c
+the above command produces file with extension c
+
+To compile c program to object code, we use
+	gcc
+
+one.c	to	a.exe
+
+--------------------------
+
+Activity:
+Identify the directory structure of Pro C in oracle.
+
+https://www.javatpoint.com/proc
