@@ -41,6 +41,7 @@ Loops
 Functions
 Lists
 Strings
+Dictionaries
 
 x = str(3)    # x will be '3'
 y = int(3)    # y will be 3
@@ -188,3 +189,71 @@ if <<condition>> :
 	use an indent to make statement belong to if
 	en empty line closes the if block
 
+-------------------------------------------------
+def my_function():
+  print("Hello from a function")
+  print("THis line also is part of my function")
+
+my_function()
+print("...........")
+my_function()
+
+
+Passing arguments to a function:
+-------------------------------------------
+def my_function(arg):
+  print("Hello from a function:"+str(arg))
+  print("THis line also is part of my function:"+str(arg))
+
+my_function(100)
+print("...........")
+my_function(200)
+
+
+
+
+def my_function(*kids):
+	if len(kids)>0:
+		print("The youngest child is " + kids[len(kids)-1])
+	else:
+		print("There are no elements in the array")
+
+my_function("Emil", "Tobias", "Linus", "Sumanth")
+#my_function()
+
+---------------------------------------
+HTML
+	what is new in HTML5?
+		Audio, Video tags
+		Geolocation
+		Local and Session storage 	(web storage)
+		Form input elements		(date, email, number, range, file)
+		Semantic tags		(header, footer)
+
+Audio, Video tags
+	
+12.9499136,77.6142848
+
+
+Latitude: 12.9499136
+Longitude: 77.6142848
+
+
+
+Semantic tags		
+	<div class="header">
+	<header>
+--------------------------------------------------------------
+CSS	Cascading StyleSheet
+
+
+
+npm config set strict-ssl false
+
+npm cache verify
+npm cache clean
+
+npm i -g react
+npm i -g react-dom
+npm i -g react-scripts
+npm i -g cra-templates
