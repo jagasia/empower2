@@ -31,3 +31,128 @@ https://www.javatpoint.com/proc
 
 
 https://forms.office.com/r/auQEcCtCMA
+--------------------------------------------------------------
+Python Topics:
+--------------------
+Fundamentals
+Operators
+Control Flow
+Loops
+Functions
+Lists
+Strings
+
+x = str(3)    # x will be '3'
+y = int(3)    # y will be 3
+z = float(3)  # z will be 3.0
+
+
+x = 5
+y = "John"
+print(type(x))
+print(type(y))
+
+
+x = "John"
+# is the same as
+x = 'John'
+
+
+Variable Names
+A variable can have a short name (like x and y) or a more descriptive name (age, carname, total_volume). Rules for Python variables:
+A variable name must start with a letter or the underscore character
+A variable name cannot start with a number
+A variable name can only contain alpha-numeric characters and underscores (A-z, 0-9, and _ )
+Variable names are case-sensitive (age, Age and AGE are three different variables)
+A variable name cannot be any of the Python keywords.
+
+
+Camel Case
+Each word, except the first, starts with a capital letter:
+
+myVariableName = "John"
+Pascal Case
+Each word starts with a capital letter:
+
+MyVariableName = "John"
+Snake Case
+Each word is separated by an underscore character:
+
+my_variable_name = "John"
+
+
+Many Values to Multiple Variables
+Python allows you to assign values to multiple variables in one line:
+x, y, z = "Orange", "Banana", "Cherry"
+print(x)
+print(y)
+print(z)
+
+
+One Value to Multiple Variables
+And you can assign the same value to multiple variables in one line:
+
+Example
+x = y = z = "Orange"
+print(x)
+print(y)
+print(z)
+
+
+Unpack a Collection
+If you have a collection of values in a list, tuple etc. Python allows you to extract the values into variables. This is called unpacking.
+
+Example
+Unpack a list:
+
+fruits = ["apple", "banana", "cherry"]
+x, y, z = fruits
+print(x)
+print(y)
+print(z)
+
+
+
+
+x = "Python"
+y = "is"
+z = "awesome"
+i="!"
+print(x, y, z+i)
+the output is:
+	Python is awesome!
+
+
+
+x = 5
+y = "John"
+print(x + y)
+the above gives ERROR!
+
+
+x = 5
+y = "John"
+print(str(x) + y)
+output:	5John
+
+
+x = 5
+y = "John"
+print(x, y)
+output:	5 John
+
+Python - Global Variables
+--------------------------------------
+A variable declared outside a function is global by default.
+They are available inside and outside any function.
+A variable declared inside a function, is not available outside the function. But
+if you declare it as global, then it is available outside the function also.
+
+def myfunc():
+  global x
+  x = "fantastic"
+
+myfunc()
+
+print("Python is " + x)
+
