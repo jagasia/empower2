@@ -173,3 +173,18 @@ Bitwise operators
 
 Activity:
 	Understand the operators used in python
+---------------------------------------
+Control Statements & Loops
+	if
+	elif
+	else
+	and or not
+	nested if
+
+	while
+	for
+
+if <<condition>> :
+	use an indent to make statement belong to if
+	en empty line closes the if block
+
