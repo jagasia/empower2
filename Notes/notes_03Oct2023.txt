@@ -156,3 +156,20 @@ myfunc()
 
 print("Python is " + x)
 
+Activity:
+complete the variables in python and identify the data types in python.
+-----------------------------------------
+
+Python divides the operators in the following groups:
+
+Arithmetic operators
+Assignment operators
+Comparison operators
+Logical operators
+Identity operators
+Membership operators
+Bitwise operators
+
+
+Activity:
+	Understand the operators used in python
