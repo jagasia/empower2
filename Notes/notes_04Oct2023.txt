@@ -445,3 +445,26 @@ h2 database	(file system. not in-memory)
 
 4) Swagger to test the rest apis
 
+In java naming convention:
+
+@Entity
+@Table(name="USERS")		//USER is a keyword in database
+public class User
+{		
+	@Id
+	private Integer id;	
+	private String firstName;	//in db, it will become FIRST_NAME	
+	private String lastName;
+}
+
+
+Class name:		PascalCase
+variables and methods:	camelCase
+
+--------------------------------
+Javascript Fetch API
+---------------------------
+fetch(url)
+.then(x=>x.data)
+.then(y=>document.getElementById("div").innerHTML=y);
+
