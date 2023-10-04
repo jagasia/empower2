@@ -428,3 +428,20 @@ Another checkbox	"Show Password"	to make the password visible / not
     <input type="button" value="Login" onclick="fnLogin()">
 </body>
 </html>
+---------------------------------------------------------------------
+Project:
+1) Abstract
+	paragraph		1 - 3 paragraphs
+2) Entity classes
+	properties		(naming conventions to be followed)
+
+	every entity class primary key as	ideally "id"
+		username
+		email
+		etc can also be primary key		
+3) relationship annotations
+	
+h2 database	(file system. not in-memory)
+
+4) Swagger to test the rest apis
+
