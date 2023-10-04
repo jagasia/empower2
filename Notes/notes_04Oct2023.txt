@@ -359,3 +359,72 @@ Hint:
 localStorage
 	setItem(key,value)
 	getItem(key)		returns the value
+
+
+Another checkbox	"Show Password"	to make the password visible / not
+
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+
+        function fnLogin()
+        {
+            //check if Remember me check box is tick or not
+            var x=document.getElementById("chkRememberMe");
+            var uid=document.getElementById("txtUsername").value;
+            var pwd=document.getElementById("txtPassword").value;
+            // console.log(x.checked);
+            if(x.checked)
+            {
+                localStorage.setItem("username",uid);
+                localStorage.setItem("password",pwd);
+                alert("Stored");
+            }
+        }
+
+        function fn1()
+        {
+            //check if localStorage has username and password
+            var uid=localStorage.getItem("username");
+            if(uid!=null)
+            {
+                document.getElementById("txtUsername").value=uid;
+            }
+            var pwd=localStorage.getItem("password");
+            if(pwd!=null)
+            {
+                document.getElementById("txtPassword").value=pwd;
+            }
+
+        }
+
+        function fnShow()
+        {
+            var show=document.getElementById("chkShowPassword");
+            if(show.checked)
+            {
+                //show
+                var txt=document.getElementById("txtPassword");
+                txt.setAttribute("type","text");
+            }else{
+                //hide
+                var txt=document.getElementById("txtPassword");
+                txt.setAttribute("type","password");
+            }
+        }
+    </script>
+</head>
+<body onload="fn1()">
+    User Name: <input type="text" name="" id="txtUsername"><br>
+    Password: <input type="password" name="" id="txtPassword"><br>
+    <label for="chkRememberMe">Remember me:</label> <input type="checkbox" name="" id="chkRememberMe">
+    <label for="chkShowPassword">Show Password:</label> <input type="checkbox" name="" id="chkShowPassword" onchange="fnShow()"><br>
+    <input type="button" value="Login" onclick="fnLogin()">
+</body>
+</html>
