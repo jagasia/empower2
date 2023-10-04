@@ -323,3 +323,24 @@ Print the output below the button:
 	You joined on 14th August 2023.!
 
 
+--------------------------------------
+Objects
+	convert a String into object and vice versa
+	String means, JSON string
+
+
+
+the below code converts a JSON string into an object:
+var str='{"id":"100","firstName":"Steven","lastName":"King","salary":"24000"}';
+var employee=JSON.parse(str);
+console.log(employee);
+
+the below code converts object into JSON string:
+
+Activity:
+accept inputs from the user in form and convert that into an object.
+
+var emp={id:0,name:''};
+emp.id=200;
+emp.name='Raja';
+console.log(emp)
