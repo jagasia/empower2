@@ -199,3 +199,64 @@ Write javascript programs to understand
 
 Run the js file using 	
 	node one.js
+--------------------------
+How to use javascript in html?
+	for event handling?
+	
+click
+dblclick
+focus
+blur
+keyup
+keydown
+mouseup
+mousedown
+change
+
+
+DOM	Document Object Model
+	represents the html or any document as an object
+	we will be able to access the elements and attributes using dom
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function fnLogin()
+        {
+            var uid=document.getElementById("txtUsername").value;
+            var pwd=document.getElementById("txtPassword").value;
+            if(uid==pwd)
+                window.alert("Login failed");
+            else
+                alert("Login successful");
+        }
+    </script>
+</head>
+<body>
+    User Name: <input type="text" name="" id="txtUsername"><br>
+    Password: <input type="password" name="" id="txtPassword"><br>
+    <input type="button" value="Login" onclick="fnLogin()">
+</body>
+</html>
+
+Activity:
+
+Write a javascript function to add 2 numbers.
+Enter the numbers in 2 text boxes.
+Bind the click event of the button to the function and run the program.
+
+no1 =2
+no2 =3
+sum =5
+
+
+1) The output should be displayed below the button.
+2) The output should be displayed as and when the number is changed
+	no need to click the button
+
+put this line in vs code cmd prompt:
+
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
