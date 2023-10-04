@@ -260,3 +260,66 @@ sum =5
 put this line in vs code cmd prompt:
 
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+----------------------------------------
+Data types
+Dates
+Objects
+
+var i=20;		//int
+var j=2.5;		//float
+
+
+// Numbers:
+let length = 16;
+let weight = 7.5;
+
+// Strings:
+let color = "Yellow";
+let lastName = "Johnson";
+
+// Booleans
+let x = true;
+let y = false;
+
+// Object:
+const person = {firstName:"John", lastName:"Doe"};
+
+// Array object:
+const cars = ["Saab", "Volvo", "BMW"];
+
+// Date object:
+const date = new Date("2022-03-25");
+
+----------------
+Date
+	2023-10-04
+
+	04/10/2023
+
+
+SimpleDateFormat
+	by default, is Lenient
+	set it to nonLenient
+		sdf.setLenient(false);
+-------------------------
+Date in java and javascript is actually a long number
+for every date, there is a numeric representation in long datatypes
+
+in java:
+Date dt=new Date();
+long value=dt.getTime();	
+
+in javascript:
+var dt=new Date();
+
+
+if the long value is 0, then date is 		01-Jan-1971
+
+Activity:
+in html page, accept the date of joining using 
+	input:date
+
+Print the output below the button:
+	You joined on 14th August 2023.!
+
+

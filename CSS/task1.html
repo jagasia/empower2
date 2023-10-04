@@ -9,13 +9,16 @@
             var no1=parseInt(document.getElementById("txtNo1").value);
             var no2=parseInt(document.getElementById("txtNo2").value);
             var sum=no1+no2;
-            alert(sum)
+            // alert(sum)
+            document.getElementById("divResult").innerHTML=sum;
         }
     </script>
 </head>
 <body>
-    User Name: <input type="number" name="" id="txtNo1"><br>
-    Password: <input type="number" name="" id="txtNo2"><br>
+    User Name: <input type="number" name="" id="txtNo1" onkeyup="fnSum()"><br>
+    Password: <input type="number" name="" id="txtNo2" onkeyup="fnSum()"><br>
     <input type="button" value="Add" onclick="fnSum()">
+    <br/>
+    <div id="divResult"></div>
 </body>
 </html>
