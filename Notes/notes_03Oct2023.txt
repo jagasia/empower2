@@ -257,3 +257,18 @@ npm i -g react
 npm i -g react-dom
 npm i -g react-scripts
 npm i -g cra-templates
+
+
+To create react app: 3 ways: use any one:
+
+1)
+npx create-react-app jag1
+
+(or)
+2)
+npm i -g create-react-app
+create-react-app jag1
+
+(or)
+3)
+npm init react-app jag1

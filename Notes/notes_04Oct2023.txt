@@ -80,3 +80,122 @@ Box model
 Background
 Borders
 
+------------------------------------------------------
+
+if komal has create a very big css file.
+Komal gives this css file to Nitin.
+How Nitin will use it? in his html file?
+	<link rel="stylesheet" href="komal.css">
+
+Activity:
+create a html file, 
+	5 textboxes
+
+whenever cursor comes into a text box, its background color should become yellow
+
+
+
+    <style>
+        input[type="text"]:focus
+        {
+            background-color: yellow;
+        }
+
+    </style>
+-----------------------------------------------------
+Javascript
+--------------
+	what is javascript?
+		is a client side scripting language.
+
+	servlet, jsp, php are example for server side scripts. They run at server and the output is sent to the browser.
+	
+	javascript, vbscript are example for client side scripts. They run at browser
+
+	User Experience is good in client side scripts
+
+we can have external javascript file
+	myscript.js
+
+we can refer in html file
+	<script src="myscript.js">
+		/*	do not write anything here	*/
+	</script>
+
+
+
+https://www.w3schools.com/js
+
+
+var arr=[22,10,70,80,65,96,39];
+for(var i=0;i<arr.length;i++)
+{
+    console.log(arr[i]);
+}
+
+for(var x in arr)	then x will be index
+
+for(var x of arr)
+{
+    console.log(x);
+}
+
+
+
+
+while(true)
+{
+    console.log("OK");
+    i++;
+    if(i>arr.length)
+        break;
+}
+
+
+
+
+var arr=[22,10,70,80,65,96,39];
+var i=0;
+do
+{
+    console.log(arr[i]);
+    i++;
+    
+}while(i<arr.length);
+
+
+
+function fn1()
+{
+    console.log("Fn1 function is called");
+}
+
+function sum(i,j)
+{
+    return i+j;
+}
+
+fn1();
+fn1();
+fn1();
+fn1();
+console.log(sum(2,3)+" is the answer");
+
+
+
+Javascript last version = ES6
+
+Activity:
+Write javascript programs to understand
+	operators
+	constructs
+		if
+		switch
+		while
+		do while
+		for
+		for each
+	arrays
+
+Run the js file using 	
+	node one.js
