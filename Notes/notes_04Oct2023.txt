@@ -1,0 +1,82 @@
+Day 26: (04-Oct-2023)
+------------------------------
+
+
+npm config set strict-ssl false
+
+npm cache verify
+npm cache clean
+
+npm i -g react
+npm i -g react-dom
+npm i -g react-scripts
+npm i -g cra-templates
+---------------------------------------------------------------------------------
+CSS
+	Cascading StyleSheet
+
+what is the need for a stylesheet?
+	doing coloring
+	aesthetics
+	style
+	add boxes (layout)
+	proper format, organized design
+	
+	why can't we do this in HTML itself?
+
+	<font color="red">		</font>	
+
+When we use stylesheet, across multiple html files, it is very easy to apply the changes to all these pages, just by updating or replacing the stylesheet.
+
+Provides the separation of roles of two profiles
+	html developer
+	css developer
+
+How to use CSS in a HTML file?
+	inline
+	internal
+	external
+
+inline
+	style attribute of a html element
+	ex:
+    <p style="color: red;">This is a paragraph</p>
+    <p>This is another paragraph</p>
+    <p>This is third para</p>
+
+internal
+	style element is used
+
+    <style>
+        p{
+            color: blue;
+        }
+    </style>
+
+external
+	we need to create a separate file with extension	css
+---------------------------------------------------
+How styles are applied?
+	styles are applied by		selectors
+		element
+		element:type
+		id			#
+		class			.
+		universal selector		*
+p
+{
+}
+
+#p1
+
+.header
+
+
+-------------------
+Activity:
+
+Selectors
+Box model
+Background
+Borders
+
