@@ -344,3 +344,18 @@ var emp={id:0,name:''};
 emp.id=200;
 emp.name='Raja';
 console.log(emp)
+-----------------------------------------------------------
+Create a login page.
+Username:
+Password:
+Remember me: (check box)
+<<Login Button>>
+if you tick remember me and click login button
+next time when you open this page, it should show username automatically (password also, though it is masked)
+
+Hint:
+	how to remember?
+	store the details in localStorage
+localStorage
+	setItem(key,value)
+	getItem(key)		returns the value
