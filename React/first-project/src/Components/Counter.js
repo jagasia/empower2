@@ -7,20 +7,20 @@ class Counter extends Component
         super(props);
 
         this.state={"counter":0}
-        this.fnUpdate=this.fnUpdate.bind(this);
+        // this.fnUpdate=this.fnUpdate.bind(this);
     }
 
-    fnUpdate()
-    {
-        this.setState({"counter":this.state.counter+1})
-    }
+    // fnUpdate()
+    // {
+    //     this.setState({"counter":this.state.counter+1})
+    // }
 
     render()
     {
         // const {counter}=this.state
         return <div>
             You are #{this.state.counter} visitor
-            <button onClick={ this.fnUpdate }>Click Me!</button>
+            <button onClick={()=>this.setState({counter:this.state.counter+1})}>Click</button>
             </div>
     }
 }
