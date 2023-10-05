@@ -1,0 +1,30 @@
+for spring boot: use starter:
+		<dependency>
+			<groupId>io.springfox</groupId> 
+			<artifactId>springfox-boot-starter</artifactId> 
+			<version>3.0.0</version> 
+		</dependency>
+
+---------------------------
+application.properties:
+	spring.mvc.pathmatch.matching-strategy=ant-path-matcher
+
+--------------------------------
+
+
+in spring boot application file, enable Swagger:
+
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+@SpringBootApplication
+@EnableSwagger2			//this one
+public class SpringbootSwagger2Application{
+
+-----------------------------------------------
+
+Restart the server:
+
+Go to Swagger and get the url:
+	http://localhost:8080/v2/api-docs
+
+	http://localhost:8080/swagger-ui/

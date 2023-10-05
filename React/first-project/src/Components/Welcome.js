@@ -2,9 +2,14 @@ import { Component } from "react";
 
 class Welcome extends Component
 {
+    constructor(props)
+    {
+        super(props)
+    }
     render()
     {
-        return <h2>Welcome </h2>
+        return <div><h2>Welcome {this.props.name} </h2>
+        </div>
     }
 }
 

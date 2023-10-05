@@ -251,3 +251,18 @@ export default Welcome
 to plug it in App component, same way
 
 <Welcome />
+
+---------------------
+How to use Props in a class based component?
+	use constructor
+
+
+constructor(props)
+{
+	super(prop
+}
+
+---------------
+After lunch, 
+
+State
