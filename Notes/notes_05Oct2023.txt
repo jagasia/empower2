@@ -86,7 +86,7 @@ console.log(arr2);
 
 
 Activity:
-	Javascript ES6 Array functions
+	Javascript ES6 Arrow functions
 	Map
 	Filter
 	Reduce
