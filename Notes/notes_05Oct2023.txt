@@ -1,0 +1,93 @@
+Day 27: (05-Oct-2023)
+------------------------------
+Filter
+Map
+Reduce
+let, const, arrow functions, template literals, default parameters, object literals, rest and spread operators, destructuring assignment
+
+The above Javascript ES6 features are important pre-requisites for learning React.
+
+Arrow functions:
+	it is similar to Lambda in Java
+	
+What is functional interface?
+	an interface that has only 1 abstract method is a functional interface
+
+What is marker interface?
+	an interface that has no abstract method is a marker interface
+
+what is lambda?
+	whenever we want to implement a functional interface
+	functional interface like	Runnable, Comparable, Comparator
+
+
+
+public class MyThread implements Runnable
+{
+	public void run()
+	{
+	}
+}
+
+
+public class App
+{
+	public static void main(String args[])
+	{
+		MyThread mt=new MyThread();
+		Thread t1=new Thread(mt);
+
+		Thread t2=new Thread(()->{	/* code of run method here */ 	});
+
+
+	}
+}
+
+->		this is lambda in java
+
+=>		this is arrow function in javascript
+
+---------------------------------------------
+whenever we need to create a function and call a function,
+we can consider using arrow functions
+
+
+Map
+
+
+var arr=[];
+arr.push("india");
+arr.push("pakistan");
+arr.push("canada");
+arr.push("china");
+arr.push("sri lanka");
+arr.push("bangladesh");
+// arr.pop();
+// console.log(arr)
+arr.map((x)=>{
+    console.log(x+" : "+x.length)
+});
+
+--------------------------------
+Filter
+var arr=[];
+arr.push("india");
+arr.push("pakistan");
+arr.push("canada");
+arr.push("china");
+arr.push("sri lanka");
+arr.push("bangladesh");
+
+var arr2=arr.filter((x)=>{
+    return x.length<6
+});
+
+console.log(arr2);
+
+
+Activity:
+	Javascript ES6 Array functions
+	Map
+	Filter
+	Reduce
+
