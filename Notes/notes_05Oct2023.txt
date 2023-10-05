@@ -164,3 +164,49 @@ Activity:
 open the project folder in vs code
 edit app component
 check browser.
+-------------------------------------------
+index.html
+
+inside the <head> </head>
+paste
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+(or)
+install bootstrap
+	npm install bootstrap --save
+
+
+index.js
+	import 'bootstrap/dist/css/bootstrap.min.css';
+
+
+
+---------------------------
+What is a component?
+	a reusable piece of code
+	binds the templates and scripts together
+	can be plugged or removed easily
+
+
+how to create a component in react?
+	there are 2 types of components in react:
+		i) functional component
+		ii) class component
+	in both cases, we create a js file 
+
+
+1) in src
+	create a folder "Components"
+2) in Components folder
+	create a file "Hello.js"
+
+
+
+Activity:
+
+create a hi component
+plug it in app component
+check browser
+
