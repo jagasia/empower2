@@ -1,3 +1,15 @@
+var str=`The syntax for filter is 
+similar to map, 
+except the callback function should
+ return true to keep the element, 
+ or false otherwise. 
+ In the callback, 
+ only the element is required.`;
+
+let i=100;
+var x=20;
+var x=30;
+
 var arr=[];
 arr.push("india");
 arr.push("pakistan");

@@ -91,3 +91,76 @@ Activity:
 	Filter
 	Reduce
 
+
+let vs var
+
+var i=20;
+let x=30;
+
+
+template literal
+
+
+
+
+The syntax for filter is similar to map, except the callback function should return true to keep the element, or false otherwise. In the callback, only the element is required.
+
+
+default and rest parameters
+
+
+Activity:
+Filter
+Map
+Reduce
+let, const, arrow functions, template literals, default parameters, object literals, rest and spread operators, destructuring assignment
+
+
+--------------------------------------------------
+ReactJs
+	is not a framework
+	is a library
+
+
+npx
+	npx create-react-app first-project
+npm
+	npm i -g create-react-app
+	create-react-app first-project
+
+
+	npm init react-app first-project
+
+
+------------------------
+Steps:
+
+1) create a folder "React" 
+2) go to cmd in this location
+3) create a react js application:
+	npx create-react-app first-project
+4) cd first-project
+5) open vs code here
+	code .
+6) run the project
+	npm start
+		
+check	
+	http://localhost:3000/
+
+
+whenever i push the react project to git, "node_modules" folder is ignored.
+when you pull my project to your computer, you will have to bring this "node_modules" by:
+	npm install
+
+
+------------------------------------------------------
+Activity:
+	Create a react folder
+	create a "first-project"
+	cd first-project
+	npm start
+
+open the project folder in vs code
+edit app component
+check browser.
