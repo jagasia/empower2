@@ -266,3 +266,48 @@ constructor(props)
 After lunch, 
 
 State
+
+-------------------------------
+You learned to
+	create a reactjs application
+	create a functional component
+	create a class based component
+	props	to allow parent component to send input to child component
+
+
+State
+	what is a state?
+
+Create a class component called Counter
+	You are #1 visitor
+
+
+Solution:
+
+const { Component } = require("react");
+
+class Counter extends Component
+{
+    constructor(props)
+    {
+        super(props);
+
+        this.state={"counter":0}
+        this.fnUpdate=this.fnUpdate.bind(this);
+    }
+
+    fnUpdate()
+    {
+        this.setState({"counter":this.state.counter+1})
+    }
+
+    render()
+    {
+        // const {counter}=this.state
+        return <div>
+            You are #{this.state.counter} visitor
+            <button onClick={ this.fnUpdate }>Click Me!</button>
+            </div>
+    }
+}
+export default Counter;
