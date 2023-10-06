@@ -3,6 +3,7 @@ import './App.css';
 import { About } from './Components/About';
 import { Contact } from './Components/Contact';
 import { Home } from './Components/Home';
+import { Login } from './Components/Login';
 import { Menu } from './Components/Menu';
 
 function App() {
@@ -13,20 +14,22 @@ function App() {
       </div>
 
     <Menu />
-      
+      <br/>
       <div class="row">
         <div class="col-sm-4">
-          column 1
+          
         </div>
         <div class="col-sm-4">
+
         <Routes>
-            <Route path='/About' element={ <About />  }></Route>
+            <Route path='/about' element={ <About />  }></Route>
             <Route path='/home' element={ <Home /> }></Route>
             <Route path='/contact' element={ <Contact />}></Route>
+            <Route path='/login' element={<Login />}></Route>            
           </Routes>
         </div>
         <div class="col-sm-4">
-          column 3
+        
         </div>
       </div>
     </div>

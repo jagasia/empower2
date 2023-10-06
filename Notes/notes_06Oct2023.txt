@@ -54,3 +54,15 @@ put this in App.js
             <Route path='/contact' element={ <Contact />}></Route>
 	</Routes>
 
+-----------------------------------------------------
+Demo:
+let us create a component "Login"
+	username
+	password
+
+use state to capture the values entered by the user in username and password
+
+Note:	we use functional component state this time
+
+
+1) create Login.js
