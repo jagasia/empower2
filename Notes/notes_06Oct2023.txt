@@ -190,3 +190,8 @@ if(username==password)
                 navigate("/success")
             }
 
+
+
+
+
+<div style="background-image:url('image.gif')">

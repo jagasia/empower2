@@ -13,7 +13,7 @@ function App() {
   
   return (
     <div className="App">
-      <div class="container-fluid p-5 bg-primary text-center text-white">
+      <div class="container-fluid p-5 grey text-center text-white">
       <h1>Welcome to Routing Demo</h1>
       </div>
 
