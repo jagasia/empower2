@@ -1,0 +1,46 @@
+Day 28: (06-Oct-2023)
+------------------------------
+React Routing
+
+1) install routing to our project
+	npm i react-router-dom
+2) create routes			Routes is a class inside react-router-dom
+
+	import {	Routes, Route	} from 'react-router-dom'
+
+3) create links
+	import {	Link	}	from 'react-router-dom'
+	<Link to="/about">About Us</Link>
+-------------------------------------
+Demo:
+App.js
+	Root component
+Home.js
+	welcome to home page
+About.js
+	About us page
+Contact.js
+	Contact us page
+
+
+Index.js
+
+npm i boostrap@5
+npm i react-router-dom
+
+npm start
+
+go to vs code
+----------------
+for bootstrap, import it in Index.js
+	import 'bootstrap/dist/css/bootstrap.min.css'
+
+Task:
+npm i boostrap@5
+npm i react-router-dom
+
+Create 3 components:
+	Home.js
+	Contact.js
+	About.js
+
