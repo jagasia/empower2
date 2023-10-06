@@ -146,3 +146,34 @@ https://github.com/jagasia/empower2/tree/jag/advJava/product-service
 
 
 https://youtu.be/5gJC-UPfWz0
+
+
+
+@Query("select t from Trip t where t.flight.departure=:departure")
+public List<Trip> findTripsByDeparture(@Param("departure")String departure);
+
+-----------------------------------------------------
+User.java		USER_MASTER
+	username		primary key	
+	password
+	fullName
+	category		admin/customer
+Food.java
+	id
+	name
+	category	(main course, welcome drink, chaat, snacks)
+	timing	(breakfast/lunch/dinner)
+	vegan	(veg/non-veg)
+Menu.java		today's menu
+	id
+	dateOfFood
+	@ManyToOne
+	Food food
+	timing	(breakfast/lunch/dinner)
+
+Review
+	id		auto
+	reviewDate	date
+	User user
+	Menu menu
+	Rating		0-5
