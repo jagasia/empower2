@@ -36,11 +36,21 @@ for bootstrap, import it in Index.js
 	import 'bootstrap/dist/css/bootstrap.min.css'
 
 Task:
-npm i boostrap@5
+npm i bootstrap@5
 npm i react-router-dom
 
 Create 3 components:
 	Home.js
 	Contact.js
 	About.js
+
+
+
+
+put this in App.js
+<Routes>
+            <Route path='/About' element={ <About />  }></Route>
+            <Route path='/home' element={ <Home /> }></Route>
+            <Route path='/contact' element={ <Contact />}></Route>
+	</Routes>
 
