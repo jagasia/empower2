@@ -177,3 +177,16 @@ Review
 	User user
 	Menu menu
 	Rating		0-5
+
+------------------
+const navigate=useNavigate();
+
+if(username==password)
+            {
+                //fail
+                navigate("/failure")
+            }else{
+                //success
+                navigate("/success")
+            }
+

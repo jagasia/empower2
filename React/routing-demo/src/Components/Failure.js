@@ -1,5 +1,6 @@
+
 export const Failure=()=>{
     return <div>
-        Login Failed
+        Failure
     </div>
 }

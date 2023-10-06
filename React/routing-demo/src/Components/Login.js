@@ -15,9 +15,11 @@ export const Login=()=>
         <input type="button" className="btn btn-info" value="Login" onClick={()=>{
             if(username==password)
             {
-                navigate("/failure");
+                //fail
+                navigate("/failure")
             }else{
-                navigate("/home");
+                //success
+                navigate("/success")
             }
         }} />
         <br/>
