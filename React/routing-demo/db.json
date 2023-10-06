@@ -1,0 +1,16 @@
+{
+  "products": [
+    {
+      "product": {
+        "id": 1,
+        "name": "Anything",
+        "price": 100
+      }
+    },
+    {
+      "id": 2,
+      "name": "iPhone 15 pro max",
+      "price": 200000
+    }
+  ]
+}

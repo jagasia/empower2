@@ -88,3 +88,54 @@ export const Login=()=>
 
 2) Add Route in App.js
 3) Add a link in Menu.js
+-------------------------------------------------
+json server
+
+to install json server
+	npm i json-server 
+
+json-server db.json
+
+-----------------------------------
+
+https://jsonplaceholder.typicode.com/todos
+
+How react access a rest api?
+	Axios
+
+1) install axios to our project
+	npm i axios
+
+2) create a class
+	TodoService.js
+----------------------------------
+Create product rest api
+Create a reactjs app product
+
+rest api:
+entity:	Product
+		id
+		name
+		price
+
+http://localhost:5000/product
+
+we have completed the rest api. it runs in above url
+
+npm i bootstrap@5
+npm i react-router-dom
+npm i axios
+
+
+
+
+
+
+
+
+
+
+
+
+
+

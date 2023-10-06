@@ -5,6 +5,7 @@ import { Contact } from './Components/Contact';
 import { Home } from './Components/Home';
 import { Login } from './Components/Login';
 import { Menu } from './Components/Menu';
+import { Todo } from './Components/Todo';
 
 function App() {
   return (
@@ -14,6 +15,8 @@ function App() {
       </div>
 
     <Menu />
+    <br/>
+    <Todo />
       <br/>
       <div class="row">
         <div class="col-sm-4">
