@@ -1,4 +1,5 @@
 import './App.css';
+import { All } from './Components/All';
 import { ProductForm } from './Components/ProductForm';
 import { ProductGrid } from './Components/ProductGrid';
 
@@ -17,7 +18,9 @@ function App() {
       </div>
 <hr/><hr/>
       <div class="row">
-        <div class="col-sm-2"></div>
+        <div class="col-sm-2">
+          <All />
+        </div>
         <div class="col-sm-8">
           <ProductGrid />
         </div>

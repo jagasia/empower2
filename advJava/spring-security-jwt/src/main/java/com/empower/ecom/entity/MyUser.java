@@ -11,7 +11,9 @@ public class MyUser
 	@Id
 	private String username;
 	private String password;
-	public String fullName;
+	private String fullName;
+	private String role;
+	
 	
 	public MyUser() {}
 
@@ -20,6 +22,24 @@ public class MyUser
 		this.username = username;
 		this.password = password;
 		this.fullName = fullName;
+	}
+	
+	
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public MyUser(String username, String password, String fullName, String role) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.fullName = fullName;
+		this.role = role;
 	}
 
 	public String getUsername() {

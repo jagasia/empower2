@@ -75,7 +75,31 @@ value=getItem(key)
 jwt from react
 
 Activity:
-conditonal formatting for validation.
+conditional formatting for validation.
 1) name length <5 means error
 2) price <100 means error
 3) all errors disables the button. else enable it
+---------------------------------
+How to use jwt in react:
+-----------------------------------
+
+
+
+eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGVubmEiLCJleHAiOjE2OTY4NjY3NzIsImlhdCI6MTY5NjgzMDc3Mn0.y9OmedmmNzqS5Lk8gFkVRyihEHl9tiozEYrtRFozMco
+
+
+
+
+const [products, setProducts] = useState([]);
+
+useEffect(() => {
+        
+        ProductService.getAllProducts().then((response) => {
+            setProducts(response.data)
+
+        })
+    }, [])
+
+-------------------
+1) spring-security-jwt	(backend)
+2) product		(react)

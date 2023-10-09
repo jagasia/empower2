@@ -38,6 +38,18 @@ public class MyUserDetailsService implements UserDetailsService
 		return ur.save(user);
 	}
 	
+	public MyUser update(MyUser user)
+	{
+		Optional<MyUser> temp = ur.findById(user.getUsername());
+		MyUser u=null;
+		if(temp.isPresent())
+		{
+			u=user;
+			ur.save(u);
+		}
+		return u;
+	}
+	
 	public List<MyUser> read()
 	{
 		return ur.findAll();
