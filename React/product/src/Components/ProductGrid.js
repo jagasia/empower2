@@ -5,6 +5,7 @@ export const ProductGrid = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
+        
         ProductService.getAllProducts().then((response) => {
             setProducts(response.data)
 

@@ -1,54 +1,21 @@
-import { Component } from "react";
-import ProductService from "../Services/ProductService";
+Day 29: (09-Oct-2023)
+------------------------------
+auto refresh
+	window.location.reload(false);
+React
+	styling
+	hooks
+	redux
 
-export class ProductForm extends Component
-{
-    constructor(props)
-    {
-        super(props)
-        this.state={
-            "id":"","name":"","price":""
-        }
+Conditional Styling
+----------------------------
+class vs className
+className allows us to use expressions
 
-        this.fnAdd=this.fnAdd.bind(this);
-        this.fnUpdate=this.fnUpdate.bind(this);
-        this.fnDelete=this.fnDelete.bind(this)
-    }
+style={backgroundColor}
 
-    fnAdd()
-    {
-        ProductService.addProduct(this.state).then((response)=>{
-            console.log(response.data);
-            window.location.reload(false);
-        })
-    }
-
-    fnUpdate()
-    {
-        ProductService.updateProduct(this.state).then(response=>{
-            console.log(response.data);
-            window.location.reload(false);
-        })
-        
-    }
-
-    fnDelete()
-    {
-        ProductService.deleteProduct(this.state.id).then(response=>{
-            console.log(response.data);
-            window.location.reload(false);
-        })
-    }
-    fnIsValid()
-        {
-
-            return this.state.name.length>=5 && this.state.price>100;
-        }
 
     render(){
-
-        
-
         const x='form-control'
         const y='is-invalid'
         const color=this.state.name
@@ -59,7 +26,7 @@ export class ProductForm extends Component
             {this.state.name.length<5 && <span className="text-danger">Name must be atleast 5 characters</span>}<br/>
             Price:<input type="number" name="price" className={(this.state.price<100)?'form-control is-invalid':'form-control'} onChange={(event)=>this.setState({[event.target.name]:event.target.value})} />
             <br/>
-            <input type="button" value="Add" className={this.fnIsValid()?'btn btn-info':'btn btn-info disabled'} onClick={this.fnAdd} />&nbsp;
+            <input type="button" value="Add" className="btn btn-info" onClick={this.fnAdd} />&nbsp;
             <input type="button" value="Update" className="btn btn-warning" onClick={this.fnUpdate} />&nbsp;
             <input type="button" value="Delete" className="btn btn-danger" onClick={this.fnDelete} />&nbsp;            
             <br/>
@@ -68,4 +35,47 @@ export class ProductForm extends Component
             {   this.state.price}<br/>
         </div>
     }
-}
+
+---------------------------
+Hooks
+https://www.w3schools.com/react/react_usestate.asp
+
+react tutorial codevolution youtube
+
+
+Redux
+----------
+	state management library
+
+	npm i redux react-redux
+
+
+
+difference between props and state:
+
+props
+	input from parent to child
+	is read-only
+
+state
+	can be updated using setState(class)	 or setter 	(functional)
+
+state management:
+	ability to retain information across requests
+	within a component, "state" is used
+
+localStorage
+sessionStorage
+
+
+setItem(key,value)
+value=getItem(key)
+
+
+jwt from react
+
+Activity:
+conditonal formatting for validation.
+1) name length <5 means error
+2) price <100 means error
+3) all errors disables the button. else enable it
