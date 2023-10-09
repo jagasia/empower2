@@ -103,3 +103,112 @@ useEffect(() => {
 -------------------
 1) spring-security-jwt	(backend)
 2) product		(react)
+
+
+---------------------------------------------------
+SonarQube
+-----------------
+What is sonar qube?
+	code quality
+
+1) every variable declared must be initialized
+	String name="";
+2) code commented out must be removed.
+	only explanation should be comment
+	//int i=20;		//not a valid comment.	
+3) every method must have only 1 return statement
+	
+for ex:
+
+	public Product read(Integer id) {
+		Optional<Product> temp = pr.findById(id);
+		Product p=null;
+		if(temp.isPresent())
+		{
+			return temp.get();
+		}
+		return null;
+	}
+//the above code has multiple return statements
+must be:
+	public Product read(Integer id) {
+		Optional<Product> temp = pr.findById(id);
+		Product p=null;
+		if(temp.isPresent())
+		{
+			p=temp.get();
+		}
+		return p;
+	}
+
+//the above code has only 1 return statement
+A method should have only one exit point, and that should be the last statement in the methodA method should have only one exit point, and that should be the last statement in the method
+4) every if condition, else, loop to have curly braces {} even if there is only 1 line
+
+5) every java class must be inside a package. 
+Default package is discouraged.
+
+Sonarqube is used to analyze the code quality of java programs.
+
+Lab setup:
+Java jdk 11 is required
+
+download and unzip sonarqube
+go to location:
+	sonarqube-8.8.0.42792\bin\windows-x86-64
+
+run StartSonar.bat
+
+http://localhost:9000
+
+username & password:	admin
+------------------------------------------------
+1) in a maven project, we have done a coding with poor practices.
+2) in localhost:9000
+	we will create a project:
+		Add project -> Manually
+	Project key:	09-oct-sonar-1
+	click setup
+
+	token:	09-oct-sonar-1
+	generate
+	continue
+
+	maven
+		copy the goals
+
+sonar:sonar -Dsonar.projectKey=09-oct-sonar-1 -Dsonar.host.url=http://localhost:9000 -Dsonar.login=1401ec1d172af2ce3012b786c6ed29f567549c1a
+the above goal must be used in maven build
+
+
+right click project -> Run as -> maven build (1)
+
+goals as copies above.
+Build Successful.
+
+Now, do clean install
+
+now, right click project, Run as -> Maven Build (2)
+goal:	clean org.jacoco:jacoco-maven-plugin:prepare-agent install
+
+
+before that,
+in pom.xml, we add the following plugins:
+put this below "dependencies" end tag:
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.sonarsource.scanner.maven</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>3.7.0.1746</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.1</version>
+			</plugin>
+		</plugins>
+	</build>
+
