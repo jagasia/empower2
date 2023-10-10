@@ -1,0 +1,101 @@
+Day 30: (10-Oct-2023)
+------------------------------
+Book
+	admin		(add/update/delete/view)
+	customer
+
+
+
+
+Demo:
+Front End:	
+	react
+Back End:
+	Spring boot rest api
+
+Book (entity)
+	id
+	name
+	author name
+	publisher	(name of the publisher)
+	price
+
+
+
+frontend:
+	install	
+		react-router-dom
+		axios
+		bootstrap@5
+
+
+
+backend:
+	port number:	5000
+
+
+server.port=5000
+spring.datasource.url=jdbc:h2:file:./data/library1
+spring.datasource.username=sa
+spring.datasource.password=
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.H2Dialect
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.properties.hibernate.show_sql=true
+
+spring.h2.console.enabled=true
+spring.h2.console.path=/h2
+
+-------------------
+admin and customer
+	role
+
+
+---------------------------------------
+DevOps
+-----------
+	Development Operations
+git
+	github/gitlab
+docker
+kubernetes
+jira
+jenkins
+
+git
+	source code management
+	version control
+
+	developers
+	gitlab
+		create project
+		assign issues
+
+
+jira
+	management
+	creating teams
+	assign tasks to the teams
+
+Docker
+	image
+	container
+
+1) pull images from hub.docker.com
+2) run images
+3) see the list of images
+4) see the list of containers
+5) remove images
+6) remove containers
+7) create a docker image of your spring boot application
+
+
+create images using
+	Dockerfile
+	mvn spring-boot:build-image
+
+create multiple docker images and run together
+	spring boot
+	mysql
+
+	in same network/	docker compose
+-------

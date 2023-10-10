@@ -1,5 +1,6 @@
 import './App.css';
 import { All } from './Components/All';
+import { Menu } from './Components/Menu';
 import { ProductForm } from './Components/ProductForm';
 import { ProductGrid } from './Components/ProductGrid';
 
@@ -9,6 +10,7 @@ function App() {
       <div class="p-5 container-fluid text-center text-white bg-info">
         <h1>Welcome to Product Demo</h1>
       </div>
+      <Menu />
       <div class="row">
         <div class="col-sm-4"></div>
         <div class="col-sm-4">

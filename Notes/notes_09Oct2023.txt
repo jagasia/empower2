@@ -212,3 +212,14 @@ put this below "dependencies" end tag:
 		</plugins>
 	</build>
 
+Activity:
+Identify the code quality metrics and the metrics used in sonarqube.
+
+----------------------
+Index.js
+	remove that style
+
+App.js
+	we have set background image
+Home.js
+	should contain row 	->	cols etc

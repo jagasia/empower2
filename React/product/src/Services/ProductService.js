@@ -6,6 +6,9 @@ class ProductService
 
     getAllProducts()
     {
+        // localStorage.setItem("username","jag")
+        // localStorage.removeItem("username")
+        // window.location.reload(false)
         return axios.get(this.URL);
     }
 

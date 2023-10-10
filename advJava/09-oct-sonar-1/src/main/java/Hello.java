@@ -20,7 +20,6 @@ public class Hello {
 		Date dt=new Date();
 		dt=null;
 		System.out.println(dt.toString());
-		
 	}
 
 }

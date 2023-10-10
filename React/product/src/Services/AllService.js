@@ -7,7 +7,7 @@ class AllService
     getAllUsers()
     {
 
-        let token='1eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGVubmEiLCJleHAiOjE2OTY4NjY3NzIsImlhdCI6MTY5NjgzMDc3Mn0.y9OmedmmNzqS5Lk8gFkVRyihEHl9tiozEYrtRFozMco';
+        let token='eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjaGVubmEiLCJleHAiOjE2OTY4NjY3NzIsImlhdCI6MTY5NjgzMDc3Mn0.y9OmedmmNzqS5Lk8gFkVRyihEHl9tiozEYrtRFozMco';
         let header={
             'authorization': 'Bearer '+token,
             'Accept' : 'application/json',
