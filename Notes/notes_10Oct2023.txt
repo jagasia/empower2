@@ -4,9 +4,6 @@ Book
 	admin		(add/update/delete/view)
 	customer
 
-
-
-
 Demo:
 Front End:	
 	react
@@ -99,3 +96,7 @@ create multiple docker images and run together
 
 	in same network/	docker compose
 -------
+backend:
+https://github.com/jagasia/library-rest-api
+frontend:
+https://github.com/jagasia/empower2/tree/jag/React/library
