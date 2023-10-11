@@ -9,3 +9,170 @@ dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux 
 to add to user group:
 net localgroup docker-users "your-user-id" /ADD
 
+
+docker run -p 5000:5000 in28min/todo-rest-api-h2:1.0.0.RELEASE
+
+-p to specify port number of my choice : port number specified there
+in28min	is the account in hub.docker.com
+todo-rest-api-h2	is the name of the docer image repository
+1.0.0.RELEASE	is the tag name. This changes whenever they repush image.	:latest		refers to latest tag
+
+after running this command, check logs
+
+http://localhost:5000/hello-world
+
+------------------------------------------
+docker -v
+docker images
+docker image ls
+docker container ls
+docker ps
+docker ps -a
+docker rm <<container id>>
+docker rm -f <<container id>>		to forcibly remove 
+docker rmi <<image name>>:<<tagname>>
+
+--------------------------------
+create our own docker image and
+push that image to hub.docker.com
+
+there are 2 ways of creating a docker image of a spring boot project:
+	1) using Dockerfile
+	2) mvn spring-boot:build-image
+
+in the project where pom.xml is present:
+create "Dockerfile"
+-------------
+FROM openjdk:8
+EXPOSE 5000
+ADD target/20-sep-jpa-demo-0.0.1-SNAPSHOT.war 20-sep-jpa-demo-0.0.1-SNAPSHOT.war
+ENTRYPOINT ["java","-jar","20-sep-jpa-demo-0.0.1-SNAPSHOT.war"]
+
+in same location (where pom.xml is present) in cmd:
+	docker build empower-mvc-1 .
+
+docker image is created locally.
+
+How to push this image to our hub.docker.com account?
+	got to 	hub.docker.com
+	and create a repository there	(empower-mvc-1)
+
+in cmd:
+	docker tag
+	docker push
+
+docker build empower-mvc-1 .
+docker tag empower-mvc-1 jagindia/empower-mvc-1
+docker push jagindia/empower-mvc-1
+
+
+	
+Redux:
+	state management
+
+useState
+useReducer
+useStore
+
+
+MVC
+	Model
+	View
+	Controller
+
+Reducer(state/initial state, Action)
+Store is built of reducer
+
+	State
+	View
+	Action
+Top - Down	https://redux.js.org/tutorials/essentials/part-1-overview-concepts
+Bottom - Up	https://codesandbox.io/s/redux-fundamentals-core-example-lr7k1?from-embed=&file=/index.html
+
+
+Chenna:		What is DevOps
+Shananawaz:	Redux
+------------------------------------
+Cloud:
+	internet
+	online
+	virtual
+
+Agility
+
+Storage cloud
+	DropBox, Google drive, Mega, terrabox
+Compute cloud
+	AWS ECS,
+Network cloud
+	AWS VPC
+
+SaaS		Software as a Service
+PaaS		Platform as a Service
+IaaS		Infrastructure as a Service
+
+
+SaaS
+	up to date
+PaaS	is required to develop/build/run applications
+IaaS	Hardware (microprocessor), network, memory, etc
+
+AWS	Amazon WebServices
+GCP	Google Cloud Platform
+Azure	Microsoft Azure Platform
+
+
+AWS
+	Auto-scaling
+	Elastic-scalability	-	Elasticity
+
+EC2	=	Elastic Compute Cloud
+ECS	=	Elastic Container Service
+EKS	=	Elastic Kuberentes Service
+		Elastic Beanstalk	(deploy .jar/.war/etc)
+EBS	=	Elastic Block Storage
+
+---------------------------
+1) Deploying a rest api/ mvc project	
+	.jar		.war
+to elastic beanstalk
+
+Steps for deploying REST api (.jar) in Elastic Beanstalk
+1) login to aws.amazon.com/console
+2) search for Elastic Beanstalk
+3) click "create application"
+
+name of application "empower-jag"
+platform "java"
+version of java:	8
+next screen:no change
+next screen:choose default vpc.	if none, create one
+
+http://empower-jag.ap-south-1.elasticbeanstalk.com/
+
+
+----------------------
+
+class AuthRequest
+{
+	private String username;
+	private String password;
+	//cons
+	//getters
+	//setters
+}
+
+@PostMapping("/validateLogin")
+public String validateLogin(@RequestBody AuthRequest ar)
+{
+	User user=ur.read(ar.getUsername());
+	String status="Login failed";
+	if(user!=null)
+	{
+		if(user.getPassword().equals(ar.getPassword())
+		{
+			status="Login successful";
+		}
+	}
+	return status;
+}
