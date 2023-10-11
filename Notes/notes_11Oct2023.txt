@@ -1,0 +1,11 @@
+Day 31: (11-Oct-2023)
+------------------------------
+use administrator:
+to install wsl in windows powershell:
+dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+
+
+-----------------------
+to add to user group:
+net localgroup docker-users "your-user-id" /ADD
+
