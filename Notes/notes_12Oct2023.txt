@@ -1,0 +1,134 @@
+Day 32: (12-Oct-2023)
+------------------------------
+S3	Simple Storage Service
+
+How to deploy docker images in aws?
+	ECR	-> Elastic Container Registry	
+		is similar to hub.docker.com
+
+	ECS	-> Elastic Container Service
+		where the docker image will run 
+
+ECS:
+-------
+	We need a docker image of 20-sep-jpa-demo
+
+1) create a task definition
+2) create a cluster
+3) run the task in the cluster
+
+
+http://43.205.107.183:5000/
+
+43.205.107.183
+
+-----------------------------------------------
+	Create an ECS task and Run docker image “docker.io/jagindia/kalyan” in ECS. 
+	Use public ip and run http://<<public_ip>>:5000/employee
+
+	Demo on ECS:
+1)	Login to aws.amazon.com/console
+2)	Search for ECS
+3)	Task Definitions
+a.	Create New Task Definition
+b.	Enter the name of the task.
+c.	Enter the name of the container and then url	docker.io/jagindia/kalyan
+4)	Configure environment
+a.	Choose Fargate / EC2		we choose Fargate (serverless)
+b.	Task Roles:	choose	ecsTaskExecutionRole
+5)	Storage (optional): I gave 100 gib
+6)	Next
+7)	Review and Create -> Create
+
+Create Cluster
+1)	Cluster name: kalyan-cluster
+2)	Networking:	
+a.	Vpc: select the default vpc
+b.	Subnets: already selected
+c.	Create cluster
+Cluster is created.
+Go to clusters and click the kalyan-cluster
+	Second tab is “Tasks”
+	Go to tasks and “Run new task”
+	Choose the kalyan-task and all default options are enough.
+
+In kalyan-cluster, tasks tab, 
+Find our task running. Status would have changed from pending -> provisioning -> running
+When the status is “running”, then click the task hyperlink and go to Networking tab and copy the public ip.	In our case the public ip is 15.207.105.102
+http:// 15.207.105.102:5000/employee
+
+http://15.207.105.102:5000/swagger-ui/
+
+
+
+
+
+
+1) create a spring boot application
+2) create a docker image
+	mvn spring-boot:build-image
+3) push the image to the docker hub
+	i) create repo in hub.docker.com
+	ii) tag the local image to repo
+	iii) docker push repo
+4) go to aws ECS
+	create task definition
+		choose between "Fargate" or "EC2"
+		choose "Fargate"
+		enter task definition name
+		enter task role as "None"
+		enter task memory 1 Gb
+		enter cpu memory 0.5v CPU
+		create container
+			enter name
+			image:
+				docker.io/jagindia/reponame:tagname
+			memory limit: hard limit	1024
+			port mapping: 8080 and 80
+		click "Add"
+		click "create"
+
+	create cluster
+		type: Networking only
+		cluster name: jag1
+		click create
+	view cluster
+		task
+			"Run new task"
+				Launch type: fargate
+			choose task definition (already created)			
+			choose cluster vpc
+			choose subnet
+			security group:	
+				"Edit"
+				enter the security group name (any name)
+				In bound rules
+					choose all traffic and all tcp
+		click Run task button
+		in the cluster, check logs (refresh)
+		select the task and go to logs.
+		Details | Tags | Logs
+
+			in details tab, under network: public ip
+
+	In status:	
+		Last status: RUNNING
+	Click on the task (hyperlink)
+	Below that
+		Network:
+			public IP		(copy the ip address)
+	go to browser:
+		http://ipaddress:portnumber
+
+-------------------------
+http://3.108.42.145:8080
+
+http://3.108.42.145:8080/
+
+3.108.42.145
+3.108.42.145
+
+http://43.204.37.125:5000
+
+
+jagindia/empower-mvc-1
