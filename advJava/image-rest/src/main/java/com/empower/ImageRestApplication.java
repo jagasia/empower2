@@ -1,14 +1,14 @@
-package com.empower.ecom;
+package com.empower;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Application {
+public class ImageRestApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
-		System.out.println("rest api is running fine");
+		SpringApplication.run(ImageRestApplication.class, args);
+		System.out.println("product image demo runs here.");
 	}
 
 }

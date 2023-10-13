@@ -1,42 +1,14 @@
-Day 33: (13-Oct-2023)
-------------------------------
-AWS Code Pipeline for CI/CD
-what is the need for CI/CD?
-After deploying an application in AWS,
-	the application undergoes changes.
-	those changes are pushed to git.
-	AWS should be able to reflect the changes.
-----------------------------------
-1) create a reactjs application
-	push this to git
-2) aws elastic beanstalk create a nodejs application
-	ci/cd
-
-code pipeline
-	source stage
-	build stage
-	deploy stage
-
-
-1) name of pipeline
-2) did not change anything. ensure allow is ticked
-3)next:	source provider
-github version 2
-connect to git hub and choose the repository name, branch name
-skip build stage
-deploy to elastic beanstalk
-------------------
-1) backend
-	
-2) frontend
-
------------
 package com.empower.ecom.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class Product {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	private String name;
 	private Double price;
@@ -91,4 +63,3 @@ public class Product {
 	
 
 }
-
