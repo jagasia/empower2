@@ -411,3 +411,39 @@ public class ProductController {
 	
 }
 
+-----------------------------------------------
+EC2
+
+docker image:
+	jagindia/empower-mvc-1
+
+curl http://localhost:5000
+
+Demo:
+i will launch an EC2 linux instance
+i will be able to connect to this instance through cmd prompt.
+install docker
+run docker image
+
+1) https://aws.amazon.com/console/
+2) search EC2
+3) instance -> Launch instances
+	OS:	Linux
+4) key-pair
+	create a .pem file (downloaded now as dhiraj.pem)
+5) network settings
+	enable Auto assign public ip
+6) Launch instance
+--------------------------------
+Steps to connect to EC2 instance:
+in EC2 dashboard, click instances
+click the instance ID (Which is running)
+
+
+http://3.111.39.167:5000/
+
+3.111.39.167
+
+
+%=al;px(Q?5j(ThN@inxcuQtVsCWkQ)n
+
