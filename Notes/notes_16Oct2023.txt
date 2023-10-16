@@ -1,0 +1,45 @@
+Day 34: (16-Oct-2023)
+------------------------------
+AWS Direct Connect
+AWS Lambda
+
+Project:
+1) We have completed REST APIs and tested them separately
+2) debugging
+3) spelling mistakes
+4) test every component 
+	directly plug in App.js
+	have default values in the form
+
+	localStorage.setItem
+	localStorage.removeItem
+5) all components to be created today.
+	atleast they should display "Under construction"
+Deadline for today:
+	REST api COMPLETE
+	Swagger in all rest api
+
+SHA1
+rama	=>	abcd
+
+rama	=>	&*^%
+
+rama	=>	&*^%
+
+
+	
+public String encryptSha1(String password)
+{
+	//String password = "123456";
+        MessageDigest md = MessageDigest.getInstance("SHA-256");
+        byte[] hashInBytes = md.digest(password.getBytes(StandardCharsets.UTF_8));
+		// bytes to hex
+        StringBuilder sb = new StringBuilder();
+        for (byte b : hashInBytes) {
+            sb.append(String.format("%02x", b));
+        }
+        //System.out.println(sb.toString());
+	return sb.toString();
+}
+
+--------------------------------------------------------
