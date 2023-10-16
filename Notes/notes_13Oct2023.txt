@@ -67,11 +67,7 @@ login to aws.amazon.com
 	Click "Create Access Key"		(only 2 max)
 
 
-AWS Access Key ID 
-AKIAQN3NBJXVY2CWET3P
 
-AWS Secret Access Key
-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
 
 
 
