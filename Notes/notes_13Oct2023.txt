@@ -30,3 +30,54 @@ deploy to elastic beanstalk
 https://github.com/jagasia/empower2/tree/jag/advJava/image-rest
 2) frontend
 https://github.com/jagasia/tejas-demo
+
+
+SearchTrip.js
+1)
+	
+	From:	.............
+	To:	................
+	Date:	..................
+
+trips.length!=0 && <table>
+</table>
+
+
+-------------------------
+AWS CLI
+	CLI stands for Command Line Interface
+We need to install AWS CLI
+We need to login to AWS in cmd prompt:
+	there are 2 ways to do that:
+		i) environment variables (or)
+		ii) aws config			command
+
+
+where to find 
+AWS Access Key ID [****************6PP6]:
+AWS Secret Access Key [****************cnfw]:
+Default region name [ap-south-1]:
+Default output format [json]:
+
+login to aws.amazon.com
+	-> IAM
+		-> Users
+			->select an user
+				->	Security credentials tab
+	Click "Create Access Key"		(only 2 max)
+
+
+AWS Access Key ID 
+AKIAQN3NBJXVY2CWET3P
+
+AWS Secret Access Key
+QTYZMwOKvLo3Iz7UeSsnq7BduxV7vBNkK0J6AVjW
+
+
+
+now aws configure:
+
+then lets create a repository in ECR
+in cmd itself i should be able to create a Repository:
+
+	aws ecr create-repository --repository-name empower --region ap-south-1

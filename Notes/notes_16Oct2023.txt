@@ -43,3 +43,34 @@ public String encryptSha1(String password)
 }
 
 --------------------------------------------------------
+
+
+aws ecr get-login-password --region region | docker login --username AWS --password-stdin aws_account_id.dkr.ecr.region.amazonaws.com
+
+
+
+aws ecr create-repository --repository-name <repo_name> --region <region_name>
+
+aws ecr create-repository --repository-name empower --region ap-south-1
+
+
+
+ aws ecr --region ap-south-1 | docker login -u jagiam --password-stdin 029756575211.dkr.ecr.ap-south-1.amazonaws.com/empower
+
+
+
+(Get-ECRLoginCommand).Password | docker login --username AWS --password-stdin 029711.dkr.ecr.ap-south-1.amazonaws.com
+
+
+docker build -t jag3 .
+
+docker tag jag3:latest 0516575211.dkr.ecr.ap-south-1.amazonaws.com/jag3:latest
+
+docker push 021917256575211.dkr.ecr.ap-south-1.amazonaws.com/jag3:latest
+
+
+
+
+
+aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 06575211.dkr.ecr.ap-south-1.amazonaws.com
+
