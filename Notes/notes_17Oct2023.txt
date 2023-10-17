@@ -1,0 +1,43 @@
+Day 35: (17-Oct-2023)
+------------------------------
+in Project:
+	states to have default values		this.state={"id":"12"}
+	<input type="text" value={this.state.id} />
+
+validations
+	every team member to have a copy/backup
+		Components folder
+		Services folder
+		npm i react-router-dom
+
+enable / disable controls	button, textbox, etc
+	display error messages in the bottom or top in red color
+		this.state={"id":"1",....	, "status":true,	"errors":}
+
+
+var obj=this.state;
+obj.id=20;
+obj.name="raja";
+
+this.setState(obj);
+
+
+enable / disable menu items
+	visible or invisible
+
+	false && <input type="button" />
+
+Menu component
+	state should be updated as true or false	based on	localStorage has an item "user" or not
+	this.state={'isLoggedIn':true}
+
+	state.isLoggedIn && <a href='/logout'>Logout</a>
+
+	!state.isLoggedIn && <a href='/login'>Login</a>
+
+
+all components and navigation
+
+exception handling
+	.then()
+	.catch()			should display error message	alert-danger
