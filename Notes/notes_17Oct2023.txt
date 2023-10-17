@@ -41,3 +41,13 @@ all components and navigation
 exception handling
 	.then()
 	.catch()			should display error message	alert-danger
+
+
+---------------
+in rest controller
+when login fails,
+	throw new LoginFailedException("Login failed");		//create this class extends Exception
+
+in react
+	.then			//login is successful, you should get an user object
+	.catch			//when rest api throws exception, it will come here to catch
