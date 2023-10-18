@@ -1,0 +1,37 @@
+Day 36: (18-Oct-2023)
+------------------------------
+Backend is over and ready. Swagger is used.
+Frontend all components are created.
+Styling, 
+Routing & Navigation
+Services
+in backend:
+Exception handling
+	raising exceptions		user defined exception class	
+	1) Login failed
+	2) find by id		id is invalid		InvalidIdException
+				NotFound
+
+
+backend:
+	.then
+	.catch		here, display error messages and redirecting
+
+
+Tomoro, we need to have a mock presentation 
+
+
+Checklist:
+------------------
+
+
+@Query("select distinct t.from from Trip t)
+public List<String> findAllFroms();
+
+<select>
+this.state.froms.map((x)=>{
+	<option>{x}</option>	
+})
+</select>
+
+
