@@ -1,0 +1,23 @@
+Day 37: (19-Oct-2023)
+------------------------------
+Project presentation:
+	1) Introduction
+		title of the project
+		team members
+		what objectives met in this project
+
+	2) run the project
+		frontend	already running
+		backend 	already running
+
+	3) what are the modules in this project
+		1 by 1
+	4) validations
+		
+	5) exception handling
+
+	6) routing and navigation
+
+
+
+No error messages
