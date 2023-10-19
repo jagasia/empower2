@@ -21,3 +21,51 @@ Project presentation:
 
 
 No error messages
+
+
+
+pdf:
+https://www.npmjs.com/package/react-to-pdf
+
+
+
+
+rest controller method
+
+@ResponseBody
+HttpServletResponse response
+
+response.setContentType("image/jpeg");
+
+
+
+controller
+
+	file object 
+
+<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+<dependency>
+    <groupId>commons-io</groupId>
+    <artifactId>commons-io</artifactId>
+    <version>2.11.0</version>
+</dependency>
+
+
+
+
+String str=
+
+data:image/jpg;base64,
+
+remove this portion.	
+
+substring(x)		
+
+String x=Base64.encodeBase64String(employee.getPhoto());
+		out.print("<img width=80 height=80 id=photo1 name=photo1 src=data:image/jpg;base64," + x+" />");
+
+vice versa:
+
+decodeBase64
+
+package "codec" for Base64
