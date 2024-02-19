@@ -1,0 +1,277 @@
+import axios from "axios";
+
+const URL='http://localhost:8080/product';
+class ProductService
+{
+    getAllProducts()
+    {
+        return axios.get(URL);
+    }
+
+    findProductById(id)
+    {
+        return axios.get(URL+"/"+id);
+    }
+
+    addProduct(product)
+    {
+        return axios.post(URL,product);
+    }
+
+    updateProduct(product)
+    {
+        return axios.put(URL,product);
+    }
+
+    deleteProduct(id)
+    {
+        return axios.delete(URL+"/"+id);
+    }
+}
+
+export default new ProductService();
+
+=========================================
+
+
+import { toHaveDisplayValue } from "@testing-library/jest-dom/dist/matchers";
+import { Component } from "react";
+import productService from "../services/product-service";
+
+export default class Product extends Component
+{
+    constructor(props)
+    {
+        super(props);
+        this.state={id:'',name:'',price:'',picture:''};
+        this.changeHandler=this.changeHandler.bind(this);
+        this.addProduct=this.addProduct.bind(this);
+    }
+
+    readFileDataAsBase64(e) {
+        const file = e.target.files[0];
+    
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+    
+            reader.onload = (event) => {
+                resolve(event.target.result);
+            };
+    
+            reader.onerror = (err) => {
+                reject(err);
+            };
+    
+            reader.readAsDataURL(file);
+        });
+    }
+
+    changeHandler(event)
+    {
+        if(event.target.name!=='picture')
+            this.setState({[event.target.name]:event.target.value});
+        else
+        {
+            this.readFileDataAsBase64(event).then((data)=>{
+                this.setState({picture:data});
+            })
+        }
+        console.log(this.state);
+    }
+
+    addProduct()
+    {
+        console.log("the sate is as below:")
+        console.log(this.state)
+        productService.addProduct(this.state).then((response)=>{
+            alert(response.data);
+        });
+    }
+    render()
+    {
+        return <div>
+            <form>
+                Id:<input type="number" name="id" className="form-control" onChange={this.changeHandler} />
+                Name:<input type="text" name="name" className="form-control" onChange={this.changeHandler} />
+                Price:<input type="text" name="price" className="form-control" onChange={this.changeHandler} />
+                Picture:<input type="file" name="picture" className="form-control" onChange={this.changeHandler} />
+                <img width="50" height="50" src={this.state.picture} />
+                <br/>
+                <input type="button" value="Add" className="btn btn-success" onClick={this.addProduct} />&nbsp;
+                <input type="button" value="Update" className="btn btn-warning" />&nbsp;
+                <input type="button" value="Delete" className="btn btn-delete" />&nbsp;
+            </form>
+            <br/>
+            {this.state.id}
+            <br/>
+        </div>
+    }
+}
+
+
+
+======================================
+
+
+import { Component } from "react";
+import productService from "../services/product-service";
+
+export default class DisplayProducts extends Component
+{
+    constructor(props)
+    {
+        super(props);
+        this.state={products:[]};
+    }
+
+    componentDidMount()
+    {
+        
+        productService.getAllProducts().then((response)=>{            
+            this.setState({products:response.data});
+        },(error)=>{
+            console.log(error)
+        });
+    }
+
+    render()
+    {
+        return <div>
+            <table className="table table-bordered table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Id</th><th>Name</th><th>Price</th><th>Picture</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        this.state.products.map((p)=>
+                        <tr>
+                            <td>{p.id}</td>
+                            <td>{p.name}</td>
+                            <td>{p.price}</td>
+                            <td><img width="50" height="50" src={p.picture} /></td>
+                        </tr>
+                        )
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+}
+========================================
+package com.example.demo.model;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class Product {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
+	private String name;
+	private float price;
+	private String picture;
+	
+	public Product() {}
+	
+	public Product(Integer id, String name, float price, String picture) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.price = price;
+		this.picture = picture;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public float getPrice() {
+		return price;
+	}
+
+	public void setPrice(float price) {
+		this.price = price;
+	}
+
+	public String getPicture() {
+		return picture;
+	}
+
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
+	
+	
+}
+
+
+
+
+package com.example.demo.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.model.Product;
+import com.example.demo.service.ProductService;
+
+@RestController
+@RequestMapping("/product")
+@CrossOrigin("*")
+public class ProductController {
+	@Autowired
+	private ProductService ps;
+	
+	@PostMapping("")
+	public Product addProduct(@RequestBody Product product) {
+		return ps.create(product);
+	}
+	
+	@GetMapping("")
+	public List<Product> getAllProducts() {
+		return ps.read();
+	}
+	
+	@GetMapping("{id}")
+	public Product findProductById(@PathVariable("id") Integer id) {
+		return ps.read(id);
+	}
+	
+	@PutMapping("")
+	public Product updateProduct(@RequestBody Product product) {
+		return ps.update(product);
+	}
+	
+	@DeleteMapping("{id}")
+	public Product addProduct(@PathVariable("id") Integer id) {
+		return ps.delete(id);
+	}
+	
+}

@@ -342,7 +342,8 @@ class Login extends Component
     fn1(event)
     {
         // alert(event.target.name)
-        this.setState({[event.target.name]:event.target.value});
+        this.setState({[event.target.name]:event.target.value}); 	//[] is used for the Computed property name
+
     }
 
     render()
